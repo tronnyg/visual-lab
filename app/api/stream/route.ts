@@ -1,0 +1,3 @@
+import {store} from "@/board/store";
+export const dynamic="force-dynamic";export const runtime="nodejs";
+export function GET(req:Request){const enc=new TextEncoder();let unsub=()=>{};let timer:NodeJS.Timeout;const stream=new ReadableStream({start(controller){const send=(value:string)=>{try{controller.enqueue(enc.encode(value))}catch{}};send("retry: 1500\n\n");unsub=store.subscribe(()=>send("data: updated\n\n"));timer=setInterval(()=>send(": ping\n\n"),20000);req.signal.addEventListener("abort",()=>{unsub();clearInterval(timer);try{controller.close()}catch{}})},cancel(){unsub();clearInterval(timer)}});return new Response(stream,{headers:{"Content-Type":"text/event-stream","Cache-Control":"no-cache, no-transform"}})}

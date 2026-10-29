@@ -1,0 +1,6 @@
+import {NextResponse} from "next/server";
+import {store} from "@/board/store";
+import {cleanCode,validate} from "@/lib/validate";
+export const dynamic="force-dynamic";export const runtime="nodejs";
+export function GET(){return NextResponse.json({boards:store.list()})}
+export async function POST(req:Request){const data=await req.json();if(data.action==="create"){const name=String(data.name??"").trim().slice(0,80);if(!name)return NextResponse.json({error:"Name required"},{status:400});return NextResponse.json({board:store.create(name)})}if(data.action==="rename"){const name=String(data.name??"").trim().slice(0,80);const board=name?store.rename(data.id,name):null;return board?NextResponse.json({board}):NextResponse.json({error:"Invalid board or name"},{status:400})}if(data.action==="delete"){return NextResponse.json({ok:store.delete(data.id)})}if(data.action==="setCode"){const code=cleanCode(String(data.code??""));if(code){const v=validate(code);if(!v.ok)return NextResponse.json({problems:v.problems},{status:422})}const board=store.setCode(data.id,code);return board?NextResponse.json({board}):NextResponse.json({error:"Unknown board"},{status:404})}return NextResponse.json({error:"Unknown action"},{status:400})}

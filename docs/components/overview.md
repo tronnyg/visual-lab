@@ -1,0 +1,27 @@
+# Component library overview
+
+Visual Lab deliberately exposes **only its own registered components** through OpenUI. It uses OpenUI's language and registration machinery without shipping the stock component catalog to the model.
+
+## Current components
+
+| Component | React props | OpenUI purpose |
+| --- | --- | --- |
+| `Stack` | `children`, optional `gap` (`sm`, `md`, `lg`) | Vertical layout; root of a document |
+| `Text` | `value`, optional `tone` (`default`, `muted`), optional `size` (`body`, `title`, `heading`) | Text and headings |
+| `Card` | optional `title`, `body`, React `children` | Simple bordered content card |
+| `Button` | `label`, optional `disabled`, React `onClick` | Basic button; event behavior is limited in current OpenUI registration |
+
+## Source layout
+
+Each component currently has an ordinary React implementation (`Name.tsx`) and a Zod/OpenUI definition (`Name.openui.tsx`). Definitions are imported into `visual/registry.ts`. Component styles currently live in `styles/globals.css`; colocated CSS is planned.
+
+## Design rules
+
+- React components should work independently of MCP and board state.
+- Expose a deliberately small, validated OpenUI prop surface.
+- Use semantic `--ui-*` CSS variables for visual styling.
+- Prefer proven accessibility behavior when adapting existing UI primitives.
+- Include an example that can be rendered in the board.
+- Do not add a component to the AI registry before its schema and rendering work.
+
+See [creating components](creating-components.md) and [component API](component-api.md).

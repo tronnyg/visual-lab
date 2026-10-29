@@ -1,0 +1,1 @@
+import {NextResponse} from "next/server";import {store} from "@/board/store";export function GET(req:Request){const board=new URL(req.url).searchParams.get("board")??"main";return NextResponse.json({events:store.events(board)})}
