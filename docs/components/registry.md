@@ -1,15 +1,25 @@
 # Component registry
 
-`visual/registry.ts` explicitly imports and exports the current component definitions:
+`visual/registry.ts` explicitly imports each component definition and lists it, with its classification, in `registeredComponents`:
 
 ```ts
-export const definitions = [
-  stackDefinition,
-  textDefinition,
-  cardDefinition,
-  buttonDefinition,
-];
+export const registeredComponents = [
+  { level: "foundation", family: "layout", definition: stackDefinition },
+  { level: "foundation", family: "typography", definition: textDefinition },
+  { level: "composite", family: "data-display", definition: cardDefinition },
+  { level: "primitive", family: "controls", definition: buttonDefinition },
+] as const satisfies readonly RegisteredComponent[];
+
+export const definitions = registeredComponents.map(c => c.definition);
 ```
+
+Each entry has:
+
+- `definition` — the OpenUI definition (its `name` is the component name).
+- `level` — `foundation | primitive | composite | specialized | system`.
+- `family` — `layout | typography | controls | data-display | navigation | feedback | visualization | editors | interactive`.
+
+Both `level` and `family` are required and type-checked. They are descriptive only; see the [hierarchy guide](hierarchy.md). The `definitions` export is derived from `registeredComponents` and is unchanged for consumers.
 
 It also exports `examples`, which the metadata generator includes in `generated/library.json`.
 
@@ -19,10 +29,10 @@ It also exports `examples`, which the metadata generator includes in `generated/
 
 1. Create its React implementation and `.openui.tsx` definition.
 2. Import the definition into `visual/registry.ts`.
-3. Add it to `definitions` and optionally `examples`.
+3. Add an entry with `level`, `family`, and `definition` to `registeredComponents` (see the [hierarchy guide](hierarchy.md)), and optionally an example to `examples`.
 4. Run `npm run gen:library`.
 5. Test the new example in the editor and through MCP.
 
 `generated/library.json` is generated output. Never hand-edit it. After changing component definitions, a running agent may need to call `get_instructions` again to receive the updated catalog.
 
-A separate internal-only component list or category grouping system is **proposed**, not implemented.
+Filtering or grouping by level or family, and secondary families or tags, are not implemented.

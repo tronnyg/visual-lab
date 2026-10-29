@@ -53,9 +53,15 @@ export const noticeDefinition = defineComponent({
 
 The schema controls what the model can supply. The React component can have additional internal props not exposed through OpenUI.
 
-## 4. Register the component
+## 4. Classify and register the component
 
-Import `noticeDefinition` in `visual/registry.ts` and add it to the exported `definitions` array. Optionally add an example to `examples`:
+Choose one `level` and one `family` using the [hierarchy guide](hierarchy.md); both are required. Import `noticeDefinition` in `visual/registry.ts` and add an entry to `registeredComponents`:
+
+```ts
+{ level: "primitive", family: "feedback", definition: noticeDefinition },
+```
+
+The exported `definitions` array is derived from this list. TypeScript fails if `level` or `family` is missing or invalid. Optionally add an example to `examples`:
 
 ```text
 root = Stack([notice])
