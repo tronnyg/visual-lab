@@ -12,7 +12,7 @@ The Activity drawer fetches recent events through `/api/activity`; it does **not
 
 ## Button actions
 
-`Button` is currently the only component that emits events, as `continue_conversation` with `params: { actionId }`. See [Button](../components/button.md#action-event).
+A `Button` emits an event only when its action is `@ToAssistant(...)` (a `continue_conversation` event). `@Set` / `@Reset` stay local. See [Button](../components/button.md#actions).
 
 ## Proposed test requirement
 

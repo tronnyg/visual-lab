@@ -44,7 +44,7 @@ Native button semantics: Enter and Space activate it, and focus uses the global 
 ## OpenUI API
 
 ```text
-Button(label, disabled?, variant?, size?, loading?, fullWidth?, leadingIcon?, trailingIcon?, actionId?)
+Button(label, disabled?, variant?, size?, loading?, fullWidth?, leadingIcon?, trailingIcon?, action?)
 ```
 
 | Argument | Values |
@@ -54,27 +54,30 @@ Button(label, disabled?, variant?, size?, loading?, fullWidth?, leadingIcon?, tr
 | `variant` | as React |
 | `size` | as React |
 | `leadingIcon`, `trailingIcon` | `arrow-right`, `arrow-left`, `plus`, `check`, `download`, `external-link`, `trash`, `send` |
-| `actionId` | `/^[a-z0-9][a-z0-9_-]{0,63}$/i` |
+| `action` | an OpenUI action: `@Set($v, expr)`, `@Reset($v)`, `@ToAssistant("message")` or `Action([...])` for several |
 
 `disabled` is deliberately second so boards written for the earlier `Button(label, disabled)` keep working; use `null` to skip an optional argument, e.g. `Button("Next", false, "primary", "default", false, false, null, "arrow-right")`.
 
-Limitations: no icon-only, arbitrary children, class names, styles or HTML attributes are exposed. The OpenUI parser does not enforce the `actionId` pattern, so the adapter re-checks it and emits nothing for a malformed id. The icons are small hand-written SVG paths in `Button.openui.tsx`; there is no shared icon system. `lucide-react` is present only as a transitive dependency of `@openuidev/react-ui`, so it is not used.
+Limitations: no icon-only, arbitrary children, class names, styles or HTML attributes are exposed. The icons are small hand-written SVG paths in `Button.openui.tsx`; there is no shared icon system. `lucide-react` is present only as a transitive dependency of `@openuidev/react-ui`, so it is not used.
 
-## Action event
+## Actions
 
-With an `actionId`, `Button.openui.tsx` calls OpenUI's `useTriggerAction()`:
+`action` is OpenUI's native `action()` prop. On click the adapter calls `useTriggerAction()` with the supplied action; the SDK runs the steps. With no `action` the Button has no click handler, so it does nothing and emits nothing (unlike the stock OpenUI Button, which sends its label to the assistant). Nothing runs while `disabled`, `loading` or while the document is still streaming.
 
-```ts
-triggerAction(label, formName, { type: BuiltinActionType.ContinueConversation, params: { actionId } })
+```text
+root = Stack([count, add, reset, ask])
+$count = 0
+count = Text("Count: " + $count)
+add = Button("Add one", false, "primary", "default", false, false, null, null, @Set($count, $count + 1))
+reset = Button("Reset", false, "outline", "default", false, false, null, null, @Reset($count))
+ask = Button("Explain", false, "secondary", "default", false, false, null, null, @ToAssistant("Explain the counter"))
 ```
 
-`VisualRenderer` forwards this to `onAction`; the board POSTs it to `/api/events`; MCP `read_events` returns it. The stored event's `params.event` is:
-
-```json
-{ "type": "continue_conversation", "params": { "actionId": "show-explanation" }, "humanFriendlyMessage": "Show explanation" }
-```
-
-No event is emitted without an `actionId`, when `disabled` or `loading`, or while the document is still streaming. No other action types (navigation, scripts) are supported.
+- `@Set` / `@Reset` change `$variables` in the renderer's local store. Every component reading the variable re-renders; nothing is sent to the board or MCP.
+- `@ToAssistant("message")` is the way to notify the agent: `onAction` receives `{type: "continue_conversation", humanFriendlyMessage: "message"}`, the board POSTs it to `/api/events`, and MCP `read_events` returns it.
+- `@OpenUrl` and `Action([...])` are accepted by the SDK's schema and reach `onAction` as `open_url` events; the board only records them and does not navigate. `@Run` is not available (`toolCalls` is off).
+- `$variables`, `@Set` and `@Reset` appear in the model prompt because `bindings: true` in `visual/library.ts`. The SDK prompt still says buttons without an action message the assistant; `additionalRules` in `library.ts` contradicts it. Other stock-library notes (Modal, Callout, ...) also remain in the generated prompt.
+- Boards written with the earlier `actionId` string in the last position are no longer valid input. The adapter ignores a string there, but `validate()` does not flag it; remove the argument.
 
 ## Provenance
 

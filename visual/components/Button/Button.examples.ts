@@ -1,4 +1,4 @@
-// Positional args: Button(label, disabled, variant, size, loading, fullWidth, leadingIcon, trailingIcon, actionId)
+// Positional args: Button(label, disabled, variant, size, loading, fullWidth, leadingIcon, trailingIcon, action)
 export const buttonExamples = [
   {
     title: "Button variants and sizes",
@@ -9,7 +9,7 @@ export const buttonExamples = [
     code: 'root = Stack([a, b, c, d, e], "sm")\na = Button("Disabled", true, "secondary")\nb = Button("Saving", false, "primary", "default", true)\nc = Button("Download", false, "outline", "default", false, false, "download")\nd = Button("Continue", false, "primary", "default", false, false, null, "arrow-right")\ne = Button("Full width", false, "primary", "lg", false, true)',
   },
   {
-    title: "Button action",
-    code: 'root = Stack([intro, action], "sm")\nintro = Text("Click the button to notify the agent.", "muted")\naction = Button("Show explanation", false, "primary", "default", false, false, null, "arrow-right", "show-explanation")',
+    title: "Button actions and local state",
+    code: 'root = Stack([intro, count, actions], "sm")\n$count = 0\nintro = Text("Buttons can update local state, or notify the agent.", "muted")\ncount = Text("Count: " + $count, "default", "heading")\nactions = Stack([add, reset, ask], "sm")\nadd = Button("Add one", false, "primary", "default", false, false, "plus", null, @Set($count, $count + 1))\nreset = Button("Reset", false, "outline", "default", false, false, null, null, @Reset($count))\nask = Button("Ask the agent to explain", false, "secondary", "default", false, false, null, "arrow-right", @ToAssistant("Explain how the counter works"))',
   },
 ] as const;

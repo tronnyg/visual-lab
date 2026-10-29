@@ -22,4 +22,4 @@ The board fetches `/api/boards`, listens to `/api/stream`, and refetches when st
 
 ## Actions
 
-Interactive components must call OpenUI's `useTriggerAction()` in their `.openui.tsx` adapter for `onAction` to fire. `Button` does this when it has an `actionId`; see [events](../mcp/events.md).
+Interactive components must call OpenUI's `useTriggerAction()` in their `.openui.tsx` adapter for `onAction` to fire. `Button` does this when it has an `action`; see [events](../mcp/events.md).

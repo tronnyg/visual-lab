@@ -9,7 +9,7 @@ body = Text("This is a document.", "muted")
 card = Card("Example", "A simple content card")
 ```
 
-Each named child is defined separately and referenced from its parent. Props are positional according to the order of fields in the component's Zod schema. Optional fields can be omitted.
+Each named child is defined separately and referenced from its parent. Props are positional according to the order of fields in the component's Zod schema. Optional fields can be omitted. `$variables` with `@Set` / `@Reset` are enabled; see [Button](../components/button.md#actions).
 
 ## Current component signatures
 
@@ -17,7 +17,7 @@ Each named child is defined separately and referenced from its parent. Props are
 Stack(children, gap?)
 Text(value, tone?, size?)
 Card(title?, body?)
-Button(label, disabled?, variant?, size?, loading?, fullWidth?, leadingIcon?, trailingIcon?, actionId?)
+Button(label, disabled?, variant?, size?, loading?, fullWidth?, leadingIcon?, trailingIcon?, action?)
 ```
 
 The renderer is configured to use the custom library, not OpenUI's default catalog. The prompt disallows arbitrary unregistered components and asks for one OpenUI document per board.

@@ -1,5 +1,5 @@
 import type {ReactNode} from "react";
-import {BuiltinActionType, defineComponent, useFormName, useIsStreaming, useTriggerAction} from "@openuidev/react-lang";
+import {action, defineComponent, useFormName, useIsStreaming, useTriggerAction} from "@openuidev/react-lang";
 import {z} from "zod/v4";
 import {Button, buttonSizes, buttonVariants} from "./Button";
 
@@ -22,9 +22,6 @@ function icon(name: ButtonIcon | undefined): ReactNode {
   return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d={iconPaths[name]} /></svg>;
 }
 
-// The parser does not enforce string patterns, so the adapter re-checks the id before emitting.
-const actionIdPattern = /^[a-z0-9][a-z0-9_-]{0,63}$/i;
-
 // Positional order matters in OpenUI Lang. `disabled` stays second so existing Button(label, disabled) boards keep working.
 const buttonProps = z.object({
   label: z.string().describe("Visible button text"),
@@ -35,24 +32,26 @@ const buttonProps = z.object({
   fullWidth: z.boolean().optional().describe("Stretch to the container width. Default false"),
   leadingIcon: z.enum(buttonIcons).optional().describe("Icon before the label"),
   trailingIcon: z.enum(buttonIcons).optional().describe("Icon after the label"),
-  actionId: z.string().regex(actionIdPattern).optional().describe("Identifier reported to the agent when the button is clicked, e.g. show-explanation. Omit for a button that does nothing"),
+  action: action().optional().describe("What happens on click, e.g. @Set($count, $count + 1), @Reset($count) or @ToAssistant(\"message\"). Omit for a button that does nothing"),
 });
 
 export const buttonDefinition = defineComponent({
   name: "Button",
-  description: "A button with a visible label. Give it an actionId so the agent is notified when the user clicks it.",
+  description: "A button with a visible label. Give it an action to do something on click.",
   props: buttonProps,
   component: ({props}) => {
     const triggerAction = useTriggerAction();
     const formName = useFormName();
     const isStreaming = useIsStreaming();
-    const {label, actionId, leadingIcon, trailingIcon, ...rest} = props;
+    const {label, action: onActivate, leadingIcon, trailingIcon, ...rest} = props;
     return (
       <Button
         {...rest}
         leadingIcon={icon(leadingIcon)}
         trailingIcon={icon(trailingIcon)}
-        onClick={actionId && actionIdPattern.test(actionId) && !isStreaming ? () => triggerAction(label, formName, {type: BuiltinActionType.ContinueConversation, params: {actionId}}) : undefined}
+        // triggerAction without an action would emit a default continue_conversation event, so only wire it when one is given.
+        // The object check skips legacy string values from the old actionId argument, which triggerAction cannot handle.
+        onClick={typeof onActivate === "object" && onActivate && !isStreaming ? () => triggerAction(label, formName, onActivate) : undefined}
       >
         {label}
       </Button>

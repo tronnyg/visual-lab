@@ -48,7 +48,7 @@ This file records current choices and planned directions. It is not a claim that
 
 ## Button actions
 
-Button clicks reach OpenUI `onAction` through `useTriggerAction()`, reusing the existing `/api/events` pathway with the built-in `continue_conversation` type. See [Button](components/button.md#action-event); the browser round trip is still to be verified ([testing](development/testing.md)).
+Button uses OpenUI's native `action()` prop and `useTriggerAction()`; local state uses `$variables` with `@Set` / `@Reset`, and only `@ToAssistant` reaches `/api/events`. This replaced a custom `actionId` string. See [Button](components/button.md#actions).
 
 ## Status vocabulary
 
