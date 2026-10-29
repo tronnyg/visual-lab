@@ -44,7 +44,7 @@ The editor posts `setCode` to `/api/boards`; MCP `display` and `patch_document` 
 
 ## Events
 
-The board passes an `onAction` callback to `VisualRenderer` and posts received actions to `/api/events`. `read_events` retrieves undelivered events. See [events](mcp/events.md) for a current limitation of the initial Button implementation.
+The board passes an `onAction` callback to `VisualRenderer` and posts received actions to `/api/events`. `read_events` retrieves undelivered events. See [events](mcp/events.md) for how `Button` emits actions.
 
 ## HTTP routes
 

@@ -18,6 +18,10 @@
 | `--ui-accent-hover` | Hover accent |
 | `--ui-accent-tint` | Subtle accent surface |
 | `--ui-danger` | Error and destructive emphasis |
+| `--ui-accent-solid`, `--ui-accent-solid-hover` | Accent as a filled surface or text/link colour. Darker than `--ui-accent` in light so white text reaches 5.4:1; equal to the accent in dark |
+| `--ui-on-accent` | Text on `--ui-accent-solid` (white in light, near-black in dark) |
+| `--ui-danger-hover` | Hover fill for destructive surfaces |
+| `--ui-on-danger` | Text on `--ui-danger` |
 | `--ui-radius-sm/md/lg` | Corner radius scale: 2 / 4 / 6 px in light tokens |
 | `--ui-space-1/2/3/4/6` | Spacing scale: 4 / 8 / 12 / 16 / 24 px |
 | `--ui-font` | UI font stack |
@@ -41,7 +45,7 @@ Use semantic tokens for normal component styling; hardcoded data colors may stil
 
 ## Proposed improvements
 
-- Move individual component rules out of `styles/globals.css` into their own component folders.
+- Move the remaining component rules out of `styles/globals.css` into their own component folders (Button already is).
 - Add component-specific tokens only when a shared semantic token is insufficient.
 - Document token changes alongside visual regression checks.
 

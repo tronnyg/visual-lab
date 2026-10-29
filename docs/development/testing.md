@@ -22,7 +22,7 @@ There is no dedicated automated test suite declared in the supplied `package.jso
 7. Toggle light/dark themes and check contrast and focus.
 8. Connect an MCP client and call `get_instructions`, `list_boards`, `display`, and `get_document`.
 9. Patch a statement with `patch_document` and confirm the visible change.
-10. Check `read_events` only with a component whose OpenUI action wiring has been verified.
+10. Load the "Button action" example, click the button, and confirm the Activity drawer and MCP `read_events` show an event with `params.event.params.actionId` of `show-explanation`. Confirm disabled and loading buttons emit nothing.
 
 ## Per-component checklist
 
@@ -37,5 +37,5 @@ There is no dedicated automated test suite declared in the supplied `package.jso
 ## Known gaps
 
 - No automated unit, integration, or visual-regression suite in the current snapshot.
-- The existing OpenUI Button adapter does not wire an action callback.
-- Runtime compatibility of this rebuild was not verified during the documentation task.
+- The Button action path (click → `/api/events` → `read_events`) was verified from SDK source and typechecking, not by an in-browser click test; run step 10 above.
+- Button keyboard behavior, focus ring appearance and the light/dark look were not visually checked in a browser.

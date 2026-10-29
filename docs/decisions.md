@@ -46,9 +46,9 @@ This file records current choices and planned directions. It is not a claim that
 - Published component packages.
 - Production hosting, authentication, and multi-user synchronization.
 
-## Known implementation gap
+## Button actions
 
-The current `Button.openui.tsx` does not connect its React `onClick` to OpenUI `onAction`; do not assume button interactions already round-trip through MCP.
+Button clicks reach OpenUI `onAction` through `useTriggerAction()`, reusing the existing `/api/events` pathway with the built-in `continue_conversation` type. See [Button](components/button.md#action-event); the browser round trip is still to be verified ([testing](development/testing.md)).
 
 ## Status vocabulary
 

@@ -4,14 +4,14 @@
 
 A component has a **React API** (`Name.tsx`) and, when AI-accessible, an **OpenUI API** (`Name.openui.tsx`). The React API may support callbacks or composition that the OpenUI API does not expose.
 
-The current `Button` illustrates this distinction: `ButtonProps` accepts `onClick`, but `buttonDefinition` exposes only `label` and `disabled`. The current OpenUI mapping does not wire an action callback into `Button`, so do not document that button clicks necessarily produce MCP events.
+The `Button` illustrates this distinction: `ButtonProps` accepts `onClick`, icons as `ReactNode` and native attributes, while `buttonDefinition` exposes a validated subset and its adapter connects clicks to `useTriggerAction()` when an `actionId` is given. See [Button](button.md).
 
 ## Current schemas
 
 - `Text(value: string, tone?: "default" | "muted", size?: "body" | "title" | "heading")`
 - `Stack(children: array, gap?: "sm" | "md" | "lg")`
 - `Card(title?: string, body?: string)`
-- `Button(label: string, disabled?: boolean)`
+- `Button(label, disabled?, variant?, size?, loading?, fullWidth?, leadingIcon?, trailingIcon?, actionId?)` — see [Button](button.md)
 
 OpenUI positional arguments follow the field order in each Zod schema. Keep that order stable or update examples and agent instructions when changing it.
 

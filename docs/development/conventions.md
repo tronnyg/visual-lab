@@ -11,7 +11,7 @@ This page is for both human contributors and coding agents. Follow the current s
 ## Component rules
 
 - Keep ordinary React components independent of board and MCP code.
-- Colocate the React implementation and `.openui.tsx` adapter in the component folder.
+- Colocate the React implementation, `.openui.tsx` adapter, and (preferably) `.css` and `.examples.ts` in the component folder.
 - Use Zod descriptions and stable positional prop order.
 - Register AI-visible definitions explicitly in `visual/registry.ts`.
 - Use `--ui-*` semantic CSS variables; do not introduce arbitrary one-off color values for ordinary UI.

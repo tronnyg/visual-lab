@@ -20,6 +20,6 @@ React implementations live under `visual/components/`; OpenUI definitions adapt 
 
 The board fetches `/api/boards`, listens to `/api/stream`, and refetches when state changes. MCP updates and manual editor submissions both change the same stored `code` field. The manual editor applies changes only when **Render to board** is selected.
 
-## Caveat
+## Actions
 
-Rendering a React button does not itself guarantee OpenUI action events. The current `Button.openui.tsx` passes props to `Button` without wiring an `onClick` action. See [events](../mcp/events.md).
+Interactive components must call OpenUI's `useTriggerAction()` in their `.openui.tsx` adapter for `onAction` to fire. `Button` does this when it has an `actionId`; see [events](../mcp/events.md).

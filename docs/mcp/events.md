@@ -10,9 +10,9 @@
 
 The Activity drawer fetches recent events through `/api/activity`; it does **not** itself consume the undelivered queue.
 
-## Important current limitation
+## Button actions
 
-`Button.tsx` accepts an optional React `onClick`, but `Button.openui.tsx` only passes `label` and `disabled` and does **not** wire an OpenUI action callback. Therefore, a Button rendered through the current OpenUI definition is **not guaranteed to emit an event**. The event transport exists, but interactive component behavior must be explicitly implemented and tested.
+`Button` is currently the only component that emits events, as `continue_conversation` with `params: { actionId }`. See [Button](../components/button.md#action-event).
 
 ## Proposed test requirement
 

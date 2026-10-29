@@ -9,11 +9,11 @@ Visual Lab deliberately exposes **only its own registered components** through O
 | `Stack` | `children`, optional `gap` (`sm`, `md`, `lg`) | Vertical layout; root of a document |
 | `Text` | `value`, optional `tone` (`default`, `muted`), optional `size` (`body`, `title`, `heading`) | Text and headings |
 | `Card` | optional `title`, `body`, React `children` | Simple bordered content card |
-| `Button` | `label`, optional `disabled`, React `onClick` | Basic button; event behavior is limited in current OpenUI registration |
+| `Button` | see [Button](button.md) | Action button; can notify the agent through OpenUI |
 
 ## Source layout
 
-Each component currently has an ordinary React implementation (`Name.tsx`) and a Zod/OpenUI definition (`Name.openui.tsx`). Definitions are imported into `visual/registry.ts`. Component styles currently live in `styles/globals.css`; colocated CSS is planned.
+Each component currently has an ordinary React implementation (`Name.tsx`) and a Zod/OpenUI definition (`Name.openui.tsx`). Definitions are imported into `visual/registry.ts`. Button styles are colocated in `Button.css`; the other components' styles still live in `styles/globals.css`.
 
 ## Design rules
 

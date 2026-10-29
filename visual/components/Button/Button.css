@@ -1,0 +1,123 @@
+/* Button — variants, sizes and states are driven by data attributes set in Button.tsx. */
+.vl-button {
+  --vl-button-height: 32px;
+  --vl-button-padding: var(--ui-space-3);
+  --vl-button-font: 13px;
+  --vl-button-icon: 16px;
+  --vl-button-gap: var(--ui-space-2);
+  --vl-button-bg: transparent;
+  --vl-button-fg: var(--ui-text);
+  --vl-button-border: transparent;
+  --vl-button-bg-hover: var(--vl-button-bg);
+  --vl-button-border-hover: var(--vl-button-border);
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  gap: var(--vl-button-gap);
+  height: var(--vl-button-height);
+  padding: 0 var(--vl-button-padding);
+  border: 1px solid var(--vl-button-border);
+  border-radius: var(--ui-radius-sm);
+  background: var(--vl-button-bg);
+  color: var(--vl-button-fg);
+  font-size: var(--vl-button-font);
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+
+/* Sizes */
+.vl-button[data-size="xs"] { --vl-button-height: 24px; --vl-button-padding: var(--ui-space-2); --vl-button-font: 12px; --vl-button-icon: 12px; --vl-button-gap: var(--ui-space-1); }
+.vl-button[data-size="sm"] { --vl-button-height: 28px; --vl-button-padding: 10px; --vl-button-font: 12px; --vl-button-icon: 14px; --vl-button-gap: 6px; }
+.vl-button[data-size="lg"] { --vl-button-height: 40px; --vl-button-padding: var(--ui-space-4); --vl-button-font: 14px; --vl-button-icon: 18px; --vl-button-gap: 10px; }
+
+/* Variants */
+.vl-button[data-variant="primary"] {
+  --vl-button-bg: var(--ui-accent-solid);
+  --vl-button-fg: var(--ui-on-accent);
+  --vl-button-border: var(--ui-accent-solid);
+  --vl-button-bg-hover: var(--ui-accent-solid-hover);
+  --vl-button-border-hover: var(--ui-accent-solid-hover);
+}
+.vl-button[data-variant="secondary"] {
+  --vl-button-bg: var(--ui-surface-muted);
+  --vl-button-border: var(--ui-border);
+  --vl-button-border-hover: var(--ui-accent-solid);
+}
+.vl-button[data-variant="outline"] {
+  --vl-button-border: var(--ui-border);
+  --vl-button-bg-hover: var(--ui-surface-muted);
+  --vl-button-border-hover: var(--ui-accent-solid);
+}
+.vl-button[data-variant="ghost"] {
+  --vl-button-bg-hover: var(--ui-surface-muted);
+}
+.vl-button[data-variant="destructive"] {
+  --vl-button-bg: var(--ui-danger);
+  --vl-button-fg: var(--ui-on-danger);
+  --vl-button-border: var(--ui-danger);
+  --vl-button-bg-hover: var(--ui-danger-hover);
+  --vl-button-border-hover: var(--ui-danger-hover);
+}
+.vl-button[data-variant="link"] {
+  --vl-button-fg: var(--ui-accent-solid);
+  height: auto;
+  padding: 0;
+  border-radius: 0;
+  line-height: 1.5;
+  text-underline-offset: 3px;
+}
+
+/* Interaction — never applied while disabled or loading */
+.vl-button:not(:disabled):not([aria-disabled="true"]):hover {
+  background: var(--vl-button-bg-hover);
+  border-color: var(--vl-button-border-hover);
+}
+.vl-button[data-variant="link"]:not(:disabled):not([aria-disabled="true"]):hover { text-decoration: underline; }
+.vl-button:not(:disabled):not([aria-disabled="true"]):active { transform: translateY(1px); }
+.vl-button:focus-visible { outline: 2px solid var(--ui-accent-solid); outline-offset: 2px; }
+
+/* Layout modifiers */
+.vl-button[data-full-width] { align-self: stretch; width: 100%; }
+.vl-button[data-icon-only] { width: var(--vl-button-height); padding: 0; }
+.vl-button[data-icon-only][data-variant="link"] { width: auto; padding: 0; }
+
+.vl-button__content { display: inline-flex; align-items: center; justify-content: center; gap: inherit; }
+.vl-button__icon { display: inline-flex; flex: none; width: var(--vl-button-icon); height: var(--vl-button-icon); }
+.vl-button__icon > svg { width: 100%; height: 100%; }
+
+/* Loading — content stays in layout (hidden visually only) so the width does not change */
+.vl-button[aria-disabled="true"] { cursor: progress; }
+.vl-button[data-loading] .vl-button__content { opacity: 0; }
+.vl-button__spinner {
+  position: absolute;
+  inset: 0;
+  width: var(--vl-button-icon);
+  height: var(--vl-button-icon);
+  margin: auto;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: vl-button-spin 800ms linear infinite;
+}
+@keyframes vl-button-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .vl-button { transition: none; }
+  .vl-button__spinner { animation-duration: 2400ms; }
+}
+
+/* Visually hidden text for assistive technology */
+.vl-button__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

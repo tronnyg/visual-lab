@@ -10,7 +10,7 @@ visual/components/Notice/
   Notice.openui.tsx
 ```
 
-Colocated `Notice.css` is a proposed convention; the current repository puts component CSS in `styles/globals.css`.
+Colocated CSS (as in [Button](button.md)) is preferred over `styles/globals.css`; import it from `app/layout.tsx`, not the component file (see Button for why). An optional `Notice.examples.ts` can export `{title, code}` examples for `examples` in `visual/registry.ts`.
 
 ## 2. Write a normal React component
 
@@ -80,7 +80,7 @@ Then run `npm run dev`, load the example in the editor, and check rendering and 
 
 ## 6. Test behavior and theme
 
-Verify React usage, OpenUI usage, invalid props, light/dark styling, keyboard and focus behavior where relevant, and whether the component actually emits expected OpenUI actions. Do not assume a React `onClick` is automatically connected to OpenUI `onAction`.
+Verify React usage, OpenUI usage, invalid props, light/dark styling, keyboard and focus behavior where relevant, and whether the component actually emits expected OpenUI actions. Do not assume a React `onClick` is automatically connected to OpenUI `onAction`: the adapter must call `useTriggerAction()`, as `Button.openui.tsx` does.
 
 ## 7. Record provenance
 
