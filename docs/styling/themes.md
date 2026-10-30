@@ -19,4 +19,4 @@ The toolbar provides a theme toggle. A fresh browser with no stored choice start
 
 Minimal neutral surfaces, teal accent, restrained borders and shadows, mostly squared corners with small radii, white borderless document canvas. The board itself is a document-style test surface, not an infinite spatial canvas.
 
-Component-specific styles are currently in `styles/globals.css`; relocating them beside component files remains planned.
+Button and Text styles are colocated in `Button.css` and `Text.css`; the other components' styles are currently in `styles/globals.css`; relocating them beside component files remains planned.

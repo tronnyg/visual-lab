@@ -2,7 +2,7 @@
 
 ## Source of truth
 
-`styles/tokens.css` defines the light theme's `--ui-*` CSS variables. `styles/themes.css` overrides them under `[data-theme="dark"]`. `styles/globals.css` contains global rules, the board UI, and the current component CSS.
+`styles/tokens.css` defines the light theme's `--ui-*` CSS variables. `styles/themes.css` overrides them under `[data-theme="dark"]`. `styles/globals.css` contains global rules, the board UI, and the Stack and Card CSS. Button and Text have their own `.css` files.
 
 ## Current semantic variables
 
@@ -45,7 +45,7 @@ Use semantic tokens for normal component styling; hardcoded data colors may stil
 
 ## Proposed improvements
 
-- Move the remaining component rules out of `styles/globals.css` into their own component folders (Button already is).
+- Move the remaining component rules out of `styles/globals.css` into their own component folders (Button and Text already are).
 - Add component-specific tokens only when a shared semantic token is insufficient.
 - Document token changes alongside visual regression checks.
 

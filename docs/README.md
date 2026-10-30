@@ -16,6 +16,7 @@ Visual Lab is a standalone local development board for building, rendering, and 
 - [Component API](components/component-api.md)
 - [Registry](components/registry.md)
 - [Button](components/button.md) — reference component
+- [Text](components/text.md) — typography primitive; how it differs from the planned Markdown component
 - [Component hierarchy](components/hierarchy.md) — levels and families
 
 ## Style components

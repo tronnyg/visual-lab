@@ -1,0 +1,89 @@
+/* Text — appearance is driven by data attributes set in Text.tsx, independent of the HTML element.
+   Presets set the --vl-text-* defaults; explicit size, weight and line-height attributes come later and win.
+   The presets are shared type styles so a future Markdown component can reuse them. */
+.vl-text {
+  --vl-text-size: 15px;
+  --vl-text-weight: 400;
+  --vl-text-leading: 1.65;
+  --vl-text-tracking: 0;
+  --vl-text-color: var(--ui-text);
+  --vl-text-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  margin: 0;
+  font-family: var(--ui-font);
+  font-size: var(--vl-text-size);
+  font-weight: var(--vl-text-weight);
+  line-height: var(--vl-text-leading);
+  letter-spacing: var(--vl-text-tracking);
+  color: var(--vl-text-color);
+  overflow-wrap: break-word;
+}
+
+/* Presets */
+.vl-text[data-preset="title"] { --vl-text-size: 30px; --vl-text-weight: 650; --vl-text-leading: 1.2; --vl-text-tracking: -0.025em; }
+.vl-text[data-preset="heading"] { --vl-text-size: 21px; --vl-text-weight: 600; --vl-text-leading: 1.35; }
+.vl-text[data-preset="subheading"] { --vl-text-size: 17px; --vl-text-weight: 600; --vl-text-leading: 1.4; }
+.vl-text[data-preset="label"] { --vl-text-size: 13px; --vl-text-weight: 500; --vl-text-leading: 1.4; }
+.vl-text[data-preset="caption"] { --vl-text-size: 12px; --vl-text-leading: 1.5; }
+.vl-text[data-preset="overline"] { --vl-text-size: 12px; --vl-text-weight: 600; --vl-text-leading: 1.4; --vl-text-tracking: 0.08em; text-transform: uppercase; }
+.vl-text[data-preset="code"] { --vl-text-size: 13px; --vl-text-leading: 1.6; font-family: var(--vl-text-mono); }
+
+/* Overrides */
+.vl-text[data-size="xs"] { --vl-text-size: 12px; }
+.vl-text[data-size="sm"] { --vl-text-size: 13px; }
+.vl-text[data-size="md"] { --vl-text-size: 15px; }
+.vl-text[data-size="lg"] { --vl-text-size: 17px; }
+.vl-text[data-size="xl"] { --vl-text-size: 21px; }
+.vl-text[data-size="2xl"] { --vl-text-size: 26px; }
+.vl-text[data-size="3xl"] { --vl-text-size: 30px; }
+.vl-text[data-size="4xl"] { --vl-text-size: 38px; }
+.vl-text[data-weight="regular"] { --vl-text-weight: 400; }
+.vl-text[data-weight="medium"] { --vl-text-weight: 500; }
+.vl-text[data-weight="semibold"] { --vl-text-weight: 600; }
+.vl-text[data-weight="bold"] { --vl-text-weight: 700; }
+.vl-text[data-line-height="none"] { --vl-text-leading: 1; }
+.vl-text[data-line-height="tight"] { --vl-text-leading: 1.2; }
+.vl-text[data-line-height="snug"] { --vl-text-leading: 1.35; }
+.vl-text[data-line-height="normal"] { --vl-text-leading: 1.5; }
+.vl-text[data-line-height="relaxed"] { --vl-text-leading: 1.65; }
+
+/* Tones — --ui-accent-solid rather than --ui-accent, which is too light for text on white */
+.vl-text[data-tone="muted"] { --vl-text-color: var(--ui-text-muted); }
+.vl-text[data-tone="accent"] { --vl-text-color: var(--ui-accent-solid); }
+.vl-text[data-tone="danger"] { --vl-text-color: var(--ui-danger); }
+
+/* Alignment */
+.vl-text[data-align="start"] { text-align: start; }
+.vl-text[data-align="center"] { text-align: center; }
+.vl-text[data-align="end"] { text-align: end; }
+.vl-text[data-align="justify"] { text-align: justify; }
+
+/* Decoration */
+.vl-text[data-italic] { font-style: italic; }
+.vl-text[data-underline] { text-decoration-line: underline; text-underline-offset: 0.2em; }
+.vl-text[data-strikethrough] { text-decoration-line: line-through; }
+.vl-text[data-underline][data-strikethrough] { text-decoration-line: underline line-through; }
+.vl-text[data-highlight] {
+  padding: 0 0.2em;
+  border-radius: var(--ui-radius-sm);
+  background: var(--ui-accent-tint);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* Layout */
+.vl-text[data-wrap="nowrap"] { white-space: nowrap; }
+.vl-text[data-wrap="balance"] { text-wrap: balance; }
+.vl-text[data-wrap="pretty"] { text-wrap: pretty; }
+.vl-text[data-preserve-whitespace] { white-space: pre-wrap; }
+.vl-text[data-preserve-whitespace][data-wrap="nowrap"] { white-space: pre; }
+.vl-text[data-truncate] { display: block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* Line clamp follows truncate so it wins when both are set */
+.vl-text[data-line-clamp] { display: -webkit-box; -webkit-box-orient: vertical; max-width: 100%; overflow: hidden; white-space: normal; }
+.vl-text[data-line-clamp][data-preserve-whitespace] { white-space: pre-wrap; }
+.vl-text[data-line-clamp="1"] { -webkit-line-clamp: 1; line-clamp: 1; }
+.vl-text[data-line-clamp="2"] { -webkit-line-clamp: 2; line-clamp: 2; }
+.vl-text[data-line-clamp="3"] { -webkit-line-clamp: 3; line-clamp: 3; }
+.vl-text[data-line-clamp="4"] { -webkit-line-clamp: 4; line-clamp: 4; }
+.vl-text[data-line-clamp="5"] { -webkit-line-clamp: 5; line-clamp: 5; }
+.vl-text[data-line-clamp="6"] { -webkit-line-clamp: 6; line-clamp: 6; }

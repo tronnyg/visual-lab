@@ -15,7 +15,7 @@ Each named child is defined separately and referenced from its parent. Props are
 
 ```text
 Stack(children, gap?)
-Text(value, tone?, size?)
+Text(value, tone?, preset?, as?, size?, weight?, align?, italic?, underline?, strikethrough?, highlight?, lineHeight?, wrap?, preserveWhitespace?, truncate?, lineClamp?)
 Card(title?, body?)
 Button(label, disabled?, variant?, size?, loading?, fullWidth?, leadingIcon?, trailingIcon?, action?)
 ```

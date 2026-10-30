@@ -25,9 +25,9 @@ The component library is ordinary source code, not a separately published packag
 
 ## Current components
 
-- `visual/components/Text/` — `Text.tsx`, `Text.openui.tsx`
+- `visual/components/Text/` — `Text.tsx`, `Text.css`, `Text.openui.tsx`, `Text.examples.ts`
 - `visual/components/Stack/` — `Stack.tsx`, `Stack.openui.tsx`
 - `visual/components/Card/` — `Card.tsx`, `Card.openui.tsx`
 - `visual/components/Button/` — `Button.tsx`, `Button.css`, `Button.openui.tsx`, `Button.examples.ts`
 
-The current snapshot styles these in `styles/globals.css`. Moving component rules into colocated `*.css` files is a **proposed improvement**, not yet implemented.
+Button and Text styles are colocated; Stack and Card are still styled in `styles/globals.css`. Moving component rules into colocated `*.css` files is a **proposed improvement**, not yet implemented.
