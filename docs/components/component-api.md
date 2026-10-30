@@ -10,7 +10,7 @@ The `Button` illustrates this distinction: `ButtonProps` accepts `onClick`, icon
 
 - `Text(value, tone?, preset?, as?, size?, weight?, align?, italic?, underline?, strikethrough?, highlight?, lineHeight?, wrap?, preserveWhitespace?, truncate?, lineClamp?)` — see [Text](text.md)
 - `Stack(children, gap?, direction?, align?, justify?, wrap?, padding?, width?, flex?)` — see [Stack](stack.md)
-- `Card(title?: string, body?: string)`
+- `Card(title?, body?, children?, variant?, padding?, gap?, radius?, shadow?, background?, border?, width?)` — see [Card](card.md)
 - `Button(label, disabled?, variant?, size?, loading?, fullWidth?, leadingIcon?, trailingIcon?, action?)` — see [Button](button.md)
 
 OpenUI positional arguments follow the field order in each Zod schema. Keep that order stable or update examples and agent instructions when changing it.

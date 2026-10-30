@@ -38,4 +38,5 @@ There is no dedicated automated test suite declared in the supplied `package.jso
 
 - No automated unit, integration, or visual-regression suite in the current snapshot.
 - Button actions were tested with a throwaway jsdom script (not in the repo) covering no-action, `@Set` / `@Reset`, `@ToAssistant`, disabled and loading. The board POST and `read_events` leg was not clicked through in a browser; run step 10 above.
+- Card variants, light/dark appearance and spacing were not visually checked in a browser; schema validation, legacy-board validation and server rendering of the markup were checked.
 - Button keyboard behavior, focus ring appearance and the light/dark look were not visually checked in a browser.

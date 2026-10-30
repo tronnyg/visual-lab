@@ -2,7 +2,7 @@
 
 ## Source of truth
 
-`styles/tokens.css` defines the light theme's `--ui-*` CSS variables. `styles/themes.css` overrides them under `[data-theme="dark"]`. `styles/globals.css` contains global rules, the board UI, and the Card CSS. Button, Text and Stack have their own `.css` files.
+`styles/tokens.css` defines the light theme's `--ui-*` CSS variables. `styles/themes.css` overrides them under `[data-theme="dark"]`. `styles/globals.css` contains global rules and the board UI. Button, Text, Stack and Card have their own `.css` files.
 
 ## Current semantic variables
 

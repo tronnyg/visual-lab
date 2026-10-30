@@ -10,7 +10,7 @@ visual/components/Stack/
   Stack.examples.ts   OpenUI example, spread into `examples` in registry.ts
 ```
 
-Stack handles layout only. It has no state, interactions or events, and draws nothing: no background, border, radius or shadow. Use [Card](overview.md) for a visible container. Like Button and Text, `Stack.css` is imported from `app/layout.tsx` because `scripts/gen-library.tsx` runs under `tsx`, which cannot import `.css`. There is no Grid and no breakpoint system.
+Stack handles layout only. It has no state, interactions or events, and draws nothing: no background, border, radius or shadow. Use [Card](card.md) for a visible container. Like Button and Text, `Stack.css` is imported from `app/layout.tsx` because `scripts/gen-library.tsx` runs under `tsx`, which cannot import `.css`. There is no Grid and no breakpoint system.
 
 ## React API
 
@@ -62,5 +62,4 @@ b = Card("Support", "Illustrative figures only.")
 ## Limitations
 
 - Children must be registered components; raw strings or numbers are rejected. Use `Text`.
-- `Card` renders only its own `title`/`body` in OpenUI, so it cannot contain children yet.
 - `flex="grow"` only has an effect inside a Stack or other flex container.

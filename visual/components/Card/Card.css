@@ -1,0 +1,68 @@
+/* Card — a visual container that stacks its children vertically. No header, footer or click behaviour.
+   Appearance is driven by data attributes set in Card.tsx. Background, border and shadow rules come after
+   the variants so an explicit prop overrides what the variant implies. */
+.vl-card {
+  --vl-card-bg: var(--ui-surface);
+  --vl-card-border-width: 1px;
+  --vl-card-shadow: none;
+  --vl-card-padding: var(--ui-space-4);
+  --vl-card-gap: var(--ui-space-4);
+  --vl-card-radius: var(--ui-radius-md);
+  --vl-card-max: none;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--vl-card-gap);
+  padding: var(--vl-card-padding);
+  min-width: 0;
+  max-width: var(--vl-card-max);
+  background: var(--vl-card-bg);
+  border: var(--vl-card-border-width) solid var(--ui-border);
+  border-radius: var(--vl-card-radius);
+  box-shadow: var(--vl-card-shadow);
+  color: var(--ui-text);
+}
+
+/* Variants */
+.vl-card[data-variant="outline"] { --vl-card-bg: transparent; }
+.vl-card[data-variant="filled"] { --vl-card-bg: var(--ui-surface-muted); --vl-card-border-width: 0px; }
+.vl-card[data-variant="subtle"] { --vl-card-bg: color-mix(in srgb, var(--ui-surface-muted) 55%, transparent); }
+
+/* Background overrides the variant */
+.vl-card[data-background="canvas"] { --vl-card-bg: var(--ui-canvas); }
+.vl-card[data-background="surface"] { --vl-card-bg: var(--ui-surface); }
+.vl-card[data-background="muted"] { --vl-card-bg: var(--ui-surface-muted); }
+.vl-card[data-background="accent"] { --vl-card-bg: var(--ui-accent-tint); }
+
+/* Border visibility overrides the variant */
+.vl-card[data-border="true"] { --vl-card-border-width: 1px; }
+.vl-card[data-border="false"] { --vl-card-border-width: 0px; }
+
+/* Padding and gap share one spacing scale */
+.vl-card[data-padding="none"] { --vl-card-padding: 0px; }
+.vl-card[data-padding="xs"] { --vl-card-padding: var(--ui-space-1); }
+.vl-card[data-padding="sm"] { --vl-card-padding: var(--ui-space-2); }
+.vl-card[data-padding="md"] { --vl-card-padding: var(--ui-space-4); }
+.vl-card[data-padding="lg"] { --vl-card-padding: var(--ui-space-6); }
+.vl-card[data-gap="none"] { --vl-card-gap: 0px; }
+.vl-card[data-gap="xs"] { --vl-card-gap: var(--ui-space-1); }
+.vl-card[data-gap="sm"] { --vl-card-gap: var(--ui-space-2); }
+.vl-card[data-gap="md"] { --vl-card-gap: var(--ui-space-4); }
+.vl-card[data-gap="lg"] { --vl-card-gap: var(--ui-space-6); }
+
+/* Radius */
+.vl-card[data-radius="none"] { --vl-card-radius: 0px; }
+.vl-card[data-radius="sm"] { --vl-card-radius: var(--ui-radius-sm); }
+.vl-card[data-radius="md"] { --vl-card-radius: var(--ui-radius-md); }
+.vl-card[data-radius="lg"] { --vl-card-radius: var(--ui-radius-lg); }
+
+/* Elevation. md uses the shared theme shadow; sm is a restrained hairline lift that works in both themes. */
+.vl-card[data-shadow="none"] { --vl-card-shadow: none; }
+.vl-card[data-shadow="sm"] { --vl-card-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); }
+.vl-card[data-shadow="md"] { --vl-card-shadow: var(--ui-shadow); }
+
+/* Width — sm, md and lg fill the parent up to a maximum */
+.vl-card[data-width="full"] { width: 100%; }
+.vl-card[data-width="sm"] { width: 100%; --vl-card-max: 480px; }
+.vl-card[data-width="md"] { width: 100%; --vl-card-max: 640px; }
+.vl-card[data-width="lg"] { width: 100%; --vl-card-max: 800px; }
