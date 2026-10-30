@@ -14,7 +14,7 @@ Each named child is defined separately and referenced from its parent. Props are
 ## Current component signatures
 
 ```text
-Stack(children, gap?)
+Stack(children, gap?, direction?, align?, justify?, wrap?, padding?, width?, flex?)
 Text(value, tone?, preset?, as?, size?, weight?, align?, italic?, underline?, strikethrough?, highlight?, lineHeight?, wrap?, preserveWhitespace?, truncate?, lineClamp?)
 Card(title?, body?)
 Button(label, disabled?, variant?, size?, loading?, fullWidth?, leadingIcon?, trailingIcon?, action?)

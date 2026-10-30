@@ -1,0 +1,54 @@
+/* Stack — a Flexbox layout primitive. Invisible: no background, border, radius or shadow.
+   Direction, spacing, alignment and sizing are driven by data attributes set in Stack.tsx. */
+.vl-stack {
+  --vl-stack-gap: var(--ui-space-4);
+  --vl-stack-padding: 0px;
+  --vl-stack-max: none;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--vl-stack-gap);
+  padding: var(--vl-stack-padding);
+  max-width: var(--vl-stack-max);
+}
+
+.vl-stack[data-direction="horizontal"] { flex-direction: row; }
+.vl-stack[data-wrap] { flex-wrap: wrap; }
+
+/* Gap and padding share one spacing scale */
+.vl-stack[data-gap="none"] { --vl-stack-gap: 0px; }
+.vl-stack[data-gap="xs"] { --vl-stack-gap: var(--ui-space-1); }
+.vl-stack[data-gap="sm"] { --vl-stack-gap: var(--ui-space-2); }
+.vl-stack[data-gap="md"] { --vl-stack-gap: var(--ui-space-4); }
+.vl-stack[data-gap="lg"] { --vl-stack-gap: var(--ui-space-6); }
+.vl-stack[data-padding="none"] { --vl-stack-padding: 0px; }
+.vl-stack[data-padding="xs"] { --vl-stack-padding: var(--ui-space-1); }
+.vl-stack[data-padding="sm"] { --vl-stack-padding: var(--ui-space-2); }
+.vl-stack[data-padding="md"] { --vl-stack-padding: var(--ui-space-4); }
+.vl-stack[data-padding="lg"] { --vl-stack-padding: var(--ui-space-6); }
+
+/* Cross axis */
+.vl-stack[data-align="start"] { align-items: flex-start; }
+.vl-stack[data-align="center"] { align-items: center; }
+.vl-stack[data-align="end"] { align-items: flex-end; }
+.vl-stack[data-align="stretch"] { align-items: stretch; }
+.vl-stack[data-align="baseline"] { align-items: baseline; }
+
+/* Main axis */
+.vl-stack[data-justify="start"] { justify-content: flex-start; }
+.vl-stack[data-justify="center"] { justify-content: center; }
+.vl-stack[data-justify="end"] { justify-content: flex-end; }
+.vl-stack[data-justify="between"] { justify-content: space-between; }
+.vl-stack[data-justify="around"] { justify-content: space-around; }
+.vl-stack[data-justify="evenly"] { justify-content: space-evenly; }
+
+/* Width — sm, md and lg fill the parent up to a maximum */
+.vl-stack[data-width="full"] { width: 100%; }
+.vl-stack[data-width="sm"] { width: 100%; --vl-stack-max: 480px; }
+.vl-stack[data-width="md"] { width: 100%; --vl-stack-max: 640px; }
+.vl-stack[data-width="lg"] { width: 100%; --vl-stack-max: 800px; }
+
+/* As a flex child. min-width: 0 lets grow/shrink Stacks narrow below their content instead of overflowing. */
+.vl-stack[data-flex="grow"] { flex: 1 1 0%; min-width: 0; }
+.vl-stack[data-flex="shrink"] { flex: 0 1 auto; min-width: 0; }
+.vl-stack[data-flex="none"] { flex: none; }

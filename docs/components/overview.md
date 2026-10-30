@@ -6,7 +6,7 @@ Visual Lab deliberately exposes **only its own registered components** through O
 
 | Component | React props | OpenUI purpose |
 | --- | --- | --- |
-| `Stack` | `children`, optional `gap` (`sm`, `md`, `lg`) | Vertical layout; root of a document |
+| `Stack` | see [Stack](stack.md) | Flexbox layout (vertical or horizontal); root of a document |
 | `Text` | see [Text](text.md) | Headings, paragraphs, labels and reactive text; plain text only (Markdown is a separate, future component) |
 | `Card` | optional `title`, `body`, React `children` | Simple bordered content card |
 | `Button` | see [Button](button.md) | Action button; can notify the agent through OpenUI |

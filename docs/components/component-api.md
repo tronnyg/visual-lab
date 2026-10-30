@@ -9,7 +9,7 @@ The `Button` illustrates this distinction: `ButtonProps` accepts `onClick`, icon
 ## Current schemas
 
 - `Text(value, tone?, preset?, as?, size?, weight?, align?, italic?, underline?, strikethrough?, highlight?, lineHeight?, wrap?, preserveWhitespace?, truncate?, lineClamp?)` — see [Text](text.md)
-- `Stack(children: array, gap?: "sm" | "md" | "lg")`
+- `Stack(children, gap?, direction?, align?, justify?, wrap?, padding?, width?, flex?)` — see [Stack](stack.md)
 - `Card(title?: string, body?: string)`
 - `Button(label, disabled?, variant?, size?, loading?, fullWidth?, leadingIcon?, trailingIcon?, action?)` — see [Button](button.md)
 

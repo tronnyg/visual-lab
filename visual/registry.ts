@@ -3,6 +3,7 @@ import {textDefinition} from "./components/Text/Text.openui";
 import {cardDefinition} from "./components/Card/Card.openui";
 import {buttonDefinition} from "./components/Button/Button.openui";
 import {buttonExamples} from "./components/Button/Button.examples";
+import {stackExamples} from "./components/Stack/Stack.examples";
 import {textExamples} from "./components/Text/Text.examples";
 import type {defineComponent} from "@openuidev/react-lang";
 import type {ComponentClassification} from "./classification";
@@ -16,4 +17,4 @@ export const registeredComponents=[
   {level:"primitive",family:"controls",definition:buttonDefinition},
 ] as const satisfies readonly RegisteredComponent[];
 export const definitions=registeredComponents.map(c=>c.definition);
-export const examples=[{title:"Getting started",code:'root = Stack([heading, intro, card, action])\nheading = Text("Visual Lab", "default", "title", "h1")\nintro = Text("Your first custom OpenUI document.", "muted")\ncard = Card("Reusable components", "Built with React and registered for OpenUI.")\naction = Button("Try a button")'},...textExamples,...buttonExamples];
+export const examples=[{title:"Getting started",code:'root = Stack([heading, intro, card, action])\nheading = Text("Visual Lab", "default", "title", "h1")\nintro = Text("Your first custom OpenUI document.", "muted")\ncard = Card("Reusable components", "Built with React and registered for OpenUI.")\naction = Button("Try a button")'},...stackExamples,...textExamples,...buttonExamples];
