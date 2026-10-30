@@ -19,6 +19,8 @@ Text(value, tone?, preset?, as?, size?, weight?, align?, italic?, underline?, st
 Card(title?, body?, children?, variant?, padding?, gap?, radius?, shadow?, background?, border?, width?)
 Markdown(source)
 Image(src, alt, aspectRatio?, fit?, radius?, width?, caption?, loading?)
+Divider(orientation?, tone?, spacing?, decorative?)
+Grid(children, columns?, gap?, rowGap?, columnGap?, align?, justify?, minColumnWidth?, width?)
 Button(label, disabled?, variant?, size?, loading?, fullWidth?, leadingIcon?, trailingIcon?, action?)
 ```
 

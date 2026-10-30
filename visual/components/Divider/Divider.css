@@ -1,0 +1,39 @@
+/* Divider — a one-pixel separator line. Invisible apart from the line: no label, icon or text.
+   Orientation, tone and spacing are driven by data attributes set in Divider.tsx. */
+.vl-divider {
+  --vl-divider-color: var(--ui-border);
+  --vl-divider-space: var(--ui-space-2);
+
+  flex: none;
+  box-sizing: border-box;
+  background: var(--vl-divider-color);
+}
+
+/* Horizontal: fills the available width. Spacing is margin above and below, never thickness. */
+.vl-divider[data-orientation="horizontal"] {
+  align-self: stretch;
+  width: auto;
+  height: 1px;
+  margin: var(--vl-divider-space) 0;
+}
+
+/* Vertical: stretches across a flex or grid parent (a horizontal Stack). min-height keeps it visible when the parent has no height of its own. */
+.vl-divider[data-orientation="vertical"] {
+  align-self: stretch;
+  width: 1px;
+  height: auto;
+  min-height: var(--ui-space-4);
+  margin: 0 var(--vl-divider-space);
+}
+
+/* Tone — semantic theme tokens, so light and dark follow the active theme */
+.vl-divider[data-tone="subtle"] { --vl-divider-color: var(--ui-border); }
+.vl-divider[data-tone="default"] { --vl-divider-color: color-mix(in srgb, var(--ui-text-muted) 45%, var(--ui-border)); }
+.vl-divider[data-tone="strong"] { --vl-divider-color: var(--ui-text-muted); }
+
+/* Spacing — margin scale shared with Stack and Card */
+.vl-divider[data-spacing="none"] { --vl-divider-space: 0px; }
+.vl-divider[data-spacing="xs"] { --vl-divider-space: var(--ui-space-1); }
+.vl-divider[data-spacing="sm"] { --vl-divider-space: var(--ui-space-2); }
+.vl-divider[data-spacing="md"] { --vl-divider-space: var(--ui-space-4); }
+.vl-divider[data-spacing="lg"] { --vl-divider-space: var(--ui-space-6); }

@@ -12,7 +12,7 @@ A level is a component's architectural responsibility.
 
 | Level | Definition | Examples |
 |---|---|---|
-| `foundation` | Basic layout, typography, and structural building blocks | `Stack`, `Text` |
+| `foundation` | Basic layout, typography, and structural building blocks | `Stack`, `Divider`, `Grid`, `Text` |
 | `primitive` | Individual UI controls and elements with a focused responsibility | `Button`, input, badge |
 | `composite` | Components combining elements into recognizable UI patterns | `Card`, form field, list item |
 | `specialized` | Components designed for particular domains or representations | chart, diagram |
@@ -66,5 +66,7 @@ Add one entry to `registeredComponents` in `visual/registry.ts`:
 |---|---|---|
 | `Text` | `foundation` | `typography` |
 | `Stack` | `foundation` | `layout` |
+| `Divider` | `foundation` | `layout` |
+| `Grid` | `foundation` | `layout` |
 | `Button` | `primitive` | `controls` |
 | `Card` | `composite` | `data-display` |

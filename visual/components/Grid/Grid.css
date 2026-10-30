@@ -1,0 +1,66 @@
+/* Grid — a CSS Grid layout primitive. Invisible: no background, border, radius or shadow.
+   Columns, gaps, alignment and sizing are driven by data attributes set in Grid.tsx.
+   Responsive without breakpoints: each column has a minimum width, so the grid uses fewer columns in a narrow container. */
+.vl-grid {
+  --vl-grid-cols: 2;
+  --vl-grid-gap: var(--ui-space-4);
+  --vl-grid-row-gap: var(--vl-grid-gap);
+  --vl-grid-column-gap: var(--vl-grid-gap);
+  --vl-grid-min: 10rem;
+  --vl-grid-max: none;
+
+  display: grid;
+  row-gap: var(--vl-grid-row-gap);
+  column-gap: var(--vl-grid-column-gap);
+  max-width: var(--vl-grid-max);
+  /* Up to --vl-grid-cols columns of equal width; a column never gets narrower than --vl-grid-min (or the container).
+     The 0.5px keeps rounding from dropping a column when the container fits exactly. */
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, max(var(--vl-grid-min), calc((100% - (var(--vl-grid-cols) - 1) * var(--vl-grid-column-gap)) / var(--vl-grid-cols) - 0.5px))), 1fr));
+}
+
+/* Items may shrink below their content instead of overflowing the grid */
+.vl-grid > * { min-width: 0; }
+
+.vl-grid[data-columns="1"] { --vl-grid-cols: 1; }
+.vl-grid[data-columns="2"] { --vl-grid-cols: 2; }
+.vl-grid[data-columns="3"] { --vl-grid-cols: 3; }
+.vl-grid[data-columns="4"] { --vl-grid-cols: 4; }
+
+/* Always keep the requested number of columns */
+.vl-grid[data-min="none"] { grid-template-columns: repeat(var(--vl-grid-cols), minmax(0, 1fr)); }
+.vl-grid[data-min="sm"] { --vl-grid-min: 10rem; }
+.vl-grid[data-min="md"] { --vl-grid-min: 14rem; }
+.vl-grid[data-min="lg"] { --vl-grid-min: 20rem; }
+
+/* Gap, row gap and column gap share one spacing scale. rowGap and columnGap override gap. */
+.vl-grid[data-gap="none"] { --vl-grid-gap: 0px; }
+.vl-grid[data-gap="xs"] { --vl-grid-gap: var(--ui-space-1); }
+.vl-grid[data-gap="sm"] { --vl-grid-gap: var(--ui-space-2); }
+.vl-grid[data-gap="md"] { --vl-grid-gap: var(--ui-space-4); }
+.vl-grid[data-gap="lg"] { --vl-grid-gap: var(--ui-space-6); }
+.vl-grid[data-row-gap="none"] { --vl-grid-row-gap: 0px; }
+.vl-grid[data-row-gap="xs"] { --vl-grid-row-gap: var(--ui-space-1); }
+.vl-grid[data-row-gap="sm"] { --vl-grid-row-gap: var(--ui-space-2); }
+.vl-grid[data-row-gap="md"] { --vl-grid-row-gap: var(--ui-space-4); }
+.vl-grid[data-row-gap="lg"] { --vl-grid-row-gap: var(--ui-space-6); }
+.vl-grid[data-column-gap="none"] { --vl-grid-column-gap: 0px; }
+.vl-grid[data-column-gap="xs"] { --vl-grid-column-gap: var(--ui-space-1); }
+.vl-grid[data-column-gap="sm"] { --vl-grid-column-gap: var(--ui-space-2); }
+.vl-grid[data-column-gap="md"] { --vl-grid-column-gap: var(--ui-space-4); }
+.vl-grid[data-column-gap="lg"] { --vl-grid-column-gap: var(--ui-space-6); }
+
+/* Item alignment */
+.vl-grid[data-align="start"] { align-items: start; }
+.vl-grid[data-align="center"] { align-items: center; }
+.vl-grid[data-align="end"] { align-items: end; }
+.vl-grid[data-align="stretch"] { align-items: stretch; }
+.vl-grid[data-justify="start"] { justify-items: start; }
+.vl-grid[data-justify="center"] { justify-items: center; }
+.vl-grid[data-justify="end"] { justify-items: end; }
+.vl-grid[data-justify="stretch"] { justify-items: stretch; }
+
+/* Width — sm, md and lg fill the parent up to a maximum */
+.vl-grid[data-width="full"] { width: 100%; }
+.vl-grid[data-width="sm"] { width: 100%; --vl-grid-max: 480px; }
+.vl-grid[data-width="md"] { width: 100%; --vl-grid-max: 640px; }
+.vl-grid[data-width="lg"] { width: 100%; --vl-grid-max: 800px; }
