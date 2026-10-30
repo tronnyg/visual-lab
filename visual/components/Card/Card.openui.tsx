@@ -34,7 +34,7 @@ const cardProps = z.object({
 
 export const cardDefinition = defineComponent({
   name: "Card",
-  description: "A visual container that groups child components vertically on a bordered or filled surface. Visual grouping only: use a Stack inside it for rows or other layouts, and Text for headings.",
+  description: "A visual container that groups child components vertically on a bordered or filled surface. Visual grouping only: use a Stack inside it for rows or other layouts, and Text for headings. title and body are legacy first arguments: when using children, skip them with null, e.g. Card(null, null, [a, b]).",
   props: cardProps,
   component: ({props, renderNode}) => {
     // Skipped optional arguments (null, or an unresolved expression) must not reach the component, where defaults only apply to undefined.

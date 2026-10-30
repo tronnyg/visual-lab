@@ -30,7 +30,7 @@ const textProps = z.object({
 
 export const textDefinition = defineComponent({
   name: "Text",
-  description: "A piece of text: headings, paragraphs, labels and captions. Plain text only; use the value expression for dynamic text.",
+  description: "A piece of text: headings, paragraphs, labels and captions. Plain text only; use the value expression for dynamic text. Arguments after value are tone, preset, then as; as sets the HTML element but not the look, so pair a heading element with a preset, e.g. Text(\"Title\", \"default\", \"title\", \"h1\").",
   props: textProps,
   component: ({props}) => {
     // Skipped optional arguments (null, or an unresolved expression) must not reach the component, where defaults only apply to undefined.

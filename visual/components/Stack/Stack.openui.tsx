@@ -31,7 +31,7 @@ const stackProps = z.object({
 
 export const stackDefinition = defineComponent({
   name: "Stack",
-  description: "Arranges child components vertically or in a row. Layout only: it draws nothing itself. Use as the root of every document; nest Stacks for rows inside columns.",
+  description: "Arranges child components vertically or in a row. Layout only: it draws nothing itself. Stack is a common root; any registered component may be the root. Nest Stacks for rows inside columns. For two-dimensional layouts use Grid.",
   props: stackProps,
   component: ({props, renderNode}) => {
     // Skipped optional arguments (null, or an unresolved expression) must not reach the component, where defaults only apply to undefined.

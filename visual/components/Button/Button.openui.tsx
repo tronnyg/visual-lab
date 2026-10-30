@@ -27,7 +27,7 @@ const buttonProps = z.object({
 
 export const buttonDefinition = defineComponent({
   name: "Button",
-  description: "A button with a visible label. Give it an action to do something on click.",
+  description: "A button with a visible label. The action is the 9th and last argument, so earlier ones are filled with false/null. A Button with no action does nothing and does not message the assistant.",
   props: buttonProps,
   component: ({props}) => {
     const triggerAction = useTriggerAction();
