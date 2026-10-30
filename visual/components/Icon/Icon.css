@@ -1,0 +1,25 @@
+/* Icon — a Lucide glyph sized and coloured with data attributes set in Icon.tsx.
+   Without a tone the icon inherits the surrounding text colour (currentColor). */
+.vl-icon {
+  --vl-icon-size: 16px;
+
+  display: inline-block;
+  flex: none;
+  width: var(--vl-icon-size);
+  height: var(--vl-icon-size);
+  vertical-align: middle;
+}
+
+.vl-icon[data-size="xs"] { --vl-icon-size: 12px; }
+.vl-icon[data-size="sm"] { --vl-icon-size: 14px; }
+.vl-icon[data-size="md"] { --vl-icon-size: 16px; }
+.vl-icon[data-size="lg"] { --vl-icon-size: 20px; }
+.vl-icon[data-size="xl"] { --vl-icon-size: 24px; }
+
+/* Tone — semantic theme tokens, so light and dark follow the active theme */
+.vl-icon[data-tone="default"] { color: var(--ui-text); }
+.vl-icon[data-tone="muted"] { color: var(--ui-text-muted); }
+.vl-icon[data-tone="accent"] { color: var(--ui-accent-solid); }
+.vl-icon[data-tone="success"] { color: var(--ui-success); }
+.vl-icon[data-tone="warning"] { color: var(--ui-warning); }
+.vl-icon[data-tone="danger"] { color: var(--ui-danger); }

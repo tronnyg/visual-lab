@@ -20,6 +20,7 @@ Card(title?, body?, children?, variant?, padding?, gap?, radius?, shadow?, backg
 Markdown(source)
 Image(src, alt, aspectRatio?, fit?, radius?, width?, caption?, loading?)
 Divider(orientation?, tone?, spacing?, decorative?)
+Icon(name, size?, tone?, label?)
 Grid(children, columns?, gap?, rowGap?, columnGap?, align?, justify?, minColumnWidth?, width?)
 Button(label, disabled?, variant?, size?, loading?, fullWidth?, leadingIcon?, trailingIcon?, action?)
 ```

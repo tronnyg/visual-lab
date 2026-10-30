@@ -7,6 +7,7 @@ export const registeredComponents = [
   { level: "foundation", family: "layout", definition: stackDefinition },
   { level: "foundation", family: "layout", definition: dividerDefinition },
   { level: "foundation", family: "layout", definition: gridDefinition },
+  { level: "foundation", family: "data-display", definition: iconDefinition },
   { level: "foundation", family: "typography", definition: textDefinition },
   { level: "composite", family: "data-display", definition: cardDefinition },
   { level: "composite", family: "typography", definition: markdownDefinition },

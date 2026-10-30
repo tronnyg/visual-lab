@@ -22,6 +22,7 @@
 | `--ui-on-accent` | Text on `--ui-accent-solid` (white in light, near-black in dark) |
 | `--ui-danger-hover` | Hover fill for destructive surfaces |
 | `--ui-on-danger` | Text on `--ui-danger` |
+| `--ui-success`, `--ui-warning` | Status colours for icons (green and amber, readable on the light and dark canvas) |
 | `--ui-radius-sm/md/lg` | Corner radius scale: 2 / 4 / 6 px in light tokens |
 | `--ui-space-1/2/3/4/6` | Spacing scale: 4 / 8 / 12 / 16 / 24 px |
 | `--ui-font` | UI font stack |

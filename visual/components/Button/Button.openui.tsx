@@ -2,24 +2,14 @@ import type {ReactNode} from "react";
 import {action, defineComponent, useFormName, useIsStreaming, useTriggerAction} from "@openuidev/react-lang";
 import {z} from "zod/v4";
 import {Button, buttonSizes, buttonVariants} from "./Button";
+import {Icon, iconNames, type IconName} from "../Icon/Icon";
 
-// Allowlist of icons the model may request. Hand-written 24px stroke paths; there is no shared icon system yet.
-const iconPaths = {
-  "arrow-right": "M5 12h14M12 5l7 7-7 7",
-  "arrow-left": "M19 12H5M12 19l-7-7 7-7",
-  plus: "M12 5v14M5 12h14",
-  check: "M20 6 9 17l-5-5",
-  download: "M12 3v12M7 10l5 5 5-5M5 21h14",
-  "external-link": "M14 4h6v6M20 4 10 14M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5",
-  trash: "M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3",
-  send: "M22 2 11 13M22 2l-7 20-4-9-9-4z",
-} as const;
-export const buttonIcons = Object.keys(iconPaths) as [keyof typeof iconPaths, ...(keyof typeof iconPaths)[]];
-type ButtonIcon = keyof typeof iconPaths;
+// Button shares the Icon component's icon vocabulary (a curated Lucide subset), so the two never drift apart.
+// The original eight names (arrow-right, arrow-left, plus, check, download, external-link, trash, send) are all still valid.
+export const buttonIcons = iconNames;
 
-function icon(name: ButtonIcon | undefined): ReactNode {
-  if (!name || !(name in iconPaths)) return undefined;
-  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d={iconPaths[name]} /></svg>;
+function icon(name: IconName | undefined): ReactNode {
+  return name ? <Icon name={name} /> : undefined;
 }
 
 // Positional order matters in OpenUI Lang. `disabled` stays second so existing Button(label, disabled) boards keep working.

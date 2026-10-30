@@ -53,12 +53,12 @@ Button(label, disabled?, variant?, size?, loading?, fullWidth?, leadingIcon?, tr
 | `disabled`, `loading`, `fullWidth` | boolean |
 | `variant` | as React |
 | `size` | as React |
-| `leadingIcon`, `trailingIcon` | `arrow-right`, `arrow-left`, `plus`, `check`, `download`, `external-link`, `trash`, `send` |
+| `leadingIcon`, `trailingIcon` | Any [Icon](icon.md) name, e.g. `arrow-right`, `plus`, `check`, `download`, `external-link`, `trash`, `send`, `search` |
 | `action` | an OpenUI action: `@Set($v, expr)`, `@Reset($v)`, `@ToAssistant("message")` or `Action([...])` for several |
 
 `disabled` is deliberately second so boards written for the earlier `Button(label, disabled)` keep working; use `null` to skip an optional argument, e.g. `Button("Next", false, "primary", "default", false, false, null, "arrow-right")`.
 
-Limitations: no icon-only, arbitrary children, class names, styles or HTML attributes are exposed. The icons are small hand-written SVG paths in `Button.openui.tsx`; there is no shared icon system. `lucide-react` is present only as a transitive dependency of `@openuidev/react-ui`, so it is not used.
+Limitations: no icon-only, arbitrary children, class names, styles or HTML attributes are exposed. Icons come from the shared [Icon](icon.md) vocabulary (Lucide); `Button.openui.tsx` renders `<Icon>` and `Button.tsx` still accepts any `ReactNode`.
 
 ## Actions
 
@@ -81,4 +81,4 @@ ask = Button("Explain", false, "secondary", "default", false, false, null, null,
 
 ## Provenance
 
-Variants, sizes, `loading`/icon-only ergonomics and the `type="button"` default are patterns studied from the [shadcn/ui Button](https://ui.shadcn.com/docs/components/base/button) (MIT). No shadcn, Base UI, Radix or Tailwind code or dependency was added; the markup, CSS and icon paths are original to this repository. Dependencies are unchanged (React, `@openuidev/react-lang`, `zod`).
+Variants, sizes, `loading`/icon-only ergonomics and the `type="button"` default are patterns studied from the [shadcn/ui Button](https://ui.shadcn.com/docs/components/base/button) (MIT). No shadcn, Base UI, Radix or Tailwind code or dependency was added; the markup and CSS are original to this repository. Icons are Lucide via `lucide-react` (see [Icon](icon.md)).
