@@ -12,13 +12,14 @@ Visual Lab deliberately exposes **only its own registered components** through O
 | `Divider` | see [Divider](divider.md) | A thin horizontal or vertical line that separates sections; tone, spacing and decorative or semantic usage |
 | `Grid` | see [Grid](grid.md) | Invisible two-dimensional layout in 1 to 4 equal columns with gaps, item alignment and fewer columns in narrow containers |
 | `Icon` | see [Icon](icon.md) | A standalone Lucide icon from a curated set, with size and tone presets and an optional accessible label |
+| `Spacer` | see [Spacer](spacer.md) | Intentional empty space in a Stack or Card: fixed sizes along the parent's direction, or grow to push siblings apart |
 | `Image` | see [Image](image.md) | A standalone image from an http(s) URL or root-relative path, with required alt text, optional caption, aspect ratio, fit, radius and width |
 | `Card` | see [Card](card.md) | Visual container that stacks any registered children vertically |
 | `Button` | see [Button](button.md) | Action button; can notify the agent through OpenUI |
 
 ## Source layout
 
-Each component currently has an ordinary React implementation (`Name.tsx`) and a Zod/OpenUI definition (`Name.openui.tsx`). Definitions are imported into `visual/registry.ts`. Component styles are colocated in `Button.css`, `Text.css`, `Stack.css`, `Card.css`, `Markdown.css`, `Image.css`, `Divider.css`, `Grid.css` and `Icon.css`.
+Each component currently has an ordinary React implementation (`Name.tsx`) and a Zod/OpenUI definition (`Name.openui.tsx`). Definitions are imported into `visual/registry.ts`. Component styles are colocated in `Button.css`, `Text.css`, `Stack.css`, `Card.css`, `Markdown.css`, `Image.css`, `Divider.css`, `Grid.css`, `Icon.css` and `Spacer.css`.
 
 ## Design rules
 

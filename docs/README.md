@@ -23,6 +23,7 @@ Visual Lab is a standalone local development board for building, rendering, and 
 - [Divider](components/divider.md) — section separator: orientation, tone, spacing and accessibility
 - [Grid](components/grid.md) — two-dimensional layout: columns, gaps, alignment and responsive behaviour
 - [Icon](components/icon.md) — standalone Lucide icons: curated names, sizes, tones and accessibility
+- [Spacer](components/spacer.md) — intentional empty space: fixed sizes, grow and when to prefer Stack gap
 - [Image](components/image.md) — standalone image: sources, sizing, captions, loading and errors
 - [Component hierarchy](components/hierarchy.md) — levels and families
 

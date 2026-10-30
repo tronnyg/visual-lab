@@ -1,0 +1,19 @@
+/* Spacer — intentional empty space. Invisible: draws nothing.
+   Sized with flex-basis, which is the main-axis size in both directions, so one rule serves vertical and horizontal Stacks.
+   Outside a flex parent it has no size. */
+.vl-spacer {
+  --vl-spacer-size: var(--ui-space-4);
+
+  flex: 0 0 var(--vl-spacer-size);
+  min-width: 0;
+  min-height: 0;
+}
+
+.vl-spacer[data-size="xs"] { --vl-spacer-size: var(--ui-space-1); }
+.vl-spacer[data-size="sm"] { --vl-spacer-size: var(--ui-space-2); }
+.vl-spacer[data-size="md"] { --vl-spacer-size: var(--ui-space-4); }
+.vl-spacer[data-size="lg"] { --vl-spacer-size: var(--ui-space-6); }
+.vl-spacer[data-size="xl"] { --vl-spacer-size: calc(var(--ui-space-6) * 2); }
+
+/* grow: share the spare main-axis space. Needs a parent that has spare room, such as a horizontal Stack with width full. */
+.vl-spacer[data-size="grow"] { flex: 1 1 0%; }

@@ -9,6 +9,7 @@ import {imageDefinition} from "../Image/Image.openui";
 import {dividerDefinition} from "../Divider/Divider.openui";
 import {gridDefinition} from "../Grid/Grid.openui";
 import {iconDefinition} from "../Icon/Icon.openui";
+import {spacerDefinition} from "../Spacer/Spacer.openui";
 
 // Positional order matters in OpenUI Lang. children and gap keep the positions of the original Stack(children, gap),
 // so existing boards keep working; the new arguments come after them.
@@ -16,7 +17,7 @@ import {iconDefinition} from "../Icon/Icon.openui";
 // The getter makes the schema recursive so a Stack can contain Stacks.
 const stackProps = z.object({
   get children() {
-    return z.array(z.union([stackProps, textDefinition.ref, markdownDefinition.ref, imageDefinition.ref, dividerDefinition.ref, gridDefinition.ref, iconDefinition.ref, buttonDefinition.ref, cardDefinition.ref])).describe("Components to arrange, in order. May include other Stacks");
+    return z.array(z.union([stackProps, textDefinition.ref, markdownDefinition.ref, imageDefinition.ref, dividerDefinition.ref, gridDefinition.ref, iconDefinition.ref, spacerDefinition.ref, buttonDefinition.ref, cardDefinition.ref])).describe("Components to arrange, in order. May include other Stacks");
   },
   gap: z.enum(stackSpacings).optional().describe("Space between children: none, xs, sm, md, lg. Default md"),
   direction: z.enum(stackDirections).optional().describe("vertical stacks children top to bottom, horizontal places them in a row. Default vertical"),
