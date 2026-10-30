@@ -44,7 +44,7 @@ Appearance is emitted as `data-*` attributes (`data-direction`, `data-gap`, ...)
 Stack(children, gap?, direction?, align?, justify?, wrap?, padding?, width?, flex?)
 ```
 
-`children` is an array of typed references to `Stack`, `Text`, `Markdown`, `Button` or `Card` (`z.array(z.union([...ref]))`), so Stacks nest. The other arguments take the values in the table above. `children` and `gap` keep their original positions, so `Stack([a, b], "lg")` and stored boards work unchanged. A skipped optional argument (`null`) uses the default.
+`children` is an array of typed references to `Stack`, `Text`, `Markdown`, `Image`, `Button` or `Card` (`z.array(z.union([...ref]))`), so Stacks nest. The other arguments take the values in the table above. `children` and `gap` keep their original positions, so `Stack([a, b], "lg")` and stored boards work unchanged. A skipped optional argument (`null`) uses the default.
 
 To accept a newly registered component as a child, add its `.ref` to the union in `Stack.openui.tsx`.
 

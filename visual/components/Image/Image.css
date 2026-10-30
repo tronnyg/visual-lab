@@ -1,0 +1,89 @@
+/* Image — a responsive image with an optional caption. Appearance is driven by data attributes set in Image.tsx.
+   The frame owns the aspect ratio, corner rounding and placeholder; the caption sits outside it. */
+.vl-image {
+  --vl-image-max: none;
+  --vl-image-radius: var(--ui-radius-md);
+
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  max-width: min(100%, var(--vl-image-max));
+  margin: 0;
+  color: var(--ui-text);
+}
+
+/* Width presets mirror Card: sm/md/lg fill the parent up to a maximum */
+.vl-image[data-width="sm"] { --vl-image-max: 480px; }
+.vl-image[data-width="md"] { --vl-image-max: 640px; }
+.vl-image[data-width="lg"] { --vl-image-max: 800px; }
+/* auto keeps the natural width of the image, capped at the parent's. A fixed ratio has no natural width, so it fills the parent. */
+.vl-image[data-width="auto"][data-aspect="auto"] { width: fit-content; }
+
+.vl-image__frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--vl-image-radius);
+  background: var(--ui-surface-muted);
+}
+
+/* Radius */
+.vl-image[data-radius="none"] { --vl-image-radius: 0px; }
+.vl-image[data-radius="sm"] { --vl-image-radius: var(--ui-radius-sm); }
+.vl-image[data-radius="md"] { --vl-image-radius: var(--ui-radius-md); }
+.vl-image[data-radius="lg"] { --vl-image-radius: var(--ui-radius-lg); }
+
+/* Aspect ratio: the frame reserves its height before the image arrives, so nothing shifts when it loads */
+.vl-image[data-aspect="1:1"] .vl-image__frame { aspect-ratio: 1 / 1; }
+.vl-image[data-aspect="4:3"] .vl-image__frame { aspect-ratio: 4 / 3; }
+.vl-image[data-aspect="16:9"] .vl-image__frame { aspect-ratio: 16 / 9; }
+
+.vl-image img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+.vl-image[data-aspect="auto"] img { width: 100%; }
+.vl-image[data-aspect="auto"][data-width="auto"] img { width: auto; }
+.vl-image:not([data-aspect="auto"]) img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.vl-image[data-fit="cover"] img { object-fit: cover; }
+.vl-image[data-fit="contain"] img { object-fit: contain; }
+.vl-image[data-aspect="auto"] img { object-fit: fill; }
+
+/* A natural-size image has no height until it loads, so the placeholder holds a modest area; the muted fill is only visible until then */
+.vl-image[data-aspect="auto"][data-state="loading"] .vl-image__frame { min-height: 120px; }
+.vl-image[data-aspect="auto"][data-state="loading"][data-width="auto"] .vl-image__frame { min-width: 120px; }
+.vl-image[data-state="loaded"] .vl-image__frame { background: transparent; }
+
+/* Fallback: replaces the image, never a broken-image icon */
+.vl-image__fallback {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ui-space-2);
+  min-height: 120px;
+  min-width: 120px;
+  height: 100%;
+  padding: var(--ui-space-4);
+  border: 1px solid var(--ui-border);
+  border-radius: var(--vl-image-radius);
+  color: var(--ui-text-muted);
+  font-family: var(--ui-font);
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+}
+.vl-image__fallback svg { width: 24px; height: 24px; flex: none; }
+.vl-image:not([data-aspect="auto"]) .vl-image__fallback { position: absolute; inset: 0; }
+
+/* Caption: same type as the Text caption preset */
+.vl-image__caption {
+  margin-top: var(--ui-space-2);
+  color: var(--ui-text-muted);
+  font-family: var(--ui-font);
+  font-size: 12px;
+  line-height: 1.5;
+  overflow-wrap: break-word;
+}

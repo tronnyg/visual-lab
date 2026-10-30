@@ -59,7 +59,7 @@ Task-list checkboxes are display-only (`disabled`).
 
 Only absolute `http(s)` image URLs are allowed. Boards have no asset directory, so relative paths such as `/logo.png` would resolve against the Visual Lab host and are refused; a refused image renders its alt text.
 
-Markdown images are intentionally basic: no sizing, captions, galleries, zoom or actions. A separate **Image** component is planned for standalone images and richer presentation. Markdown does not depend on it.
+Markdown images are intentionally basic: no sizing, captions, galleries, zoom or actions. Use the [Image](image.md) component for standalone images and richer presentation. Markdown does not depend on it, and its rules differ: Markdown images must be absolute `http(s)` URLs, while Image also accepts root-relative paths.
 
 ## Security
 

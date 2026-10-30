@@ -18,6 +18,7 @@ Stack(children, gap?, direction?, align?, justify?, wrap?, padding?, width?, fle
 Text(value, tone?, preset?, as?, size?, weight?, align?, italic?, underline?, strikethrough?, highlight?, lineHeight?, wrap?, preserveWhitespace?, truncate?, lineClamp?)
 Card(title?, body?, children?, variant?, padding?, gap?, radius?, shadow?, background?, border?, width?)
 Markdown(source)
+Image(src, alt, aspectRatio?, fit?, radius?, width?, caption?, loading?)
 Button(label, disabled?, variant?, size?, loading?, fullWidth?, leadingIcon?, trailingIcon?, action?)
 ```
 

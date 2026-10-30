@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" role="img" aria-label="Forces acting on a block at rest">
+  <rect width="600" height="450" fill="#f6f7f6"/>
+  <rect x="80" y="300" width="440" height="6" fill="#68716e"/>
+  <rect x="240" y="210" width="120" height="90" fill="#cfe6e2" stroke="#0f766e" stroke-width="3"/>
+  <g stroke="#0f766e" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M300 210V90M286 108l14-18 14 18"/>
+    <path d="M300 300v120M286 402l14 18 14-18"/>
+  </g>
+  <g font-family="sans-serif" font-size="22" fill="#202525">
+    <text x="318" y="110">Normal force N</text>
+    <text x="318" y="400">Weight W = mg</text>
+    <text x="300" y="262" text-anchor="middle">block</text>
+  </g>
+</svg>

@@ -9,6 +9,7 @@ export const registeredComponents = [
   { level: "composite", family: "data-display", definition: cardDefinition },
   { level: "composite", family: "typography", definition: markdownDefinition },
   { level: "primitive", family: "controls", definition: buttonDefinition },
+  { level: "primitive", family: "data-display", definition: imageDefinition },
 ] as const satisfies readonly RegisteredComponent[];
 
 export const definitions = registeredComponents.map(c => c.definition);

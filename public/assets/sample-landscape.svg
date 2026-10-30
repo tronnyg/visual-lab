@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Stylised hills under a pale sky">
+  <rect width="800" height="450" fill="#cfe6e2"/>
+  <circle cx="600" cy="120" r="48" fill="#f4e3b0"/>
+  <path d="M0 300 190 170 340 280 480 200 800 330 800 450 0 450Z" fill="#6aa89f"/>
+  <path d="M0 360 160 270 330 350 520 260 800 380 800 450 0 450Z" fill="#2f7f74"/>
+</svg>
