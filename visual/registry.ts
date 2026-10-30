@@ -1,6 +1,8 @@
 import {stackDefinition} from "./components/Stack/Stack.openui";
 import {textDefinition} from "./components/Text/Text.openui";
 import {cardDefinition} from "./components/Card/Card.openui";
+import {markdownDefinition} from "./components/Markdown/Markdown.openui";
+import {markdownExamples} from "./components/Markdown/Markdown.examples";
 import {buttonDefinition} from "./components/Button/Button.openui";
 import {buttonExamples} from "./components/Button/Button.examples";
 import {cardExamples} from "./components/Card/Card.examples";
@@ -15,7 +17,8 @@ export const registeredComponents=[
   {level:"foundation",family:"layout",definition:stackDefinition},
   {level:"foundation",family:"typography",definition:textDefinition},
   {level:"composite",family:"data-display",definition:cardDefinition},
+  {level:"composite",family:"typography",definition:markdownDefinition},
   {level:"primitive",family:"controls",definition:buttonDefinition},
 ] as const satisfies readonly RegisteredComponent[];
 export const definitions=registeredComponents.map(c=>c.definition);
-export const examples=[{title:"Getting started",code:'root = Stack([heading, intro, card, action])\nheading = Text("Visual Lab", "default", "title", "h1")\nintro = Text("Your first custom OpenUI document.", "muted")\ncard = Card("Reusable components", "Built with React and registered for OpenUI.")\naction = Button("Try a button")'},...stackExamples,...cardExamples,...textExamples,...buttonExamples];
+export const examples=[{title:"Getting started",code:'root = Stack([heading, intro, card, action])\nheading = Text("Visual Lab", "default", "title", "h1")\nintro = Text("Your first custom OpenUI document.", "muted")\ncard = Card("Reusable components", "Built with React and registered for OpenUI.")\naction = Button("Try a button")'},...stackExamples,...cardExamples,...textExamples,...markdownExamples,...buttonExamples];

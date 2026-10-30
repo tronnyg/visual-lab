@@ -18,7 +18,8 @@ Visual Lab is a standalone local development board for building, rendering, and 
 - [Button](components/button.md) — reference component
 - [Stack](components/stack.md) — Flexbox layout primitive
 - [Card](components/card.md) — visual container for grouping children
-- [Text](components/text.md) — typography primitive; how it differs from the planned Markdown component
+- [Text](components/text.md) — typography primitive; how it differs from Markdown
+- [Markdown](components/markdown.md) — rich content from a Markdown string; syntax, security, images
 - [Component hierarchy](components/hierarchy.md) — levels and families
 
 ## Style components

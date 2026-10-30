@@ -1,0 +1,99 @@
+/* Markdown — styles rendered Markdown. Headings and paragraphs are Text components (see Markdown.tsx), so they take their
+   size and weight from the presets in Text.css. This file only adds what Text has no preset for: lists, quotes, code blocks,
+   tables, images and the spacing between blocks. Import it after Text.css. */
+.vl-markdown {
+  --vl-md-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --vl-md-gap: var(--ui-space-4);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--vl-md-gap);
+  min-width: 0;
+  max-width: 100%;
+  font-family: var(--ui-font);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ui-text);
+  overflow-wrap: break-word;
+}
+
+/* Headings sit closer to what follows than to what precedes. Beats .vl-text's margin: 0 by specificity. */
+.vl-markdown > :is(h1, h2, h3, h4, h5, h6):not(:first-child) { margin-top: var(--ui-space-2); }
+
+/* Lists */
+.vl-markdown :is(ul, ol) { margin: 0; padding-inline-start: 1.5em; }
+.vl-markdown li { padding-inline-start: 0.2em; }
+.vl-markdown li::marker { color: var(--ui-text-muted); }
+.vl-markdown li + li { margin-top: var(--ui-space-1); }
+/* Blocks inside a list item (loose lists, nested lists) */
+.vl-markdown li > * + * { margin-top: var(--ui-space-1); }
+.vl-markdown li > :is(ul, ol) { margin-top: var(--ui-space-1); }
+/* Task lists: GitHub marks them with .contains-task-list / .task-list-item */
+.vl-markdown .contains-task-list { list-style: none; padding-inline-start: 0.25em; }
+.vl-markdown .task-list-item input { margin: 0 0.5em 0 0; vertical-align: -0.1em; accent-color: var(--ui-accent-solid); }
+.vl-markdown .task-list-item .contains-task-list { padding-inline-start: 1.5em; }
+
+/* Links */
+.vl-markdown a {
+  color: var(--ui-accent-solid);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+.vl-markdown a:hover { color: var(--ui-accent-solid-hover); text-decoration-thickness: 2px; }
+.vl-markdown a:focus-visible { outline: 2px solid var(--ui-accent); outline-offset: 2px; border-radius: var(--ui-radius-sm); }
+
+/* Inline emphasis */
+.vl-markdown strong { font-weight: 600; }
+.vl-markdown del { color: var(--ui-text-muted); }
+
+/* Code */
+.vl-markdown code {
+  padding: 0.15em 0.4em;
+  border-radius: var(--ui-radius-sm);
+  background: var(--ui-surface-muted);
+  font-family: var(--vl-md-mono);
+  font-size: 0.87em;
+  overflow-wrap: anywhere;
+}
+.vl-markdown pre {
+  margin: 0;
+  padding: var(--ui-space-3) var(--ui-space-4);
+  overflow-x: auto;
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius-md);
+  background: var(--ui-surface-muted);
+  font-family: var(--vl-md-mono);
+  font-size: 13px;
+  line-height: 1.6;
+  tab-size: 2;
+}
+.vl-markdown pre:focus-visible { outline: 2px solid var(--ui-accent); outline-offset: 2px; }
+/* Code inside a block drops the inline-code chrome and keeps whitespace; long lines scroll instead of wrapping */
+.vl-markdown pre code { padding: 0; border-radius: 0; background: none; font-size: inherit; overflow-wrap: normal; white-space: pre; }
+
+/* Blockquote */
+.vl-markdown blockquote {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-space-2);
+  margin: 0;
+  padding-inline-start: var(--ui-space-4);
+  border-inline-start: 3px solid var(--ui-border);
+  color: var(--ui-text-muted);
+}
+
+/* Horizontal rule */
+.vl-markdown hr { width: 100%; margin: var(--ui-space-2) 0; border: 0; border-top: 1px solid var(--ui-border); }
+
+/* Tables (column alignment from the GFM syntax arrives as a text-align style on th/td) scroll inside their own wrapper so a wide table never widens the board */
+.vl-markdown__table { max-width: 100%; overflow-x: auto; border: 1px solid var(--ui-border); border-radius: var(--ui-radius-md); }
+.vl-markdown__table:focus-visible { outline: 2px solid var(--ui-accent); outline-offset: 2px; }
+.vl-markdown table { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.5; }
+.vl-markdown :is(th, td) { padding: var(--ui-space-2) var(--ui-space-3); border-bottom: 1px solid var(--ui-border); text-align: start; vertical-align: top; }
+.vl-markdown th { background: var(--ui-surface-muted); font-weight: 600; white-space: nowrap; }
+.vl-markdown tbody tr:last-child td { border-bottom: 0; }
+
+/* Images stay in normal flow, never wider than the column, and keep their aspect ratio. Alt text shows if one fails to load. */
+.vl-markdown img { max-width: 100%; height: auto; vertical-align: middle; border-radius: var(--ui-radius-md); }
+.vl-markdown__no-image { color: var(--ui-text-muted); font-style: italic; }

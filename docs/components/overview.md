@@ -7,13 +7,14 @@ Visual Lab deliberately exposes **only its own registered components** through O
 | Component | React props | OpenUI purpose |
 | --- | --- | --- |
 | `Stack` | see [Stack](stack.md) | Flexbox layout (vertical or horizontal); root of a document |
-| `Text` | see [Text](text.md) | Headings, paragraphs, labels and reactive text; plain text only (Markdown is a separate, future component) |
+| `Text` | see [Text](text.md) | Headings, paragraphs, labels and reactive text; plain text only; use Markdown for rich content |
+| `Markdown` | see [Markdown](markdown.md) | Rich formatted content from a Markdown string: lists, tables, code, quotes, links, images |
 | `Card` | see [Card](card.md) | Visual container that stacks any registered children vertically |
 | `Button` | see [Button](button.md) | Action button; can notify the agent through OpenUI |
 
 ## Source layout
 
-Each component currently has an ordinary React implementation (`Name.tsx`) and a Zod/OpenUI definition (`Name.openui.tsx`). Definitions are imported into `visual/registry.ts`. Component styles are colocated in `Button.css`, `Text.css`, `Stack.css` and `Card.css`.
+Each component currently has an ordinary React implementation (`Name.tsx`) and a Zod/OpenUI definition (`Name.openui.tsx`). Definitions are imported into `visual/registry.ts`. Component styles are colocated in `Button.css`, `Text.css`, `Stack.css`, `Card.css` and `Markdown.css`.
 
 ## Design rules
 

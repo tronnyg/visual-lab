@@ -16,7 +16,7 @@ visual/components/Text/
 
 `Text` formats **one text element**: one string, one element, one set of typographic options. It has no state, no interactions and no rich content: no inline segments, no nested `Text`, no links and no Markdown parsing.
 
-A separate `Markdown` component is planned for formatted paragraphs, lists, links, code blocks and whole Markdown documents. It is not implemented. When it is, it should render headings, paragraphs and code with the same `data-preset` styles defined in `Text.css`, so the two stay visually consistent.
+Use the [Markdown](markdown.md) component for formatted paragraphs, lists, links, code blocks and whole documents. Markdown renders its headings and paragraphs with `Text`, so both use the same presets in `Text.css`.
 
 ## React API
 
