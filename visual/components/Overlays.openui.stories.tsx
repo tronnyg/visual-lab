@@ -85,3 +85,41 @@ export const DialogTriggerReferenceAndAction: Story = {
     await expect(args.onAction).toHaveBeenCalledWith(expect.objectContaining({type: "continue_conversation", humanFriendlyMessage: "Tell me more"}));
   },
 };
+
+export const PopoverBindingAndContent: Story = {
+  args: {
+    code: [
+      "$open = false",
+      "root = Stack([popover, status], \"sm\")",
+      "popover = Popover(trigger, body, \"bottom\", \"start\", $open)",
+      "trigger = Button(\"Filters\", false, \"outline\")",
+      "body = Stack([urgent, done], \"sm\")",
+      "urgent = Checkbox($urgent, \"Only urgent\")",
+      "done = Button(\"Done\", false, \"primary\", \"default\", false, false, null, null, @Set($open, false))",
+      "status = Text(($open ? \"Open\" : \"Closed\") + \", urgent: \" + ($urgent ? \"yes\" : \"no\"))",
+      "$urgent = false",
+    ].join("\n"),
+  },
+  play: async ({canvasElement}) => {
+    const canvas = within(canvasElement);
+    const trigger = canvas.getByRole("button", {name: "Filters"});
+    await expect(canvas.getByText("Closed, urgent: no")).toBeVisible();
+    await userEvent.click(trigger);
+    // The trigger reference toggles the popover, and the $open binding follows it.
+    await waitFor(() => expect(canvas.getByRole("checkbox", {name: "Only urgent"})).toBeVisible());
+    await expect(trigger).toHaveAttribute("aria-expanded", "true");
+    await expect(canvas.getByText(/^Open, urgent/)).toBeVisible();
+    // Nested content reference with its own binding.
+    await userEvent.click(canvas.getByRole("checkbox", {name: "Only urgent"}));
+    await expect(canvas.getByText("Open, urgent: yes")).toBeVisible();
+    // @Set($open, false) from a Button inside the content closes it.
+    await userEvent.click(canvas.getByRole("button", {name: "Done"}));
+    await waitFor(() => expect(canvas.queryByRole("checkbox", {name: "Only urgent"})).toBeNull());
+    await expect(canvas.getByText("Closed, urgent: yes")).toBeVisible();
+    // Escape writes the dismissal back to the variable too.
+    await userEvent.click(trigger);
+    await waitFor(() => expect(canvas.getByText(/^Open, urgent/)).toBeVisible());
+    await userEvent.keyboard("{Escape}");
+    await waitFor(() => expect(canvas.getByText("Closed, urgent: yes")).toBeVisible());
+  },
+};

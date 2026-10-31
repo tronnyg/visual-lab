@@ -1,0 +1,19 @@
+/* Anchored panel — the surface shared by Popover, Tooltip and DropdownMenu. It is a manual popover in the top layer, so there is no
+   z-index and no clipping by ancestors. The browser's own popover box (centred, bordered, padded) is reset; Floating UI sets left/top. */
+.vl-anchored {
+  box-sizing: border-box;
+  inset: auto;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  max-width: min(var(--vl-anchored-max-width, 360px), var(--vl-available-width, 100vw), calc(100vw - 2 * var(--ui-space-2)));
+  max-height: var(--vl-available-height, 100dvh);
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius-lg);
+  background: var(--ui-surface);
+  color: var(--ui-text);
+  font-family: var(--ui-font);
+  font-size: 14px;
+  line-height: 1.5;
+  box-shadow: var(--ui-shadow);
+}

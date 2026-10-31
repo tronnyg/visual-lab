@@ -1,0 +1,2 @@
+/* Popover — a compact contextual surface. Position, surface and shadow are in visual/shared/Anchored.css. */
+.vl-popover { --vl-anchored-max-width: 320px; padding: var(--ui-space-4); }

@@ -40,6 +40,7 @@ Visual Lab is a standalone local development board for building, rendering, and 
 - [NavigationMenu](components/navigation-menu.md) — flat list of navigation links (horizontal or vertical) on a semantic nav
 - [CommandPalette](components/command-palette.md) — searchable commands in a native modal dialog
 - [Dialog](components/dialog.md) — modal content in a native dialog
+- [Popover](components/popover.md) — interactive content anchored to a trigger
 - [Stack](components/stack.md) — Flexbox layout primitive
 - [Card](components/card.md) — visual container for grouping children
 - [Text](components/text.md) — typography primitive; how it differs from Markdown

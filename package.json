@@ -14,6 +14,7 @@
         "test:storybook": "vitest run --project=storybook"
     },
     "dependencies": {
+        "@floating-ui/react-dom": "^2.1.9",
         "@modelcontextprotocol/sdk": "^1.32.1",
         "@openuidev/lang-core": "~1.0.1",
         "@openuidev/react-lang": "~1.0.1",

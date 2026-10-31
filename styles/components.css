@@ -35,3 +35,5 @@
 @import "../visual/components/CommandPalette/CommandPalette.css";
 @import "../visual/shared/Modal.css";
 @import "../visual/components/Dialog/Dialog.css";
+@import "../visual/shared/Anchored.css";
+@import "../visual/components/Popover/Popover.css";

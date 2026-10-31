@@ -97,3 +97,4 @@ Add one entry to `registeredComponents` in `visual/registry.ts`:
 | `NavigationMenu` | `composite` | `navigation` |
 | `CommandPalette` | `composite` | `navigation` |
 | `Dialog` | `composite` | `overlay` |
+| `Popover` | `composite` | `overlay` |
