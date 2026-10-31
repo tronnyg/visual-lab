@@ -4,3 +4,5 @@ generated/
 data/*.json
 next-env.d.ts
 *.tsbuildinfo
+storybook-static/
+*storybook.log

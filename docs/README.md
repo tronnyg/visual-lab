@@ -53,6 +53,7 @@ Visual Lab is a standalone local development board for building, rendering, and 
 ## Maintain the project
 
 - [Testing](development/testing.md)
+- [Storybook](development/storybook.md) — component workbench, themes, story tests
 - [Conventions and AI-agent guidance](development/conventions.md)
 
 > These documents describe the supplied Visual Lab 0.1 source snapshot. Planned behavior is labeled as proposed. Runtime compatibility has not been independently verified in this documentation pass.
