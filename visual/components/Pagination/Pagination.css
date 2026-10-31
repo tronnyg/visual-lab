@@ -1,0 +1,57 @@
+/* Pagination — a row of square page buttons. The current page is read from aria-current, the variant from data-variant. */
+.vl-pagination {
+  min-width: 0;
+  font-family: var(--ui-font);
+  font-size: 13px;
+  color: var(--ui-text);
+}
+
+.vl-pagination__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ui-space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.vl-pagination__control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 var(--ui-space-2);
+  border: 1px solid transparent;
+  border-radius: var(--ui-radius-md);
+  background: transparent;
+  color: var(--ui-text);
+  font: inherit;
+  font-weight: 500;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  transition: background-color 120ms ease, border-color 120ms ease;
+}
+
+.vl-pagination__control:not(:disabled):hover { background: var(--ui-surface-muted); }
+.vl-pagination__control:focus-visible { outline: 2px solid var(--ui-accent-solid); outline-offset: 2px; }
+.vl-pagination__control:disabled { opacity: .45; cursor: not-allowed; }
+
+/* The current page has a border and tint as well as weight, so it does not rely on colour alone. */
+.vl-pagination__control[aria-current="page"] { border-color: var(--ui-accent-solid); background: var(--ui-accent-tint); }
+.vl-pagination__control[aria-current="page"]:disabled { opacity: .7; }
+
+/* The previous/next arrows are a rotated corner of an empty box, drawn in the text colour. */
+.vl-pagination__arrow { width: 7px; height: 7px; border: solid currentColor; border-width: 0 1.5px 1.5px 0; }
+.vl-pagination__arrow[data-direction="previous"] { transform: translateX(2px) rotate(135deg); }
+.vl-pagination__arrow[data-direction="next"] { transform: translateX(-2px) rotate(-45deg); }
+
+.vl-pagination__ellipsis { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 32px; color: var(--ui-text-muted); user-select: none; }
+
+.vl-pagination__status { padding: 0 var(--ui-space-3); color: var(--ui-text-muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+@media (prefers-reduced-motion: reduce) {
+  .vl-pagination__control { transition: none; }
+}
