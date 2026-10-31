@@ -88,3 +88,4 @@ Add one entry to `registeredComponents` in `visual/registry.ts`:
 | `CodeBlock` | `composite` | `data-display` |
 | `Chart` | `specialized` | `visualization` |
 | `ProportionChart` | `specialized` | `visualization` |
+| `Tabs` | `composite` | `navigation` |

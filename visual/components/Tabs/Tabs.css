@@ -1,0 +1,74 @@
+/* Tabs — variant and orientation are driven by data attributes set in Tabs.tsx. Panels use the native hidden attribute, so inactive
+   content is out of the tab order and the accessibility tree while staying mounted. */
+.vl-tabs {
+  --vl-tabs-gap: var(--ui-space-4);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--vl-tabs-gap);
+  min-width: 0;
+  font-family: var(--ui-font);
+  color: var(--ui-text);
+}
+
+.vl-tabs[data-orientation="vertical"] { flex-direction: row; align-items: flex-start; }
+
+.vl-tabs__list {
+  display: flex;
+  flex: none;
+  gap: var(--ui-space-1);
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.vl-tabs[data-orientation="vertical"] .vl-tabs__list { flex-direction: column; overflow: visible; min-width: 140px; max-width: 40%; }
+
+.vl-tabs__tab {
+  position: relative;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  padding: 0 var(--ui-space-3);
+  border: 0;
+  border-radius: var(--ui-radius-md);
+  background: transparent;
+  color: var(--ui-text-muted);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 120ms ease, background-color 120ms ease, box-shadow 120ms ease;
+}
+
+.vl-tabs__tab:not(:disabled):hover { color: var(--ui-text); }
+.vl-tabs__tab[aria-selected="true"] { color: var(--ui-text); }
+/* The ring sits inside the tab so the scrolling list never clips it. */
+.vl-tabs__tab:focus-visible { outline: 2px solid var(--ui-accent-solid); outline-offset: -2px; }
+.vl-tabs__tab:disabled { opacity: .5; cursor: not-allowed; }
+
+/* line: a rule under the list; the active tab draws an accent underline over it. */
+.vl-tabs[data-variant="line"] .vl-tabs__list { gap: var(--ui-space-2); box-shadow: inset 0 -1px 0 var(--ui-border); }
+.vl-tabs[data-variant="line"] .vl-tabs__tab { border-radius: var(--ui-radius-sm) var(--ui-radius-sm) 0 0; }
+.vl-tabs[data-variant="line"] .vl-tabs__tab::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: transparent; transition: background-color 120ms ease; }
+.vl-tabs[data-variant="line"] .vl-tabs__tab[aria-selected="true"]::after { background: var(--ui-accent-solid); }
+.vl-tabs[data-variant="line"][data-orientation="vertical"] .vl-tabs__list { gap: var(--ui-space-1); box-shadow: inset -1px 0 0 var(--ui-border); }
+.vl-tabs[data-variant="line"][data-orientation="vertical"] .vl-tabs__tab { justify-content: flex-start; border-radius: var(--ui-radius-sm) 0 0 var(--ui-radius-sm); }
+.vl-tabs[data-variant="line"][data-orientation="vertical"] .vl-tabs__tab::after { top: 0; left: auto; right: 0; bottom: 0; width: 2px; height: auto; }
+
+/* contained: tabs sit in a muted track; the active tab is a raised surface. */
+.vl-tabs[data-variant="contained"] .vl-tabs__list { align-self: flex-start; gap: 2px; padding: 3px; border-radius: var(--ui-radius-lg); background: var(--ui-surface-muted); }
+.vl-tabs[data-variant="contained"] .vl-tabs__tab[aria-selected="true"] { background: var(--ui-surface); box-shadow: 0 0 0 1px var(--ui-border), 0 1px 2px rgba(0, 0, 0, .06); }
+.vl-tabs[data-variant="contained"][data-orientation="vertical"] .vl-tabs__tab { justify-content: flex-start; }
+
+.vl-tabs__panel { flex: 1; min-width: 0; }
+.vl-tabs__panel[hidden] { display: none; }
+.vl-tabs__panel:focus-visible { outline: 2px solid var(--ui-accent-solid); outline-offset: 2px; border-radius: var(--ui-radius-sm); }
+
+@media (prefers-reduced-motion: reduce) {
+  .vl-tabs__tab, .vl-tabs[data-variant="line"] .vl-tabs__tab::after { transition: none; }
+}

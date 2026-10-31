@@ -32,10 +32,11 @@ Visual Lab deliberately exposes **only its own registered components** through O
 | `Chart` | see [Chart](chart.md) | Bar, line, area or scatter chart of records on Recharts, with a hidden accessible data table, tooltips, validation and value formatting |
 | `ProportionChart` | see [ProportionChart](proportion-chart.md) | Pie or donut chart of parts of a whole on Recharts, with calculated shares, a hidden accessible data table, tooltips and validation |
 | `CodeBlock` | see [CodeBlock](code-block.md) | Read-only code viewer on `pre`/`code` with an optional language label, line numbers, copy button and wrapping; no syntax highlighting |
+| `Tabs` | see [Tabs](tabs.md) | Accessible tabs that switch between mounted panels of components; line or contained, horizontal or vertical, controlled or uncontrolled, with an OpenUI `$variable` binding |
 
 ## Source layout
 
-Each component currently has an ordinary React implementation (`Name.tsx`) and a Zod/OpenUI definition (`Name.openui.tsx`). Definitions are imported into `visual/registry.ts`. Component styles are colocated in `Button.css`, `Text.css`, `Stack.css`, `Card.css`, `Markdown.css`, `Image.css`, `Divider.css`, `Grid.css`, `Icon.css`, `Spacer.css`, `Input.css`, `Textarea.css`, `Checkbox.css`, `Slider.css`, `RadioGroup.css`, `Select.css`, `Badge.css`, `Alert.css`, `Progress.css`, `Spinner.css`, `Table.css`, `List.css`, `KeyValue.css`, `CodeBlock.css`, `Chart.css` and `ProportionChart.css`. Chart and ProportionChart also use the shared `visual/charts/charts.css`.
+Each component currently has an ordinary React implementation (`Name.tsx`) and a Zod/OpenUI definition (`Name.openui.tsx`). Definitions are imported into `visual/registry.ts`. Component styles are colocated in `Button.css`, `Text.css`, `Stack.css`, `Card.css`, `Markdown.css`, `Image.css`, `Divider.css`, `Grid.css`, `Icon.css`, `Spacer.css`, `Input.css`, `Textarea.css`, `Checkbox.css`, `Slider.css`, `RadioGroup.css`, `Select.css`, `Badge.css`, `Alert.css`, `Progress.css`, `Spinner.css`, `Table.css`, `List.css`, `KeyValue.css`, `CodeBlock.css`, `Chart.css`, `ProportionChart.css` and `Tabs.css`. Chart and ProportionChart also use the shared `visual/charts/charts.css`.
 
 ## Design rules
 

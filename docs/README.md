@@ -32,6 +32,7 @@ Visual Lab is a standalone local development board for building, rendering, and 
 - [CodeBlock](components/code-block.md) — read-only code viewer with line numbers and a copy button
 - [Chart](components/chart.md) — bar, line, area and scatter charts on Recharts with an accessible data table
 - [ProportionChart](components/proportion-chart.md) — pie and donut charts of parts of a whole
+- [Tabs](components/tabs.md) — switch between related content panels (WAI-ARIA tabs)
 - [Stack](components/stack.md) — Flexbox layout primitive
 - [Card](components/card.md) — visual container for grouping children
 - [Text](components/text.md) — typography primitive; how it differs from Markdown
