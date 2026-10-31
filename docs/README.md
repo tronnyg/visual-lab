@@ -18,6 +18,7 @@ Visual Lab is a standalone local development board for building, rendering, and 
 - [Button](components/button.md) — reference component
 - [Input](components/input.md) — single-line text input with `$variable` binding
 - [Textarea](components/textarea.md) — multiline text input with `$variable` binding
+- [Checkbox](components/checkbox.md) — labeled boolean checkbox with `$variable` binding
 - [Stack](components/stack.md) — Flexbox layout primitive
 - [Card](components/card.md) — visual container for grouping children
 - [Text](components/text.md) — typography primitive; how it differs from Markdown

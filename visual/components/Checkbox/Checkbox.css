@@ -1,0 +1,52 @@
+/* Checkbox — native checkbox with a custom appearance. Keyboard (Space) and label-click behavior come from the native input. */
+.vl-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ui-space-2);
+  min-width: 0;
+  color: var(--ui-text);
+  font-size: 13px;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.vl-checkbox:has(.vl-checkbox__control:disabled) { cursor: not-allowed; }
+
+.vl-checkbox__control {
+  appearance: none;
+  display: inline-grid;
+  place-content: center;
+  flex: none;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius-sm);
+  background: var(--ui-surface);
+  cursor: inherit;
+  transition: border-color 120ms ease, background-color 120ms ease;
+}
+
+/* The checkmark: two borders of an empty box, rotated. */
+.vl-checkbox__control::before {
+  content: "";
+  width: 4px;
+  height: 8px;
+  margin-top: -2px;
+  border: solid var(--ui-on-accent);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) scale(0);
+  transition: transform 120ms ease;
+}
+
+.vl-checkbox__control:checked { border-color: var(--ui-accent-solid); background: var(--ui-accent-solid); }
+.vl-checkbox__control:checked::before { transform: rotate(45deg) scale(1); }
+.vl-checkbox__control:not(:disabled):hover { border-color: var(--ui-accent-solid); }
+.vl-checkbox__control:focus-visible { outline: 2px solid var(--ui-accent-solid); outline-offset: 2px; }
+.vl-checkbox__control:disabled { opacity: .6; }
+.vl-checkbox__control:disabled:not(:checked) { background: var(--ui-surface-muted); }
+.vl-checkbox__control:disabled + .vl-checkbox__label { color: var(--ui-text-muted); }
+
+@media (prefers-reduced-motion: reduce) {
+  .vl-checkbox__control, .vl-checkbox__control::before { transition: none; }
+}

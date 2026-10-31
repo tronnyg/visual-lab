@@ -73,4 +73,5 @@ Add one entry to `registeredComponents` in `visual/registry.ts`:
 | `Button` | `primitive` | `controls` |
 | `Input` | `primitive` | `controls` |
 | `Textarea` | `primitive` | `controls` |
+| `Checkbox` | `primitive` | `controls` |
 | `Card` | `composite` | `data-display` |

@@ -7,9 +7,10 @@ export const componentGroups=[
   ]},
   {name:"Containers",components:["Card"]},
   {name:"Content",components:["Text","Markdown","Image","Icon"]},
-  {name:"Controls",components:["Button","Input","Textarea"],notes:[
+  {name:"Controls",components:["Button","Input","Textarea","Checkbox"],notes:[
     "- Input needs a bare $variable as its first argument, declared with a default (e.g. $name = \"\"), so typing writes to it. Text(\"Hello, \" + $name) updates live with no request. Give each field its own variable. An expression or string literal makes a read-only field. Reset one with @Reset($name).",
     "- Textarea works like Input but is multiline: Textarea($notes, placeholder, disabled, label, rows). Use it for longer free text; use Input for short single-line values.",
+    "- Checkbox needs a bare boolean $variable as its first argument, declared with a default (e.g. $agree = false): Checkbox($agree, \"I agree\"). Toggling updates Text($agree ? \"Yes\" : \"No\") live. Give each checkbox its own variable. Reset with @Reset($agree).",
   ]},
 ];
 export const promptOptions={
