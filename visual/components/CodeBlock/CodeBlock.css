@@ -1,0 +1,79 @@
+/* CodeBlock — a read-only code viewer. Wrapping and line numbers are driven by data attributes set in CodeBlock.tsx.
+   Lines are block spans (no newline characters between them), so line numbers can be drawn with a CSS counter
+   and stay out of the selection and the clipboard. */
+.vl-codeblock {
+  --vl-codeblock-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius-md);
+  background: var(--ui-surface-muted);
+  color: var(--ui-text);
+}
+
+.vl-codeblock__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ui-space-2);
+  min-height: 32px;
+  padding: 2px var(--ui-space-2) 2px var(--ui-space-3);
+  border-bottom: 1px solid var(--ui-border);
+  font-family: var(--ui-font);
+}
+.vl-codeblock__language { min-width: 0; overflow: hidden; color: var(--ui-text-muted); font-size: 12px; font-weight: 500; text-overflow: ellipsis; white-space: nowrap; }
+.vl-codeblock__header .vl-button { margin-inline-start: auto; }
+
+.vl-codeblock__scroll { overflow: auto; }
+.vl-codeblock__scroll:focus-visible { outline: 2px solid var(--ui-accent); outline-offset: -2px; }
+
+.vl-codeblock__pre {
+  margin: 0;
+  padding: var(--ui-space-3);
+  font-family: var(--vl-codeblock-mono);
+  font-size: 13px;
+  line-height: 1.6;
+  tab-size: 2;
+  white-space: pre;
+  counter-reset: vl-codeblock-line;
+}
+.vl-codeblock__pre code { display: block; font: inherit; }
+.vl-codeblock[data-wrap] .vl-codeblock__pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+
+.vl-codeblock__line {
+  position: relative;
+  display: block;
+  min-height: 1.6em;
+  width: max-content;
+  min-width: 100%;
+}
+.vl-codeblock[data-wrap] .vl-codeblock__line { width: auto; min-width: 0; }
+
+.vl-codeblock[data-line-numbers] .vl-codeblock__line {
+  padding-inline-start: calc(var(--vl-codeblock-digits) * 1ch + var(--ui-space-4));
+  counter-increment: vl-codeblock-line;
+}
+.vl-codeblock[data-line-numbers] .vl-codeblock__line::before {
+  content: counter(vl-codeblock-line);
+  position: absolute;
+  inset-inline-start: 0;
+  width: calc(var(--vl-codeblock-digits) * 1ch);
+  color: var(--ui-text-muted);
+  text-align: end;
+  user-select: none;
+}
+
+/* Screen-reader-only live region for copy feedback. */
+.vl-codeblock__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
