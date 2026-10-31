@@ -71,4 +71,5 @@ Add one entry to `registeredComponents` in `visual/registry.ts`:
 | `Icon` | `foundation` | `data-display` |
 | `Spacer` | `foundation` | `layout` |
 | `Button` | `primitive` | `controls` |
+| `Input` | `primitive` | `controls` |
 | `Card` | `composite` | `data-display` |

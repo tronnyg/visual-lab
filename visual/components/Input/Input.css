@@ -1,0 +1,36 @@
+/* Input — single-line text field. Styling uses the native :disabled and :focus-visible states. */
+.vl-input {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.vl-input__label {
+  color: var(--ui-text);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.vl-input__control {
+  width: 100%;
+  height: 32px;
+  padding: 0 var(--ui-space-3);
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius-sm);
+  background: var(--ui-surface);
+  color: var(--ui-text);
+  font-size: 13px;
+  line-height: 1.4;
+  transition: border-color 120ms ease, background-color 120ms ease;
+}
+
+.vl-input__control::placeholder { color: var(--ui-text-muted); opacity: 1; }
+.vl-input__control:not(:disabled):hover { border-color: var(--ui-accent-solid); }
+.vl-input__control:focus-visible { outline: 2px solid var(--ui-accent-solid); outline-offset: 2px; border-color: var(--ui-accent-solid); }
+.vl-input__control:disabled { background: var(--ui-surface-muted); color: var(--ui-text-muted); cursor: not-allowed; opacity: .7; }
+
+@media (prefers-reduced-motion: reduce) {
+  .vl-input__control { transition: none; }
+}

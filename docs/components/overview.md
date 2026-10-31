@@ -16,10 +16,11 @@ Visual Lab deliberately exposes **only its own registered components** through O
 | `Image` | see [Image](image.md) | A standalone image from an http(s) URL or root-relative path, with required alt text, optional caption, aspect ratio, fit, radius and width |
 | `Card` | see [Card](card.md) | Visual container that stacks any registered children vertically |
 | `Button` | see [Button](button.md) | Action button; can notify the agent through OpenUI |
+| `Input` | see [Input](input.md) | Single-line text field with two-way `$variable` binding |
 
 ## Source layout
 
-Each component currently has an ordinary React implementation (`Name.tsx`) and a Zod/OpenUI definition (`Name.openui.tsx`). Definitions are imported into `visual/registry.ts`. Component styles are colocated in `Button.css`, `Text.css`, `Stack.css`, `Card.css`, `Markdown.css`, `Image.css`, `Divider.css`, `Grid.css`, `Icon.css` and `Spacer.css`.
+Each component currently has an ordinary React implementation (`Name.tsx`) and a Zod/OpenUI definition (`Name.openui.tsx`). Definitions are imported into `visual/registry.ts`. Component styles are colocated in `Button.css`, `Text.css`, `Stack.css`, `Card.css`, `Markdown.css`, `Image.css`, `Divider.css`, `Grid.css`, `Icon.css`, `Spacer.css` and `Input.css`.
 
 ## Design rules
 
