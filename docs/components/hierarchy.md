@@ -90,3 +90,4 @@ Add one entry to `registeredComponents` in `visual/registry.ts`:
 | `ProportionChart` | `specialized` | `visualization` |
 | `Tabs` | `composite` | `navigation` |
 | `Accordion` | `composite` | `layout` |
+| `Collapsible` | `composite` | `layout` |

@@ -27,10 +27,11 @@ import {chartDefinition} from "../components/Chart/Chart.openui";
 import {proportionChartDefinition} from "../components/ProportionChart/ProportionChart.openui";
 import {tabsDefinition} from "../components/Tabs/Tabs.openui";
 import {accordionDefinition} from "../components/Accordion/Accordion.openui";
+import {collapsibleDefinition} from "../components/Collapsible/Collapsible.openui";
 
 // The components a panel (Tabs, Accordion, Collapsible) may hold: one typed reference, like Stack's children. Wrap several in a Stack.
 // Called from the getter of each container's schema, so these cross-imports are only read after every module has loaded.
 // A new component is accepted inside a panel once its .ref is added here.
 export function panelContentSchema() {
-  return z.union([stackDefinition.ref, cardDefinition.ref, gridDefinition.ref, textDefinition.ref, markdownDefinition.ref, imageDefinition.ref, dividerDefinition.ref, iconDefinition.ref, spacerDefinition.ref, buttonDefinition.ref, inputDefinition.ref, textareaDefinition.ref, checkboxDefinition.ref, sliderDefinition.ref, radioGroupDefinition.ref, selectDefinition.ref, badgeDefinition.ref, alertDefinition.ref, progressDefinition.ref, spinnerDefinition.ref, tableDefinition.ref, listDefinition.ref, keyValueDefinition.ref, codeBlockDefinition.ref, chartDefinition.ref, proportionChartDefinition.ref, tabsDefinition.ref, accordionDefinition.ref]);
+  return z.union([stackDefinition.ref, cardDefinition.ref, gridDefinition.ref, textDefinition.ref, markdownDefinition.ref, imageDefinition.ref, dividerDefinition.ref, iconDefinition.ref, spacerDefinition.ref, buttonDefinition.ref, inputDefinition.ref, textareaDefinition.ref, checkboxDefinition.ref, sliderDefinition.ref, radioGroupDefinition.ref, selectDefinition.ref, badgeDefinition.ref, alertDefinition.ref, progressDefinition.ref, spinnerDefinition.ref, tableDefinition.ref, listDefinition.ref, keyValueDefinition.ref, codeBlockDefinition.ref, chartDefinition.ref, proportionChartDefinition.ref, tabsDefinition.ref, accordionDefinition.ref, collapsibleDefinition.ref]);
 }

@@ -10,7 +10,7 @@ visual/components/Accordion/
   Accordion.examples.ts  OpenUI examples, spread into `examples` in registry.ts
 ```
 
-`Accordion.tsx` imports nothing from OpenUI, the board or MCP. Use it for grouped expandable sections (FAQ, settings groups). Use [Tabs](tabs.md) for mutually exclusive views and Collapsible for one optional region.
+`Accordion.tsx` imports nothing from OpenUI, the board or MCP. Use it for grouped expandable sections (FAQ, settings groups). Use [Tabs](tabs.md) for mutually exclusive views and [Collapsible](collapsible.md) for one optional region.
 
 ## React API
 
@@ -53,7 +53,7 @@ Accordion(items, type?, open?, collapsible?)
 
 | Argument | Notes |
 | --- | --- |
-| `items` | Array of `{id, title, content, disabled?}`. `content` is a typed reference to **one** registered component (including `Stack`, `Card`, `Chart`, `Tabs` and `Accordion`); list in `visual/shared/contentRefs.ts` |
+| `items` | Array of `{id, title, content, disabled?}`. `content` is a typed reference to **one** registered component (including `Stack`, `Card`, `Chart`, `Tabs`, `Accordion` and `Collapsible`); list in `visual/shared/contentRefs.ts` |
 | `type` | `"single"` (default) or `"multiple"` |
 | `open` | Array of ids that start open. In single mode only the first is used |
 | `collapsible` | Single mode only, default `true` |

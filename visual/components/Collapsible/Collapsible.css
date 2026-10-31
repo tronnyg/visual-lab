@@ -1,0 +1,61 @@
+/* Collapsible — one trigger and one region. The collapsed region uses the native hidden attribute, so its content stays mounted but is
+   out of the tab order and the accessibility tree. Variant and state come from data attributes set in Collapsible.tsx. */
+.vl-collapsible {
+  width: 100%;
+  min-width: 0;
+  font-family: var(--ui-font);
+  color: var(--ui-text);
+}
+
+.vl-collapsible__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ui-space-3);
+  width: 100%;
+  min-height: 36px;
+  padding: var(--ui-space-2) var(--ui-space-1);
+  border: 0;
+  border-radius: var(--ui-radius-md);
+  background: transparent;
+  color: var(--ui-text);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  text-align: start;
+  cursor: pointer;
+}
+
+.vl-collapsible__title { min-width: 0; overflow-wrap: anywhere; }
+.vl-collapsible__trigger:not(:disabled):hover .vl-collapsible__title { text-decoration: underline; text-underline-offset: 3px; }
+.vl-collapsible__trigger:focus-visible { outline: 2px solid var(--ui-accent-solid); outline-offset: -2px; }
+.vl-collapsible__trigger:disabled { opacity: .5; cursor: not-allowed; }
+
+.vl-collapsible__chevron {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  margin-inline-end: var(--ui-space-1);
+  border: solid var(--ui-text-muted);
+  border-width: 0 1.5px 1.5px 0;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 150ms ease;
+}
+
+.vl-collapsible__trigger[aria-expanded="true"] .vl-collapsible__chevron { transform: translateY(2px) rotate(-135deg); }
+
+.vl-collapsible__panel[hidden] { display: none; }
+.vl-collapsible__content { padding: var(--ui-space-1) var(--ui-space-1) var(--ui-space-2); font-size: 14px; line-height: 1.5; min-width: 0; }
+
+/* bordered: a surface with a rule between trigger and region. */
+.vl-collapsible[data-variant="bordered"] { border: 1px solid var(--ui-border); border-radius: var(--ui-radius-lg); background: var(--ui-surface); }
+.vl-collapsible[data-variant="bordered"] .vl-collapsible__trigger { min-height: 44px; padding: var(--ui-space-3) var(--ui-space-4); }
+.vl-collapsible[data-variant="bordered"] .vl-collapsible__chevron { margin-inline-end: 0; }
+.vl-collapsible[data-variant="bordered"][data-state="open"] .vl-collapsible__trigger { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.vl-collapsible[data-variant="bordered"] .vl-collapsible__panel:not([hidden]) { border-top: 1px solid var(--ui-border); }
+.vl-collapsible[data-variant="bordered"] .vl-collapsible__content { padding: var(--ui-space-3) var(--ui-space-4) var(--ui-space-4); }
+
+@media (prefers-reduced-motion: reduce) {
+  .vl-collapsible__chevron { transition: none; }
+}
