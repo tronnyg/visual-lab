@@ -37,6 +37,8 @@ import {spinnerDefinition} from "./components/Spinner/Spinner.openui";
 import {spinnerExamples} from "./components/Spinner/Spinner.examples";
 import {tableDefinition} from "./components/Table/Table.openui";
 import {tableExamples} from "./components/Table/Table.examples";
+import {listDefinition} from "./components/List/List.openui";
+import {listExamples} from "./components/List/List.examples";
 import {cardExamples} from "./components/Card/Card.examples";
 import {stackExamples} from "./components/Stack/Stack.examples";
 import {textExamples} from "./components/Text/Text.examples";
@@ -67,6 +69,7 @@ export const registeredComponents=[
   {level:"primitive",family:"feedback",definition:progressDefinition},
   {level:"primitive",family:"feedback",definition:spinnerDefinition},
   {level:"composite",family:"data-display",definition:tableDefinition},
+  {level:"composite",family:"data-display",definition:listDefinition},
 ] as const satisfies readonly RegisteredComponent[];
 export const definitions=registeredComponents.map(c=>c.definition);
-export const examples=[{title:"Getting started",code:'root = Stack([heading, intro, card, action])\nheading = Text("Visual Lab", "default", "title", "h1")\nintro = Text("Your first custom OpenUI document.", "muted")\ncard = Card("Reusable components", "Built with React and registered for OpenUI.")\naction = Button("Try a button")'},...stackExamples,...cardExamples,...textExamples,...markdownExamples,...imageExamples,...dividerExamples,...gridExamples,...iconExamples,...spacerExamples,...buttonExamples,...inputExamples,...textareaExamples,...checkboxExamples,...sliderExamples,...radioGroupExamples,...selectExamples,...badgeExamples,...alertExamples,...progressExamples,...spinnerExamples,...tableExamples];
+export const examples=[{title:"Getting started",code:'root = Stack([heading, intro, card, action])\nheading = Text("Visual Lab", "default", "title", "h1")\nintro = Text("Your first custom OpenUI document.", "muted")\ncard = Card("Reusable components", "Built with React and registered for OpenUI.")\naction = Button("Try a button")'},...stackExamples,...cardExamples,...textExamples,...markdownExamples,...imageExamples,...dividerExamples,...gridExamples,...iconExamples,...spacerExamples,...buttonExamples,...inputExamples,...textareaExamples,...checkboxExamples,...sliderExamples,...radioGroupExamples,...selectExamples,...badgeExamples,...alertExamples,...progressExamples,...spinnerExamples,...tableExamples,...listExamples];

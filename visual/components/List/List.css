@@ -1,0 +1,27 @@
+/* List — a semantic ul/ol. Native markers are kept (no list-style: none) so assistive technology still announces it as a list.
+   Variant and density are driven by data attributes set in List.tsx. */
+.vl-list {
+  --vl-list-gap: var(--ui-space-2);
+
+  box-sizing: border-box;
+  max-width: 100%;
+  margin: 0;
+  padding-inline-start: 1.5em;
+  color: var(--ui-text);
+  font-family: var(--ui-font);
+  font-size: 15px;
+  line-height: 1.65;
+  overflow-wrap: break-word;
+}
+.vl-list[data-variant="unordered"] { list-style: disc; }
+.vl-list[data-variant="ordered"] { list-style: decimal; }
+.vl-list[data-density="compact"] { --vl-list-gap: 2px; }
+
+.vl-list > li { padding-inline-start: var(--ui-space-1); }
+.vl-list > li + li { margin-top: var(--vl-list-gap); }
+.vl-list > li::marker { color: var(--ui-text-muted); }
+
+/* Nested lists sit tight under their parent item and step down the marker style. */
+.vl-list .vl-list { margin-top: var(--vl-list-gap); }
+.vl-list[data-variant="unordered"] .vl-list[data-variant="unordered"] { list-style: circle; }
+.vl-list[data-variant="ordered"] .vl-list[data-variant="ordered"] { list-style: lower-alpha; }

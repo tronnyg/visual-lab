@@ -83,3 +83,4 @@ Add one entry to `registeredComponents` in `visual/registry.ts`:
 | `Alert` | `composite` | `feedback` |
 | `Card` | `composite` | `data-display` |
 | `Table` | `composite` | `data-display` |
+| `List` | `composite` | `data-display` |
