@@ -19,10 +19,11 @@ Visual Lab deliberately exposes **only its own registered components** through O
 | `Input` | see [Input](input.md) | Single-line text field with two-way `$variable` binding |
 | `Textarea` | see [Textarea](textarea.md) | Multiline text field with two-way `$variable` binding and configurable rows |
 | `Checkbox` | see [Checkbox](checkbox.md) | Labeled boolean checkbox with two-way `$variable` binding |
+| `Slider` | see [Slider](slider.md) | Single-value numeric slider (native range input) with two-way `$variable` binding |
 
 ## Source layout
 
-Each component currently has an ordinary React implementation (`Name.tsx`) and a Zod/OpenUI definition (`Name.openui.tsx`). Definitions are imported into `visual/registry.ts`. Component styles are colocated in `Button.css`, `Text.css`, `Stack.css`, `Card.css`, `Markdown.css`, `Image.css`, `Divider.css`, `Grid.css`, `Icon.css`, `Spacer.css`, `Input.css`, `Textarea.css` and `Checkbox.css`.
+Each component currently has an ordinary React implementation (`Name.tsx`) and a Zod/OpenUI definition (`Name.openui.tsx`). Definitions are imported into `visual/registry.ts`. Component styles are colocated in `Button.css`, `Text.css`, `Stack.css`, `Card.css`, `Markdown.css`, `Image.css`, `Divider.css`, `Grid.css`, `Icon.css`, `Spacer.css`, `Input.css`, `Textarea.css`, `Checkbox.css` and `Slider.css`.
 
 ## Design rules
 

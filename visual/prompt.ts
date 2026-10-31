@@ -7,10 +7,11 @@ export const componentGroups=[
   ]},
   {name:"Containers",components:["Card"]},
   {name:"Content",components:["Text","Markdown","Image","Icon"]},
-  {name:"Controls",components:["Button","Input","Textarea","Checkbox"],notes:[
+  {name:"Controls",components:["Button","Input","Textarea","Checkbox","Slider"],notes:[
     "- Input needs a bare $variable as its first argument, declared with a default (e.g. $name = \"\"), so typing writes to it. Text(\"Hello, \" + $name) updates live with no request. Give each field its own variable. An expression or string literal makes a read-only field. Reset one with @Reset($name).",
     "- Textarea works like Input but is multiline: Textarea($notes, placeholder, disabled, label, rows). Use it for longer free text; use Input for short single-line values.",
     "- Checkbox needs a bare boolean $variable as its first argument, declared with a default (e.g. $agree = false): Checkbox($agree, \"I agree\"). Toggling updates Text($agree ? \"Yes\" : \"No\") live. Give each checkbox its own variable. Reset with @Reset($agree).",
+    "- Slider needs a bare number $variable as its first argument, declared with a default (e.g. $volume = 40): Slider($volume, \"Volume\", min, max, step). Defaults are 0, 100 and 1. Dragging updates Text(\"Volume: \" + $volume) live. Give each slider its own variable and always set a label. Reset with @Reset($volume).",
   ]},
 ];
 export const promptOptions={

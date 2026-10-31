@@ -1,0 +1,90 @@
+/* Slider — native range input. The track fill comes from --vl-slider-fraction (0 to 1), set inline by Slider.tsx.
+   WebKit/Blink and Firefox need separate pseudo-element rules; they are kept parallel below. */
+.vl-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.vl-slider__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--ui-space-3);
+}
+
+.vl-slider__label {
+  color: var(--ui-text);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.vl-slider__value {
+  margin-left: auto;
+  color: var(--ui-text-muted);
+  font-size: 12px;
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
+}
+
+.vl-slider__control {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 16px;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+}
+
+/* Track. The fill stops are offset by half a thumb so the fill ends under the thumb's centre. */
+.vl-slider__control::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(to right,
+    var(--ui-accent-solid) calc(8px + (100% - 16px) * var(--vl-slider-fraction)),
+    var(--ui-border) calc(8px + (100% - 16px) * var(--vl-slider-fraction)));
+}
+.vl-slider__control::-moz-range-track { height: 4px; border-radius: 999px; background: var(--ui-border); }
+.vl-slider__control::-moz-range-progress { height: 4px; border-radius: 999px; background: var(--ui-accent-solid); }
+
+/* Thumb */
+.vl-slider__control::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  margin-top: -6px;
+  border: 2px solid var(--ui-accent-solid);
+  border-radius: 50%;
+  background: var(--ui-surface);
+  box-shadow: var(--ui-shadow);
+  transition: box-shadow 120ms ease;
+}
+.vl-slider__control::-moz-range-thumb {
+  box-sizing: border-box;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--ui-accent-solid);
+  border-radius: 50%;
+  background: var(--ui-surface);
+  box-shadow: var(--ui-shadow);
+  transition: box-shadow 120ms ease;
+}
+
+/* Focus ring on the thumb rather than the whole control */
+.vl-slider__control:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 2px var(--ui-surface), 0 0 0 4px var(--ui-accent-solid); }
+.vl-slider__control:focus-visible::-moz-range-thumb { box-shadow: 0 0 0 2px var(--ui-surface), 0 0 0 4px var(--ui-accent-solid); }
+
+/* Disabled */
+.vl-slider__control:disabled { cursor: not-allowed; opacity: .5; }
+.vl-slider__control:disabled::-webkit-slider-thumb { border-color: var(--ui-text-muted); box-shadow: none; }
+.vl-slider__control:disabled::-moz-range-thumb { border-color: var(--ui-text-muted); box-shadow: none; }
+.vl-slider:has(.vl-slider__control:disabled) .vl-slider__label { color: var(--ui-text-muted); }
+
+@media (prefers-reduced-motion: reduce) {
+  .vl-slider__control::-webkit-slider-thumb, .vl-slider__control::-moz-range-thumb { transition: none; }
+}
