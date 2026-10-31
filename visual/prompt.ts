@@ -6,9 +6,10 @@ export const componentGroups=[
     "- Card is for visual grouping, not layout. Spacer is for exceptional spacing; use gap for ordinary spacing.",
   ]},
   {name:"Containers",components:["Card"]},
-  {name:"Feedback",components:["Badge","Alert"],notes:[
+  {name:"Feedback",components:["Badge","Alert","Progress"],notes:[
     "- Badge is a small non-interactive label: Badge(\"New\", \"success\"). Variants: default, secondary, outline, success, warning, danger. Put the meaning in the text, not only the colour. Badge(\"Items: \" + $count) updates live. Use Button for actions.",
     "- Alert is a static inline message: Alert(message, title, variant), e.g. Alert(\"Your changes were saved.\", \"Saved\", \"success\"). Variants: info (default), success, warning, danger. Title is optional (pass null to skip it before a variant). Use \\n in the message for line breaks. It has no dismiss button and is not a toast; use Text for plain sentences.",
+    "- Progress is a display-only bar: Progress(value, max, label), e.g. Progress($done, 100, \"Upload progress\"). Max defaults to 100; out-of-range values are clamped. It follows any number or $variable, such as a Slider's, but cannot be dragged and draws no text, so add a Text for a visible label or percentage and set label for accessibility.",
   ]},
   {name:"Content",components:["Text","Markdown","Image","Icon"]},
   {name:"Controls",components:["Button","Input","Textarea","Checkbox","Slider","RadioGroup","Select"],notes:[
