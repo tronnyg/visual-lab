@@ -10,7 +10,7 @@ visual/components/NavigationMenu/
   NavigationMenu.examples.ts  OpenUI examples, spread into `examples` in registry.ts
 ```
 
-`NavigationMenu.tsx` imports nothing from OpenUI, the board or MCP, and no router: destinations are ordinary `<a href>` links that the browser follows. Use it for destinations and application sections. Use [CommandPalette](command-palette.md) for searchable actions. Use [Breadcrumbs](breadcrumbs.md) for the path to the current page and [Tabs](tabs.md) for views on one page.
+`NavigationMenu.tsx` imports nothing from OpenUI, the board or MCP, and no router: destinations are ordinary `<a href>` links that the browser follows. Use it for destinations and application sections. Use [CommandPalette](command-palette.md) for searchable actions and [DropdownMenu](dropdown-menu.md) for a menu of actions. Use [Breadcrumbs](breadcrumbs.md) for the path to the current page and [Tabs](tabs.md) for views on one page.
 
 ## React API
 
@@ -43,7 +43,7 @@ A `<nav>` landmark containing a list of links, with `aria-current="page"` on the
 
 ## v1 limitation: no submenus
 
-The component is a flat list. A dropdown or nested submenu needs an overlay with focus management, which is planned with Dialog in the overlays batch, so it is deferred rather than built as a half-working version. For sectioned navigation, use several menus (each with its own `aria-label`) under headings.
+The component is a flat list. A dropdown of destinations is not part of it: [DropdownMenu](dropdown-menu.md) now exists for application actions, but it has menu keyboard semantics and is not a navigation pattern, and nested submenus are still not built. For sectioned navigation, use several menus (each with its own `aria-label`) under headings.
 
 ## OpenUI API
 

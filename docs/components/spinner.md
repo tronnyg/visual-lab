@@ -65,3 +65,5 @@ Spinner is accepted as a child of `Stack`, `Card` and `Grid`.
 ## Limitations
 
 No variants, colours, speed, stroke width, determinate mode, overlay, or loading state. Use [Progress](progress.md) when the amount done is known.
+
+When the shape of the loading content is known, [Skeleton](skeleton.md) is the placeholder to use; Spinner is for a wait with no known layout.

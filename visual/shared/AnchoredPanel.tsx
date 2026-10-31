@@ -78,8 +78,9 @@ export function AnchoredPanel({anchor, open, side = "bottom", align = "center", 
       popover="manual"
       data-side={placement.split("-")[0]}
       className={className ? `vl-anchored ${className}` : "vl-anchored"}
-      // Hidden until the first position is known, so it never flashes at the top-left corner.
-      style={{...floatingStyles, ...(open && !isPositioned ? {visibility: "hidden"} : null), ...style}}
+      // Transparent until the first position is known, so it never flashes at the top-left corner. (Not visibility:hidden, which would stop
+      // an owner from moving focus into the panel in the same frame it opens.)
+      style={{...floatingStyles, ...(open && !isPositioned ? {opacity: 0, pointerEvents: "none"} : null), ...style}}
     >
       {children}
     </div>

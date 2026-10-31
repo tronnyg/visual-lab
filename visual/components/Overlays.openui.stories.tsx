@@ -230,3 +230,50 @@ export const SkeletonRendersInsideContainers: Story = {
     await expect(avatar).toHaveAttribute("aria-hidden", "true");
   },
 };
+
+export const DropdownMenuActionsAndLinks: Story = {
+  args: {
+    code: [
+      "$view = \"list\"",
+      "root = Stack([menu, status], \"sm\")",
+      "menu = DropdownMenu([{id: \"grid\", label: \"Grid view\", action: @Set($view, \"grid\")}, {id: \"reset\", label: \"Reset view\", separatorBefore: true, action: @Reset($view)}, {id: \"ask\", label: \"Ask the assistant\", action: @ToAssistant(\"Explain views\")}, {id: \"help\", label: \"Help\", href: \"https://example.com/help\"}, {id: \"nothing\", label: \"No action\"}, {id: \"relative\", label: \"Relative\", href: \"/docs\"}], trigger)",
+      "trigger = Button(\"View\", false, \"outline\")",
+      "status = Text(\"Current view: \" + $view)",
+    ].join("\n"),
+  },
+  play: async ({canvasElement, args}) => {
+    const canvas = within(canvasElement);
+    const open = async () => { await userEvent.click(canvas.getByRole("button", {name: "View"})); await waitFor(() => expect(canvas.getByRole("menu")).toBeVisible()); };
+    await open();
+    // The trigger reference is wired for a menu button without an action of its own.
+    await expect(canvas.getByRole("button", {name: "View"})).toHaveAttribute("aria-haspopup", "menu");
+    // Items without a supported action or a safe literal link are disabled, not falsely actionable.
+    await expect(canvas.getByRole("menuitem", {name: "No action"})).toHaveAttribute("aria-disabled", "true");
+    await expect(canvas.getByRole("menuitem", {name: "Relative"})).toHaveAttribute("aria-disabled", "true");
+    await expect(canvas.getByRole("menuitem", {name: "Help"})).toHaveAttribute("href", "https://example.com/help");
+    // @Set
+    await userEvent.click(canvas.getByRole("menuitem", {name: "Grid view"}));
+    await waitFor(() => expect(canvas.getByText("Current view: grid")).toBeVisible());
+    await waitFor(() => expect(canvas.queryByRole("menu")).toBeNull());
+    await expect(canvas.getByRole("button", {name: "View"})).toHaveFocus();
+    // @Reset
+    await open();
+    await userEvent.click(canvas.getByRole("menuitem", {name: "Reset view"}));
+    await waitFor(() => expect(canvas.getByText("Current view: list")).toBeVisible());
+    // @ToAssistant reaches the host
+    await open();
+    await userEvent.click(canvas.getByRole("menuitem", {name: "Ask the assistant"}));
+    await waitFor(() => expect(args.onAction).toHaveBeenCalledTimes(1));
+    await expect(args.onAction).toHaveBeenCalledWith(expect.objectContaining({type: "continue_conversation", humanFriendlyMessage: "Explain views"}));
+    // A literal link is a real link and is not an action.
+    await open();
+    const stop = (event: Event) => event.preventDefault();
+    document.addEventListener("click", stop);
+    try {
+      await userEvent.click(canvas.getByRole("menuitem", {name: "Help"}));
+    } finally {
+      document.removeEventListener("click", stop);
+    }
+    await expect(args.onAction).toHaveBeenCalledTimes(1);
+  },
+};

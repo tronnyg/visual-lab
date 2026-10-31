@@ -102,3 +102,4 @@ Add one entry to `registeredComponents` in `visual/registry.ts`:
 | `Drawer` | `composite` | `overlay` |
 | `Toast` | `composite` | `feedback` |
 | `Skeleton` | `composite` | `feedback` |
+| `DropdownMenu` | `composite` | `overlay` |

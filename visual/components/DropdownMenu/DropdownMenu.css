@@ -1,0 +1,30 @@
+/* DropdownMenu — a compact list of actions. Position, surface and shadow are in visual/shared/Anchored.css. The highlighted row is the
+   focused one (roving focus), so it is styled with :focus, which the pointer and the keyboard both set. */
+.vl-menu { --vl-anchored-max-width: 280px; min-width: 160px; padding: var(--ui-space-1); outline: none; }
+
+.vl-menu__group { display: flex; flex-direction: column; gap: 1px; }
+.vl-menu__group + .vl-menu__group { margin-top: var(--ui-space-1); padding-top: var(--ui-space-1); border-top: 1px solid var(--ui-border); }
+.vl-menu__heading { padding: var(--ui-space-2) var(--ui-space-3) var(--ui-space-1); color: var(--ui-text-muted); font-size: 12px; font-weight: 600; letter-spacing: .02em; }
+.vl-menu__separator { height: 1px; margin: var(--ui-space-1) calc(-1 * var(--ui-space-1)); background: var(--ui-border); }
+
+.vl-menu__item {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 32px;
+  padding: var(--ui-space-1) var(--ui-space-3);
+  border: 0;
+  border-radius: var(--ui-radius-md);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+/* The highlight has an accent bar as well as a tint, so it does not rely on colour alone. */
+.vl-menu__item:focus { outline: none; background: var(--ui-accent-tint); box-shadow: inset 2px 0 0 var(--ui-accent-solid); }
+.vl-menu__item[aria-disabled="true"] { opacity: .5; cursor: not-allowed; }
