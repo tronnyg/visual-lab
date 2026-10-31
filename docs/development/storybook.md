@@ -2,7 +2,7 @@
 
 Storybook is the development and test environment for the plain React components in `visual/components/` (layer 1). It renders them directly: no board, MCP server or OpenUI renderer is involved.
 
-Currently covered: Input, Select, Card (a prototype; other components have no stories yet).
+Currently covered: Input, Select, Card, Text, Stack, Grid, Divider, Spacer, Icon, Button, Image, Markdown (the remaining components have no stories yet).
 
 ## Commands
 
@@ -17,7 +17,7 @@ npm run test:storybook   # run every story in headless Chromium: render, play fu
 ## Add a story for a component
 
 1. Create `visual/components/Name/Name.stories.tsx` beside the component (picked up by the glob in `.storybook/main.ts`).
-2. Import the component's CSS in `.storybook/preview.ts`, in the same place `app/layout.tsx` imports it.
+2. The component's CSS is already loaded through `styles/components.css` (imported by `.storybook/preview.ts`). Stories that need image files use root-relative paths into `public/` (served via `staticDirs`).
 3. Write typed stories (`Meta`, `StoryObj` from `@storybook/react-vite`), title `Components/Name`. Controlled components need a small stateful `render` so the story is editable; see `Input.stories.tsx`.
 4. Put interaction checks in a `play` function using `storybook/test` (`userEvent`, `expect`, `within`).
 
