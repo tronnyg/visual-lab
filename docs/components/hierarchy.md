@@ -72,4 +72,5 @@ Add one entry to `registeredComponents` in `visual/registry.ts`:
 | `Spacer` | `foundation` | `layout` |
 | `Button` | `primitive` | `controls` |
 | `Input` | `primitive` | `controls` |
+| `Textarea` | `primitive` | `controls` |
 | `Card` | `composite` | `data-display` |

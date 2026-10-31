@@ -4,6 +4,7 @@ import {Stack, stackAligns, stackDirections, stackFlexes, stackJustifies, stackS
 import {textDefinition} from "../Text/Text.openui";
 import {buttonDefinition} from "../Button/Button.openui";
 import {inputDefinition} from "../Input/Input.openui";
+import {textareaDefinition} from "../Textarea/Textarea.openui";
 import {cardDefinition} from "../Card/Card.openui";
 import {markdownDefinition} from "../Markdown/Markdown.openui";
 import {imageDefinition} from "../Image/Image.openui";
@@ -18,7 +19,7 @@ import {spacerDefinition} from "../Spacer/Spacer.openui";
 // The getter makes the schema recursive so a Stack can contain Stacks.
 const stackProps = z.object({
   get children() {
-    return z.array(z.union([stackProps, textDefinition.ref, markdownDefinition.ref, imageDefinition.ref, dividerDefinition.ref, gridDefinition.ref, iconDefinition.ref, spacerDefinition.ref, buttonDefinition.ref, inputDefinition.ref, cardDefinition.ref])).describe("Components to arrange, in order. May include other Stacks");
+    return z.array(z.union([stackProps, textDefinition.ref, markdownDefinition.ref, imageDefinition.ref, dividerDefinition.ref, gridDefinition.ref, iconDefinition.ref, spacerDefinition.ref, buttonDefinition.ref, inputDefinition.ref, textareaDefinition.ref, cardDefinition.ref])).describe("Components to arrange, in order. May include other Stacks");
   },
   gap: z.enum(stackSpacings).optional().describe("Space between children: none, xs, sm, md, lg. Default md"),
   direction: z.enum(stackDirections).optional().describe("vertical stacks children top to bottom, horizontal places them in a row. Default vertical"),

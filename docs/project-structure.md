@@ -36,5 +36,6 @@ The component library is ordinary source code, not a separately published packag
 - `visual/components/Image/` — `Image.tsx`, `Image.css`, `Image.openui.tsx`, `Image.examples.ts` (sample assets in `public/assets/`)
 - `visual/components/Button/` — `Button.tsx`, `Button.css`, `Button.openui.tsx`, `Button.examples.ts`
 - `visual/components/Input/` — `Input.tsx`, `Input.css`, `Input.openui.tsx`, `Input.examples.ts`
+- `visual/components/Textarea/` — `Textarea.tsx`, `Textarea.css`, `Textarea.openui.tsx`, `Textarea.examples.ts`
 
-Button, Text, Stack, Card, Markdown, Image, Divider, Grid, Icon, Spacer and Input styles are colocated; `styles/globals.css` holds only global and board UI rules. Moving component rules into colocated `*.css` files is a **proposed improvement**, not yet implemented.
+Button, Text, Stack, Card, Markdown, Image, Divider, Grid, Icon, Spacer, Input and Textarea styles are colocated; `styles/globals.css` holds only global and board UI rules. Moving component rules into colocated `*.css` files is a **proposed improvement**, not yet implemented.

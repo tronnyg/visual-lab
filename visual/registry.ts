@@ -17,6 +17,8 @@ import {buttonDefinition} from "./components/Button/Button.openui";
 import {buttonExamples} from "./components/Button/Button.examples";
 import {inputDefinition} from "./components/Input/Input.openui";
 import {inputExamples} from "./components/Input/Input.examples";
+import {textareaDefinition} from "./components/Textarea/Textarea.openui";
+import {textareaExamples} from "./components/Textarea/Textarea.examples";
 import {cardExamples} from "./components/Card/Card.examples";
 import {stackExamples} from "./components/Stack/Stack.examples";
 import {textExamples} from "./components/Text/Text.examples";
@@ -36,7 +38,8 @@ export const registeredComponents=[
   {level:"composite",family:"typography",definition:markdownDefinition},
   {level:"primitive",family:"controls",definition:buttonDefinition},
   {level:"primitive",family:"controls",definition:inputDefinition},
+  {level:"primitive",family:"controls",definition:textareaDefinition},
   {level:"primitive",family:"data-display",definition:imageDefinition},
 ] as const satisfies readonly RegisteredComponent[];
 export const definitions=registeredComponents.map(c=>c.definition);
-export const examples=[{title:"Getting started",code:'root = Stack([heading, intro, card, action])\nheading = Text("Visual Lab", "default", "title", "h1")\nintro = Text("Your first custom OpenUI document.", "muted")\ncard = Card("Reusable components", "Built with React and registered for OpenUI.")\naction = Button("Try a button")'},...stackExamples,...cardExamples,...textExamples,...markdownExamples,...imageExamples,...dividerExamples,...gridExamples,...iconExamples,...spacerExamples,...buttonExamples,...inputExamples];
+export const examples=[{title:"Getting started",code:'root = Stack([heading, intro, card, action])\nheading = Text("Visual Lab", "default", "title", "h1")\nintro = Text("Your first custom OpenUI document.", "muted")\ncard = Card("Reusable components", "Built with React and registered for OpenUI.")\naction = Button("Try a button")'},...stackExamples,...cardExamples,...textExamples,...markdownExamples,...imageExamples,...dividerExamples,...gridExamples,...iconExamples,...spacerExamples,...buttonExamples,...inputExamples,...textareaExamples];
