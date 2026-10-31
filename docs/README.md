@@ -33,6 +33,7 @@ Visual Lab is a standalone local development board for building, rendering, and 
 - [Chart](components/chart.md) — bar, line, area and scatter charts on Recharts with an accessible data table
 - [ProportionChart](components/proportion-chart.md) — pie and donut charts of parts of a whole
 - [Tabs](components/tabs.md) — switch between related content panels (WAI-ARIA tabs)
+- [Accordion](components/accordion.md) — grouped expandable sections (single or multiple open)
 - [Stack](components/stack.md) — Flexbox layout primitive
 - [Card](components/card.md) — visual container for grouping children
 - [Text](components/text.md) — typography primitive; how it differs from Markdown

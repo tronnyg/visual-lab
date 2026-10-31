@@ -1,0 +1,62 @@
+/* Accordion — sections are separated by rules. Collapsed panels use the native hidden attribute, so their content stays mounted
+   but is out of the tab order and the accessibility tree. The open state is read from data-state / aria-expanded. */
+.vl-accordion {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  font-family: var(--ui-font);
+  color: var(--ui-text);
+}
+
+.vl-accordion__item { border-bottom: 1px solid var(--ui-border); }
+.vl-accordion__item:first-child { border-top: 1px solid var(--ui-border); }
+
+.vl-accordion__heading { margin: 0; font: inherit; }
+
+.vl-accordion__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ui-space-3);
+  width: 100%;
+  min-height: 44px;
+  padding: var(--ui-space-3) var(--ui-space-1);
+  border: 0;
+  border-radius: var(--ui-radius-sm);
+  background: transparent;
+  color: var(--ui-text);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  text-align: start;
+  cursor: pointer;
+}
+
+.vl-accordion__title { min-width: 0; overflow-wrap: anywhere; }
+
+.vl-accordion__trigger:not(:disabled):hover .vl-accordion__title { text-decoration: underline; text-underline-offset: 3px; }
+.vl-accordion__trigger:focus-visible { outline: 2px solid var(--ui-accent-solid); outline-offset: -2px; }
+.vl-accordion__trigger:disabled { opacity: .5; cursor: not-allowed; }
+
+/* The chevron is a rotated corner of an empty box in --ui-text-muted; it flips when the section opens. */
+.vl-accordion__chevron {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  margin-inline-end: var(--ui-space-1);
+  border: solid var(--ui-text-muted);
+  border-width: 0 1.5px 1.5px 0;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 150ms ease;
+}
+
+.vl-accordion__trigger[aria-expanded="true"] .vl-accordion__chevron { transform: translateY(2px) rotate(-135deg); }
+
+.vl-accordion__panel[hidden] { display: none; }
+.vl-accordion__content { padding: 0 var(--ui-space-1) var(--ui-space-4); font-size: 14px; line-height: 1.5; min-width: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .vl-accordion__chevron { transition: none; }
+}

@@ -89,3 +89,4 @@ Add one entry to `registeredComponents` in `visual/registry.ts`:
 | `Chart` | `specialized` | `visualization` |
 | `ProportionChart` | `specialized` | `visualization` |
 | `Tabs` | `composite` | `navigation` |
+| `Accordion` | `composite` | `layout` |

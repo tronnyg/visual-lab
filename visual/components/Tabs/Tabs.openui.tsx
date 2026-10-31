@@ -40,7 +40,7 @@ function toItems(input: unknown, renderNode: (node: never) => ReactNode): TabIte
 
 export const tabsDefinition = defineComponent({
   name: "Tabs",
-  description: "Mutually exclusive views of related content, one visible at a time: Tabs(items, value, variant, orientation), e.g. Tabs([{id: \"overview\", label: \"Overview\", content: overviewText}, {id: \"data\", label: \"Data\", content: table}]). Each content is ONE component defined elsewhere (wrap several in a Stack); panels keep their state when hidden. Give each tab a unique id. Pass a $variable as value (declared with a tab id) to read or set the selected tab elsewhere, e.g. Text(\"Viewing: \" + $tab).",
+  description: "Mutually exclusive views of related content, one visible at a time: Tabs(items, value, variant, orientation), e.g. Tabs([{id: \"overview\", label: \"Overview\", content: overviewText}, {id: \"data\", label: \"Data\", content: table}]). Each content is ONE component defined elsewhere (wrap several in a Stack); panels keep their state when hidden. Give each tab a unique id. Pass a $variable as value (declared with a tab id) to read or set the selected tab elsewhere, e.g. Text(\"Viewing: \" + $tab). Use Accordion for stacked expandable sections.",
   props: tabsProps,
   component: ({props, renderNode}) => {
     // The name only keys the SDK's non-reactive fallback field. It is unique per instance so Tabs never share state through it,

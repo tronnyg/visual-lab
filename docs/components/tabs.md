@@ -14,7 +14,7 @@ visual/shared/
   contentRefs.ts            the OpenUI references a panel may hold (shared by Tabs, Accordion, Collapsible)
 ```
 
-`Tabs.tsx` imports nothing from OpenUI, the board or MCP. Use it for mutually exclusive views of related content. Use Accordion for stacked expandable sections and Collapsible for one optional region.
+`Tabs.tsx` imports nothing from OpenUI, the board or MCP. Use it for mutually exclusive views of related content. Use [Accordion](accordion.md) for stacked expandable sections and Collapsible for one optional region.
 
 ## React API
 
