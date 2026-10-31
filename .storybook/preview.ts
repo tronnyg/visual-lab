@@ -1,13 +1,11 @@
 import type {Preview} from "@storybook/react-vite";
 import {withTheme} from "./withTheme";
 
-// Same order as app/layout.tsx: tokens, themes, globals, then component CSS. Add a component's CSS here when it gets stories.
+// Same order as app/layout.tsx: tokens, themes, globals, then shared component CSS (add new components in styles/components.css).
 import "../styles/tokens.css";
 import "../styles/themes.css";
 import "../styles/globals.css";
-import "../visual/components/Input/Input.css";
-import "../visual/components/Select/Select.css";
-import "../visual/components/Card/Card.css";
+import "../styles/components.css";
 
 const preview: Preview = {
   decorators: [withTheme],
