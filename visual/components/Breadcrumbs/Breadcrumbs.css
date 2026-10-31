@@ -1,0 +1,41 @@
+/* Breadcrumbs — a wrapping trail of links. Long labels wrap (overflow-wrap) instead of truncating, so no text is lost.
+   The current crumb is read from aria-current; separators are decorative and aria-hidden. */
+.vl-breadcrumbs {
+  min-width: 0;
+  font-family: var(--ui-font);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ui-text-muted);
+}
+
+.vl-breadcrumbs__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ui-space-1) var(--ui-space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.vl-breadcrumbs__item { display: inline-flex; align-items: center; gap: var(--ui-space-2); min-width: 0; max-width: 100%; }
+
+.vl-breadcrumbs__link, .vl-breadcrumbs__text { min-width: 0; overflow-wrap: anywhere; }
+
+.vl-breadcrumbs__link {
+  border-radius: var(--ui-radius-sm);
+  color: var(--ui-text-muted);
+  text-decoration: none;
+  transition: color 120ms ease;
+}
+
+.vl-breadcrumbs__link:hover { color: var(--ui-text); text-decoration: underline; text-underline-offset: 3px; }
+.vl-breadcrumbs__link:focus-visible { outline: 2px solid var(--ui-accent-solid); outline-offset: 2px; }
+
+.vl-breadcrumbs [aria-current="page"] { color: var(--ui-text); font-weight: 500; }
+
+.vl-breadcrumbs__separator { flex: none; color: var(--ui-text-muted); opacity: .7; user-select: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .vl-breadcrumbs__link { transition: none; }
+}

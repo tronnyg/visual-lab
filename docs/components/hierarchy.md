@@ -91,3 +91,4 @@ Add one entry to `registeredComponents` in `visual/registry.ts`:
 | `Tabs` | `composite` | `navigation` |
 | `Accordion` | `composite` | `layout` |
 | `Collapsible` | `composite` | `layout` |
+| `Breadcrumbs` | `composite` | `navigation` |

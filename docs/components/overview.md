@@ -35,10 +35,11 @@ Visual Lab deliberately exposes **only its own registered components** through O
 | `Tabs` | see [Tabs](tabs.md) | Accessible tabs that switch between mounted panels of components; line or contained, horizontal or vertical, controlled or uncontrolled, with an OpenUI `$variable` binding |
 | `Accordion` | see [Accordion](accordion.md) | Accessible expandable sections with native button triggers; single or multiple open, mounted panels, typed child references |
 | `Collapsible` | see [Collapsible](collapsible.md) | One optional detail region behind a native toggle button; plain or bordered, controlled or uncontrolled, mounted content, with an OpenUI `$variable` binding for the open state |
+| `Breadcrumbs` | see [Breadcrumbs](breadcrumbs.md) | Breadcrumb trail on a labelled `<nav>` with an ordered list, `aria-current` and plain `<a href>` links; literal links only |
 
 ## Source layout
 
-Each component currently has an ordinary React implementation (`Name.tsx`) and a Zod/OpenUI definition (`Name.openui.tsx`). Definitions are imported into `visual/registry.ts`. Component styles are colocated in `Button.css`, `Text.css`, `Stack.css`, `Card.css`, `Markdown.css`, `Image.css`, `Divider.css`, `Grid.css`, `Icon.css`, `Spacer.css`, `Input.css`, `Textarea.css`, `Checkbox.css`, `Slider.css`, `RadioGroup.css`, `Select.css`, `Badge.css`, `Alert.css`, `Progress.css`, `Spinner.css`, `Table.css`, `List.css`, `KeyValue.css`, `CodeBlock.css`, `Chart.css`, `ProportionChart.css`, `Tabs.css`, `Accordion.css` and `Collapsible.css`. Chart and ProportionChart also use the shared `visual/charts/charts.css`.
+Each component currently has an ordinary React implementation (`Name.tsx`) and a Zod/OpenUI definition (`Name.openui.tsx`). Definitions are imported into `visual/registry.ts`. Component styles are colocated in `Button.css`, `Text.css`, `Stack.css`, `Card.css`, `Markdown.css`, `Image.css`, `Divider.css`, `Grid.css`, `Icon.css`, `Spacer.css`, `Input.css`, `Textarea.css`, `Checkbox.css`, `Slider.css`, `RadioGroup.css`, `Select.css`, `Badge.css`, `Alert.css`, `Progress.css`, `Spinner.css`, `Table.css`, `List.css`, `KeyValue.css`, `CodeBlock.css`, `Chart.css`, `ProportionChart.css`, `Tabs.css`, `Accordion.css`, `Collapsible.css` and `Breadcrumbs.css`. Chart and ProportionChart also use the shared `visual/charts/charts.css`.
 
 ## Design rules
 

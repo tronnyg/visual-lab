@@ -35,6 +35,7 @@ Visual Lab is a standalone local development board for building, rendering, and 
 - [Tabs](components/tabs.md) — switch between related content panels (WAI-ARIA tabs)
 - [Accordion](components/accordion.md) — grouped expandable sections (single or multiple open)
 - [Collapsible](components/collapsible.md) — one labeled region toggled by a button
+- [Breadcrumbs](components/breadcrumbs.md) — hierarchical path to the current page on a semantic nav
 - [Stack](components/stack.md) — Flexbox layout primitive
 - [Card](components/card.md) — visual container for grouping children
 - [Text](components/text.md) — typography primitive; how it differs from Markdown

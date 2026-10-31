@@ -54,7 +54,8 @@ The component library is ordinary source code, not a separately published packag
 - `visual/components/Tabs/` — `Tabs.tsx`, `Tabs.css`, `Tabs.openui.tsx`, `Tabs.examples.ts`
 - `visual/components/Accordion/` — `Accordion.tsx`, `Accordion.css`, `Accordion.openui.tsx`, `Accordion.examples.ts`
 - `visual/components/Collapsible/` — `Collapsible.tsx`, `Collapsible.css`, `Collapsible.openui.tsx`, `Collapsible.examples.ts`
-- `visual/shared/` — small helpers shared by several components: `useControllableState.ts`, `idPart.ts`, `contentRefs.ts` (the OpenUI references a Tabs/Accordion/Collapsible panel may hold)
+- `visual/components/Breadcrumbs/` — `Breadcrumbs.tsx`, `Breadcrumbs.css`, `Breadcrumbs.openui.tsx`, `Breadcrumbs.examples.ts`
+- `visual/shared/` — small helpers shared by several components: `useControllableState.ts`, `idPart.ts`, `links.ts` (link safety rules), `contentRefs.ts` (the OpenUI references a Tabs/Accordion/Collapsible panel may hold)
 - `visual/charts/` — the small layer shared by the chart components: `ChartFrame.tsx`, `ChartTooltip.tsx`, `chartAccessibility.tsx`, `chartColors.ts`, `chartFormatting.ts`, `charts.css`
 
-Button, Text, Stack, Card, Markdown, Image, Divider, Grid, Icon, Spacer, Input, Textarea, Checkbox, Slider, RadioGroup, Select, Badge, Alert, Progress, Spinner, Table, List, KeyValue, CodeBlock, Chart, ProportionChart, Tabs, Accordion and Collapsible styles are colocated; `styles/globals.css` holds only global and board UI rules. Moving component rules into colocated `*.css` files is a **proposed improvement**, not yet implemented.
+Button, Text, Stack, Card, Markdown, Image, Divider, Grid, Icon, Spacer, Input, Textarea, Checkbox, Slider, RadioGroup, Select, Badge, Alert, Progress, Spinner, Table, List, KeyValue, CodeBlock, Chart, ProportionChart, Tabs, Accordion, Collapsible and Breadcrumbs styles are colocated; `styles/globals.css` holds only global and board UI rules. Moving component rules into colocated `*.css` files is a **proposed improvement**, not yet implemented.
