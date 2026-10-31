@@ -82,3 +82,4 @@ Add one entry to `registeredComponents` in `visual/registry.ts`:
 | `Spinner` | `primitive` | `feedback` |
 | `Alert` | `composite` | `feedback` |
 | `Card` | `composite` | `data-display` |
+| `Table` | `composite` | `data-display` |

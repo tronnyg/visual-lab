@@ -13,6 +13,9 @@ export const componentGroups=[
     "- Spinner is a decorative loading indicator: Spinner(size, label), e.g. Spinner(\"md\", \"Loading results\"). Sizes: sm, md (default), lg. It spins forever and tracks no state, so show it only for content that is really loading. Set label when the spinner is the only sign of loading; omit it beside visible text like \"Saving…\". Use Progress when the amount done is known.",
   ]},
   {name:"Content",components:["Text","Markdown","Image","Icon"]},
+  {name:"Data",components:["Table"],notes:[
+    "- Table is a read-only data table: Table(columns, rows, caption, density, striped, emptyMessage). Columns are objects {key: \"score\", header: \"Score\", align: \"end\"} (align: start, center, end; use end for numbers) and each row is an object keyed by column key, {name: \"Alpha\", score: 82}. Values are text, numbers or null for an empty cell. Always set a caption. Use density \"compact\" for dense data and striped for long tables. It cannot sort, filter or hold components in cells; use Markdown for a table with rich text.",
+  ]},
   {name:"Controls",components:["Button","Input","Textarea","Checkbox","Slider","RadioGroup","Select"],notes:[
     "- Input needs a bare $variable as its first argument, declared with a default (e.g. $name = \"\"), so typing writes to it. Text(\"Hello, \" + $name) updates live with no request. Give each field its own variable. An expression or string literal makes a read-only field. Reset one with @Reset($name).",
     "- Textarea works like Input but is multiline: Textarea($notes, placeholder, disabled, label, rows). Use it for longer free text; use Input for short single-line values.",
