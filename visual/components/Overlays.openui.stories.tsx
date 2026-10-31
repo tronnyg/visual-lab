@@ -147,3 +147,32 @@ export const TooltipTriggerReference: Story = {
     await waitFor(() => expect(canvas.getByRole("tooltip", {hidden: true})).not.toBeVisible());
   },
 };
+
+export const DrawerBindingAndSide: Story = {
+  args: {
+    code: [
+      "$open = false",
+      "root = Stack([openBtn, status, drawer], \"sm\")",
+      "openBtn = Button(\"Filters\", false, \"outline\", \"default\", false, false, null, null, @Set($open, true))",
+      "status = Text(($urgent ? \"Urgent only\" : \"All items\") + \" / \" + ($open ? \"drawer open\" : \"drawer closed\"))",
+      "drawer = Drawer(\"Filters\", body, null, $open, \"left\")",
+      "body = Stack([urgent, reset], \"sm\")",
+      "urgent = Checkbox($urgent, \"Only urgent\")",
+      "reset = Button(\"Reset\", false, \"outline\", \"default\", false, false, null, null, Action([@Reset($urgent), @Set($open, false)]))",
+      "$urgent = false",
+    ].join("\n"),
+  },
+  play: async ({canvasElement}) => {
+    const canvas = within(canvasElement);
+    await userEvent.click(canvas.getByRole("button", {name: "Filters"}));
+    await waitFor(() => expect(dialog(canvasElement).open).toBe(true));
+    await expect(dialog(canvasElement).matches(":modal")).toBe(true);
+    await expect(dialog(canvasElement)).toHaveAttribute("data-side", "left");
+    await userEvent.click(canvas.getByRole("checkbox", {name: "Only urgent"}));
+    await expect(canvas.getByText("Urgent only / drawer open")).toBeVisible();
+    // Several existing actions in one Action([...]): reset the checkbox and close the drawer.
+    await userEvent.click(canvas.getByRole("button", {name: "Reset"}));
+    await waitFor(() => expect(dialog(canvasElement).open).toBe(false));
+    await expect(canvas.getByText("All items / drawer closed")).toBeVisible();
+  },
+};

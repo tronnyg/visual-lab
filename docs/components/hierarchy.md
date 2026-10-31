@@ -99,3 +99,4 @@ Add one entry to `registeredComponents` in `visual/registry.ts`:
 | `Dialog` | `composite` | `overlay` |
 | `Popover` | `composite` | `overlay` |
 | `Tooltip` | `composite` | `overlay` |
+| `Drawer` | `composite` | `overlay` |

@@ -1,0 +1,12 @@
+/* Drawer — a modal panel attached to one edge. The shared modal rules are in visual/shared/Modal.css. A left or right drawer is as tall as
+   the viewport and a fixed width; a top or bottom drawer is as wide as the viewport and as tall as its content, up to 70% of the height.
+   The body scrolls inside the panel, so the header and the close button stay in view. */
+.vl-drawer { margin: 0; border-radius: 0; max-width: 100vw; max-height: 100dvh; }
+
+.vl-drawer[data-side="left"], .vl-drawer[data-side="right"] { width: min(420px, calc(100vw - var(--ui-space-6))); height: 100dvh; }
+.vl-drawer[data-side="left"] { inset: 0 auto 0 0; border-width: 0 1px 0 0; }
+.vl-drawer[data-side="right"] { inset: 0 0 0 auto; border-width: 0 0 0 1px; }
+
+.vl-drawer[data-side="top"], .vl-drawer[data-side="bottom"] { width: 100vw; height: auto; max-height: 70dvh; }
+.vl-drawer[data-side="top"] { inset: 0 0 auto 0; border-width: 0 0 1px 0; }
+.vl-drawer[data-side="bottom"] { inset: auto 0 0 0; border-width: 1px 0 0 0; }
