@@ -18,9 +18,10 @@ visual/components/Input/
 | --- | --- | --- |
 | `value` | `string` | Required. The input is controlled |
 | `onChange` | native `ChangeEventHandler` | Read the text from `event.target.value` |
-| `label` | `string` | Visible `<label>` linked with `htmlFor` |
+| `label` | `string` | Visible `<label>` linked with `htmlFor`. A blank (empty or whitespace) label is ignored: `aria-label`/`aria-labelledby` apply, else `placeholder` becomes the accessible name |
 | `aria-label`, `aria-labelledby` | `string` | The types require `label`, `aria-label` or `aria-labelledby` |
-| `placeholder`, `disabled`, `name`, `id`, `className`, `ref`, other native attributes | as `<input>` | `type` is fixed to `text` |
+| `className`, `style` | as `<div>` | Both apply to the wrapper (root element), like the other components |
+| `placeholder`, `disabled`, `name`, `id`, `ref`, other native attributes | as `<input>` | `type` is fixed to `text` |
 
 ```tsx
 <Input label="Name" value={name} onChange={e => setName(e.target.value)} placeholder="Enter your name" />
@@ -39,7 +40,7 @@ Input(value, placeholder?, disabled?, label?)
 | `value` | A bare `$variable`, declared with a default. Typing writes to it |
 | `placeholder` | Hint text |
 | `disabled` | boolean |
-| `label` | Visible label. Without it, `placeholder` (or "Text input") is the accessible name |
+| `label` | Visible label. Empty or blank, it is ignored: `placeholder` (or "Text input") is the accessible name |
 
 ```text
 $name = ""

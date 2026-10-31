@@ -22,7 +22,8 @@ export const inputDefinition = defineComponent({
     // and setValue is never called unless the binding is reactive.
     const field = useStateField(useId(), props.value);
     const isStreaming = useIsStreaming();
-    const {placeholder, disabled, label} = props;
+    const {placeholder, disabled} = props;
+    const label = props.label?.trim() ? props.label : undefined;
     const common = {
       value: typeof field.value === "string" ? field.value : "",
       onChange: (e: ChangeEvent<HTMLInputElement>) => { if (field.isReactive) field.setValue(e.target.value); },
