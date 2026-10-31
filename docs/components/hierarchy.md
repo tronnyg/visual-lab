@@ -84,3 +84,4 @@ Add one entry to `registeredComponents` in `visual/registry.ts`:
 | `Card` | `composite` | `data-display` |
 | `Table` | `composite` | `data-display` |
 | `List` | `composite` | `data-display` |
+| `KeyValue` | `composite` | `data-display` |

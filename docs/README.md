@@ -28,6 +28,7 @@ Visual Lab is a standalone local development board for building, rendering, and 
 - [Spinner](components/spinner.md) — indeterminate CSS loading indicator
 - [Table](components/table.md) — read-only data table (native table elements)
 - [List](components/list.md) — ordered or unordered list on native list elements
+- [KeyValue](components/key-value.md) — label/value facts on a native description list
 - [Stack](components/stack.md) — Flexbox layout primitive
 - [Card](components/card.md) — visual container for grouping children
 - [Text](components/text.md) — typography primitive; how it differs from Markdown

@@ -16,6 +16,7 @@ import {progressDefinition} from "../Progress/Progress.openui";
 import {spinnerDefinition} from "../Spinner/Spinner.openui";
 import {tableDefinition} from "../Table/Table.openui";
 import {listDefinition} from "../List/List.openui";
+import {keyValueDefinition} from "../KeyValue/KeyValue.openui";
 import {stackDefinition} from "../Stack/Stack.openui";
 import {markdownDefinition} from "../Markdown/Markdown.openui";
 import {imageDefinition} from "../Image/Image.openui";
@@ -32,7 +33,7 @@ const cardProps = z.object({
   title: z.string().optional().describe("Legacy: a heading line. Prefer a Text child instead"),
   body: z.string().optional().describe("Legacy: a muted paragraph. Prefer a Text child instead"),
   get children(): z.ZodOptional<z.ZodArray<z.ZodType>> {
-    return z.array(z.union([textDefinition.ref, markdownDefinition.ref, imageDefinition.ref, dividerDefinition.ref, gridDefinition.ref, iconDefinition.ref, spacerDefinition.ref, buttonDefinition.ref, inputDefinition.ref, textareaDefinition.ref, checkboxDefinition.ref, sliderDefinition.ref, radioGroupDefinition.ref, selectDefinition.ref, badgeDefinition.ref, alertDefinition.ref, progressDefinition.ref, spinnerDefinition.ref, tableDefinition.ref, listDefinition.ref, stackDefinition.ref, cardProps])).optional().describe("Components shown inside the card, stacked vertically in order. Skip title and body with null when using children");
+    return z.array(z.union([textDefinition.ref, markdownDefinition.ref, imageDefinition.ref, dividerDefinition.ref, gridDefinition.ref, iconDefinition.ref, spacerDefinition.ref, buttonDefinition.ref, inputDefinition.ref, textareaDefinition.ref, checkboxDefinition.ref, sliderDefinition.ref, radioGroupDefinition.ref, selectDefinition.ref, badgeDefinition.ref, alertDefinition.ref, progressDefinition.ref, spinnerDefinition.ref, tableDefinition.ref, listDefinition.ref, keyValueDefinition.ref, stackDefinition.ref, cardProps])).optional().describe("Components shown inside the card, stacked vertically in order. Skip title and body with null when using children");
   },
   variant: z.enum(cardVariants).optional().describe("default (surface with border), outline (border only), filled (muted fill, no border), subtle (faint fill with border). Default default"),
   padding: z.enum(cardSpacings).optional().describe("Space inside the card: none, xs, sm, md, lg. Default md"),

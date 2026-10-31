@@ -28,10 +28,11 @@ Visual Lab deliberately exposes **only its own registered components** through O
 | `Spinner` | see [Spinner](spinner.md) | Indeterminate CSS loading indicator with three sizes and an optional accessible label; honors reduced motion |
 | `Table` | see [Table](table.md) | Read-only data table from `columns` and `rows` objects, with caption, compact density, striping, empty state and sideways scrolling |
 | `List` | see [List](list.md) | Ordered or unordered list of items on native list elements, with a start number, compact spacing and nesting |
+| `KeyValue` | see [KeyValue](key-value.md) | Label/value pairs on a native description list, with inline or stacked layout, dividers and narrow-container stacking |
 
 ## Source layout
 
-Each component currently has an ordinary React implementation (`Name.tsx`) and a Zod/OpenUI definition (`Name.openui.tsx`). Definitions are imported into `visual/registry.ts`. Component styles are colocated in `Button.css`, `Text.css`, `Stack.css`, `Card.css`, `Markdown.css`, `Image.css`, `Divider.css`, `Grid.css`, `Icon.css`, `Spacer.css`, `Input.css`, `Textarea.css`, `Checkbox.css`, `Slider.css`, `RadioGroup.css`, `Select.css`, `Badge.css`, `Alert.css`, `Progress.css`, `Spinner.css`, `Table.css` and `List.css`.
+Each component currently has an ordinary React implementation (`Name.tsx`) and a Zod/OpenUI definition (`Name.openui.tsx`). Definitions are imported into `visual/registry.ts`. Component styles are colocated in `Button.css`, `Text.css`, `Stack.css`, `Card.css`, `Markdown.css`, `Image.css`, `Divider.css`, `Grid.css`, `Icon.css`, `Spacer.css`, `Input.css`, `Textarea.css`, `Checkbox.css`, `Slider.css`, `RadioGroup.css`, `Select.css`, `Badge.css`, `Alert.css`, `Progress.css`, `Spinner.css`, `Table.css`, `List.css` and `KeyValue.css`.
 
 ## Design rules
 

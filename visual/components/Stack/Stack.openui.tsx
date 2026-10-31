@@ -15,6 +15,7 @@ import {progressDefinition} from "../Progress/Progress.openui";
 import {spinnerDefinition} from "../Spinner/Spinner.openui";
 import {tableDefinition} from "../Table/Table.openui";
 import {listDefinition} from "../List/List.openui";
+import {keyValueDefinition} from "../KeyValue/KeyValue.openui";
 import {cardDefinition} from "../Card/Card.openui";
 import {markdownDefinition} from "../Markdown/Markdown.openui";
 import {imageDefinition} from "../Image/Image.openui";
@@ -29,7 +30,7 @@ import {spacerDefinition} from "../Spacer/Spacer.openui";
 // The getter makes the schema recursive so a Stack can contain Stacks.
 const stackProps = z.object({
   get children() {
-    return z.array(z.union([stackProps, textDefinition.ref, markdownDefinition.ref, imageDefinition.ref, dividerDefinition.ref, gridDefinition.ref, iconDefinition.ref, spacerDefinition.ref, buttonDefinition.ref, inputDefinition.ref, textareaDefinition.ref, checkboxDefinition.ref, sliderDefinition.ref, radioGroupDefinition.ref, selectDefinition.ref, badgeDefinition.ref, alertDefinition.ref, progressDefinition.ref, spinnerDefinition.ref, tableDefinition.ref, listDefinition.ref, cardDefinition.ref])).describe("Components to arrange, in order. May include other Stacks");
+    return z.array(z.union([stackProps, textDefinition.ref, markdownDefinition.ref, imageDefinition.ref, dividerDefinition.ref, gridDefinition.ref, iconDefinition.ref, spacerDefinition.ref, buttonDefinition.ref, inputDefinition.ref, textareaDefinition.ref, checkboxDefinition.ref, sliderDefinition.ref, radioGroupDefinition.ref, selectDefinition.ref, badgeDefinition.ref, alertDefinition.ref, progressDefinition.ref, spinnerDefinition.ref, tableDefinition.ref, listDefinition.ref, keyValueDefinition.ref, cardDefinition.ref])).describe("Components to arrange, in order. May include other Stacks");
   },
   gap: z.enum(stackSpacings).optional().describe("Space between children: none, xs, sm, md, lg. Default md"),
   direction: z.enum(stackDirections).optional().describe("vertical stacks children top to bottom, horizontal places them in a row. Default vertical"),
