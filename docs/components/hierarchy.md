@@ -78,4 +78,5 @@ Add one entry to `registeredComponents` in `visual/registry.ts`:
 | `RadioGroup` | `primitive` | `controls` |
 | `Select` | `primitive` | `controls` |
 | `Badge` | `primitive` | `feedback` |
+| `Alert` | `composite` | `feedback` |
 | `Card` | `composite` | `data-display` |

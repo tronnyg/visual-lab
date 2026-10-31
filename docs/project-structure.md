@@ -42,5 +42,6 @@ The component library is ordinary source code, not a separately published packag
 - `visual/components/RadioGroup/` — `RadioGroup.tsx`, `RadioGroup.css`, `RadioGroup.openui.tsx`, `RadioGroup.examples.ts`
 - `visual/components/Select/` — `Select.tsx`, `Select.css`, `Select.openui.tsx`, `Select.examples.ts`
 - `visual/components/Badge/` — `Badge.tsx`, `Badge.css`, `Badge.openui.tsx`, `Badge.examples.ts`
+- `visual/components/Alert/` — `Alert.tsx`, `Alert.css`, `Alert.openui.tsx`, `Alert.examples.ts`
 
-Button, Text, Stack, Card, Markdown, Image, Divider, Grid, Icon, Spacer, Input, Textarea, Checkbox, Slider, RadioGroup, Select and Badge styles are colocated; `styles/globals.css` holds only global and board UI rules. Moving component rules into colocated `*.css` files is a **proposed improvement**, not yet implemented.
+Button, Text, Stack, Card, Markdown, Image, Divider, Grid, Icon, Spacer, Input, Textarea, Checkbox, Slider, RadioGroup, Select, Badge and Alert styles are colocated; `styles/globals.css` holds only global and board UI rules. Moving component rules into colocated `*.css` files is a **proposed improvement**, not yet implemented.

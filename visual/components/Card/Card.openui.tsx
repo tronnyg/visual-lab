@@ -11,6 +11,7 @@ import {sliderDefinition} from "../Slider/Slider.openui";
 import {radioGroupDefinition} from "../RadioGroup/RadioGroup.openui";
 import {selectDefinition} from "../Select/Select.openui";
 import {badgeDefinition} from "../Badge/Badge.openui";
+import {alertDefinition} from "../Alert/Alert.openui";
 import {stackDefinition} from "../Stack/Stack.openui";
 import {markdownDefinition} from "../Markdown/Markdown.openui";
 import {imageDefinition} from "../Image/Image.openui";
@@ -27,7 +28,7 @@ const cardProps = z.object({
   title: z.string().optional().describe("Legacy: a heading line. Prefer a Text child instead"),
   body: z.string().optional().describe("Legacy: a muted paragraph. Prefer a Text child instead"),
   get children(): z.ZodOptional<z.ZodArray<z.ZodType>> {
-    return z.array(z.union([textDefinition.ref, markdownDefinition.ref, imageDefinition.ref, dividerDefinition.ref, gridDefinition.ref, iconDefinition.ref, spacerDefinition.ref, buttonDefinition.ref, inputDefinition.ref, textareaDefinition.ref, checkboxDefinition.ref, sliderDefinition.ref, radioGroupDefinition.ref, selectDefinition.ref, badgeDefinition.ref, stackDefinition.ref, cardProps])).optional().describe("Components shown inside the card, stacked vertically in order. Skip title and body with null when using children");
+    return z.array(z.union([textDefinition.ref, markdownDefinition.ref, imageDefinition.ref, dividerDefinition.ref, gridDefinition.ref, iconDefinition.ref, spacerDefinition.ref, buttonDefinition.ref, inputDefinition.ref, textareaDefinition.ref, checkboxDefinition.ref, sliderDefinition.ref, radioGroupDefinition.ref, selectDefinition.ref, badgeDefinition.ref, alertDefinition.ref, stackDefinition.ref, cardProps])).optional().describe("Components shown inside the card, stacked vertically in order. Skip title and body with null when using children");
   },
   variant: z.enum(cardVariants).optional().describe("default (surface with border), outline (border only), filled (muted fill, no border), subtle (faint fill with border). Default default"),
   padding: z.enum(cardSpacings).optional().describe("Space inside the card: none, xs, sm, md, lg. Default md"),

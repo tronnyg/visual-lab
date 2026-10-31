@@ -1,0 +1,33 @@
+/* Alert — a contextual message with a variant icon, an optional title and a message.
+   Appearance is driven by the data-variant attribute set in Alert.tsx. Like Badge, the tint comes from the status token and the
+   title is mixed toward --ui-text, so contrast holds in light and dark without per-theme rules. The message stays in --ui-text. */
+.vl-alert {
+  --vl-alert-tone: var(--ui-accent-solid);
+
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  column-gap: var(--ui-space-3);
+  width: 100%;
+  min-width: 0;
+  padding: var(--ui-space-3) var(--ui-space-4);
+  border: 1px solid color-mix(in srgb, var(--vl-alert-tone) 30%, transparent);
+  border-radius: var(--ui-radius-md);
+  background: color-mix(in srgb, var(--vl-alert-tone) 8%, var(--ui-surface));
+  color: var(--ui-text);
+  font-family: var(--ui-font);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.vl-alert[data-variant="success"] { --vl-alert-tone: var(--ui-success); }
+.vl-alert[data-variant="warning"] { --vl-alert-tone: var(--ui-warning); }
+.vl-alert[data-variant="danger"] { --vl-alert-tone: var(--ui-danger); }
+
+/* The icon is 16px against 21px lines, so a 2px offset centres it on the first line */
+.vl-alert__icon { margin-top: 2px; color: color-mix(in srgb, var(--vl-alert-tone) 80%, var(--ui-text)); }
+
+.vl-alert__body { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.vl-alert__title { font-weight: 600; color: color-mix(in srgb, var(--vl-alert-tone) 80%, var(--ui-text)); overflow-wrap: break-word; }
+/* pre-line keeps the line breaks in a multiline message and still wraps long lines */
+.vl-alert__message { white-space: pre-line; overflow-wrap: break-word; }

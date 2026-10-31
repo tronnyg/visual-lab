@@ -10,6 +10,7 @@ import {sliderDefinition} from "../Slider/Slider.openui";
 import {radioGroupDefinition} from "../RadioGroup/RadioGroup.openui";
 import {selectDefinition} from "../Select/Select.openui";
 import {badgeDefinition} from "../Badge/Badge.openui";
+import {alertDefinition} from "../Alert/Alert.openui";
 import {cardDefinition} from "../Card/Card.openui";
 import {markdownDefinition} from "../Markdown/Markdown.openui";
 import {imageDefinition} from "../Image/Image.openui";
@@ -24,7 +25,7 @@ import {spacerDefinition} from "../Spacer/Spacer.openui";
 // The getter makes the schema recursive so a Stack can contain Stacks.
 const stackProps = z.object({
   get children() {
-    return z.array(z.union([stackProps, textDefinition.ref, markdownDefinition.ref, imageDefinition.ref, dividerDefinition.ref, gridDefinition.ref, iconDefinition.ref, spacerDefinition.ref, buttonDefinition.ref, inputDefinition.ref, textareaDefinition.ref, checkboxDefinition.ref, sliderDefinition.ref, radioGroupDefinition.ref, selectDefinition.ref, badgeDefinition.ref, cardDefinition.ref])).describe("Components to arrange, in order. May include other Stacks");
+    return z.array(z.union([stackProps, textDefinition.ref, markdownDefinition.ref, imageDefinition.ref, dividerDefinition.ref, gridDefinition.ref, iconDefinition.ref, spacerDefinition.ref, buttonDefinition.ref, inputDefinition.ref, textareaDefinition.ref, checkboxDefinition.ref, sliderDefinition.ref, radioGroupDefinition.ref, selectDefinition.ref, badgeDefinition.ref, alertDefinition.ref, cardDefinition.ref])).describe("Components to arrange, in order. May include other Stacks");
   },
   gap: z.enum(stackSpacings).optional().describe("Space between children: none, xs, sm, md, lg. Default md"),
   direction: z.enum(stackDirections).optional().describe("vertical stacks children top to bottom, horizontal places them in a row. Default vertical"),

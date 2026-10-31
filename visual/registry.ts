@@ -29,6 +29,8 @@ import {selectDefinition} from "./components/Select/Select.openui";
 import {selectExamples} from "./components/Select/Select.examples";
 import {badgeDefinition} from "./components/Badge/Badge.openui";
 import {badgeExamples} from "./components/Badge/Badge.examples";
+import {alertDefinition} from "./components/Alert/Alert.openui";
+import {alertExamples} from "./components/Alert/Alert.examples";
 import {cardExamples} from "./components/Card/Card.examples";
 import {stackExamples} from "./components/Stack/Stack.examples";
 import {textExamples} from "./components/Text/Text.examples";
@@ -46,6 +48,7 @@ export const registeredComponents=[
   {level:"foundation",family:"typography",definition:textDefinition},
   {level:"composite",family:"data-display",definition:cardDefinition},
   {level:"composite",family:"typography",definition:markdownDefinition},
+  {level:"composite",family:"feedback",definition:alertDefinition},
   {level:"primitive",family:"controls",definition:buttonDefinition},
   {level:"primitive",family:"controls",definition:inputDefinition},
   {level:"primitive",family:"controls",definition:textareaDefinition},
@@ -57,4 +60,4 @@ export const registeredComponents=[
   {level:"primitive",family:"feedback",definition:badgeDefinition},
 ] as const satisfies readonly RegisteredComponent[];
 export const definitions=registeredComponents.map(c=>c.definition);
-export const examples=[{title:"Getting started",code:'root = Stack([heading, intro, card, action])\nheading = Text("Visual Lab", "default", "title", "h1")\nintro = Text("Your first custom OpenUI document.", "muted")\ncard = Card("Reusable components", "Built with React and registered for OpenUI.")\naction = Button("Try a button")'},...stackExamples,...cardExamples,...textExamples,...markdownExamples,...imageExamples,...dividerExamples,...gridExamples,...iconExamples,...spacerExamples,...buttonExamples,...inputExamples,...textareaExamples,...checkboxExamples,...sliderExamples,...radioGroupExamples,...selectExamples,...badgeExamples];
+export const examples=[{title:"Getting started",code:'root = Stack([heading, intro, card, action])\nheading = Text("Visual Lab", "default", "title", "h1")\nintro = Text("Your first custom OpenUI document.", "muted")\ncard = Card("Reusable components", "Built with React and registered for OpenUI.")\naction = Button("Try a button")'},...stackExamples,...cardExamples,...textExamples,...markdownExamples,...imageExamples,...dividerExamples,...gridExamples,...iconExamples,...spacerExamples,...buttonExamples,...inputExamples,...textareaExamples,...checkboxExamples,...sliderExamples,...radioGroupExamples,...selectExamples,...badgeExamples,...alertExamples];
