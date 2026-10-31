@@ -1,0 +1,60 @@
+/* Toast — a stack of notifications fixed to a corner of the viewport. The region is a manual popover, so it sits in the browser's top layer
+   (no z-index). It is never display:none once shown, because a live region has to exist before text is added to it to be announced.
+   Status tones come from the --ui-* status tokens, like Alert; the title carries the status in words too (see .vl-toast__kind). */
+.vl-toast-viewport {
+  box-sizing: border-box;
+  inset: auto;
+  margin: 0;
+  padding: var(--ui-space-4);
+  width: min(420px, 100%);
+  max-height: 100dvh;
+  overflow: visible;
+  border: 0;
+  background: transparent;
+  color: var(--ui-text);
+  font-family: var(--ui-font);
+  font-size: 14px;
+  line-height: 1.5;
+  pointer-events: none;
+}
+
+/* Only a shown popover gets a display; the closed element keeps the browser's display:none. */
+.vl-toast-viewport:popover-open { display: block; }
+.vl-toast-viewport[data-position="top-right"] { top: 0; right: 0; }
+.vl-toast-viewport[data-position="top-left"] { top: 0; left: 0; }
+.vl-toast-viewport[data-position="bottom-right"] { bottom: 0; right: 0; }
+.vl-toast-viewport[data-position="bottom-left"] { bottom: 0; left: 0; }
+
+.vl-toast-list { display: flex; flex-direction: column; gap: var(--ui-space-2); }
+
+.vl-toast {
+  --vl-toast-tone: var(--ui-border);
+
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ui-space-3);
+  padding: var(--ui-space-3) var(--ui-space-3) var(--ui-space-3) var(--ui-space-4);
+  border: 1px solid var(--ui-border);
+  border-left: 4px solid var(--vl-toast-tone);
+  border-radius: var(--ui-radius-md);
+  background: var(--ui-surface);
+  box-shadow: var(--ui-shadow);
+  pointer-events: auto;
+}
+
+.vl-toast[data-variant="success"] { --vl-toast-tone: var(--ui-success); }
+.vl-toast[data-variant="warning"] { --vl-toast-tone: var(--ui-warning); }
+.vl-toast[data-variant="error"] { --vl-toast-tone: var(--ui-danger); }
+
+.vl-toast__body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.vl-toast__title { font-weight: 600; overflow-wrap: anywhere; }
+.vl-toast__kind { color: color-mix(in srgb, var(--vl-toast-tone) 80%, var(--ui-text)); }
+.vl-toast__description { color: var(--ui-text-muted); overflow-wrap: anywhere; }
+
+/* A 28px target with an X drawn from two bars. */
+.vl-toast__dismiss { flex: none; display: grid; place-items: center; width: 28px; height: 28px; margin: -2px 0; padding: 0; border: 0; border-radius: var(--ui-radius-md); background: transparent; color: var(--ui-text-muted); cursor: pointer; }
+.vl-toast__dismiss:hover { background: var(--ui-surface-muted); color: var(--ui-text); }
+.vl-toast__dismiss:focus-visible { outline: 2px solid var(--ui-accent-solid); outline-offset: 0; }
+.vl-toast__dismiss span { position: relative; width: 12px; height: 12px; }
+.vl-toast__dismiss span::before, .vl-toast__dismiss span::after { content: ""; position: absolute; left: 0; top: 5px; width: 12px; height: 2px; border-radius: var(--ui-radius-full); background: currentColor; transform: rotate(45deg); }
+.vl-toast__dismiss span::after { transform: rotate(-45deg); }

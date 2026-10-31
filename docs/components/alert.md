@@ -67,3 +67,5 @@ Alert is accepted as a child of `Stack`, `Card` and `Grid`.
 ## Limitations
 
 No dismiss button, action, timer, toast or notification queue, no custom icon, and no child components inside the message. Use [Text](text.md) for ordinary sentences, [Badge](badge.md) for a short label and [Button](button.md) for actions.
+
+For a temporary notification that appears in a corner and dismisses itself, use [Toast](toast.md); an Alert stays in the page.

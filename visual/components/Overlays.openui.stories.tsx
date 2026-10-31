@@ -176,3 +176,38 @@ export const DrawerBindingAndSide: Story = {
     await expect(canvas.getByText("All items / drawer closed")).toBeVisible();
   },
 };
+
+export const ToastStateDrivenItems: Story = {
+  args: {
+    code: [
+      "$toasts = []",
+      "root = Stack([save, toast], \"sm\")",
+      "save = Button(\"Save\", false, \"primary\", \"default\", false, false, null, null, @Set($toasts, [{id: \"saved-1\", title: \"Changes saved\", description: \"Profile updated.\", variant: \"success\", duration: 0}]))",
+      "fail = Button(\"Fail\", false, \"outline\", \"default\", false, false, null, null, @Set($toasts, [{id: \"failed-1\", title: \"Save failed\", variant: \"error\"}]))",
+      "toast = Toast($toasts, \"top-right\")",
+    ].join("\n"),
+  },
+  play: async ({canvasElement}) => {
+    const canvas = within(canvasElement);
+    await expect(canvasElement.querySelectorAll(".vl-toast")).toHaveLength(0);
+    // @Set replaces the array held in the variable, which is the way to show a notification.
+    await userEvent.click(canvas.getByRole("button", {name: "Save"}));
+    await waitFor(() => expect(canvas.getByText("Changes saved")).toBeVisible());
+    await expect(canvas.getByText("Profile updated.")).toBeVisible();
+    // Dismissal is local: it hides the item without any action.
+    await userEvent.click(canvas.getByRole("button", {name: "Dismiss: Changes saved"}));
+    await waitFor(() => expect(canvas.queryByText("Changes saved")).toBeNull());
+  },
+};
+
+export const ToastStaticItems: Story = {
+  args: {
+    code: 'root = Toast([{id: "a", title: "First", duration: 0}, {id: "b", title: "Careful", variant: "warning", duration: 0}], "bottom-left", "Updates")',
+  },
+  play: async ({canvasElement}) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByRole("region", {name: "Updates"})).toBeVisible();
+    await expect(canvas.getByText("First")).toBeVisible();
+    await expect(canvas.getByText("Careful")).toBeVisible();
+  },
+};
