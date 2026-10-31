@@ -1,0 +1,3 @@
+/* ProportionChart — pie and donut specific rules. The shared figure, legend, tooltip and state styles are in visual/charts/charts.css. */
+.vl-chart[data-type="pie"] .recharts-pie-label-text,
+.vl-chart[data-type="donut"] .recharts-pie-label-text { fill: var(--ui-text); font-weight: 500; }

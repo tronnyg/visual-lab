@@ -30,11 +30,12 @@ Visual Lab deliberately exposes **only its own registered components** through O
 | `List` | see [List](list.md) | Ordered or unordered list of items on native list elements, with a start number, compact spacing and nesting |
 | `KeyValue` | see [KeyValue](key-value.md) | Label/value pairs on a native description list, with inline or stacked layout, dividers and narrow-container stacking |
 | `Chart` | see [Chart](chart.md) | Bar, line, area or scatter chart of records on Recharts, with a hidden accessible data table, tooltips, validation and value formatting |
+| `ProportionChart` | see [ProportionChart](proportion-chart.md) | Pie or donut chart of parts of a whole on Recharts, with calculated shares, a hidden accessible data table, tooltips and validation |
 | `CodeBlock` | see [CodeBlock](code-block.md) | Read-only code viewer on `pre`/`code` with an optional language label, line numbers, copy button and wrapping; no syntax highlighting |
 
 ## Source layout
 
-Each component currently has an ordinary React implementation (`Name.tsx`) and a Zod/OpenUI definition (`Name.openui.tsx`). Definitions are imported into `visual/registry.ts`. Component styles are colocated in `Button.css`, `Text.css`, `Stack.css`, `Card.css`, `Markdown.css`, `Image.css`, `Divider.css`, `Grid.css`, `Icon.css`, `Spacer.css`, `Input.css`, `Textarea.css`, `Checkbox.css`, `Slider.css`, `RadioGroup.css`, `Select.css`, `Badge.css`, `Alert.css`, `Progress.css`, `Spinner.css`, `Table.css`, `List.css`, `KeyValue.css`, `CodeBlock.css` and `Chart.css`. Chart also uses the shared `visual/charts/charts.css`.
+Each component currently has an ordinary React implementation (`Name.tsx`) and a Zod/OpenUI definition (`Name.openui.tsx`). Definitions are imported into `visual/registry.ts`. Component styles are colocated in `Button.css`, `Text.css`, `Stack.css`, `Card.css`, `Markdown.css`, `Image.css`, `Divider.css`, `Grid.css`, `Icon.css`, `Spacer.css`, `Input.css`, `Textarea.css`, `Checkbox.css`, `Slider.css`, `RadioGroup.css`, `Select.css`, `Badge.css`, `Alert.css`, `Progress.css`, `Spinner.css`, `Table.css`, `List.css`, `KeyValue.css`, `CodeBlock.css`, `Chart.css` and `ProportionChart.css`. Chart and ProportionChart also use the shared `visual/charts/charts.css`.
 
 ## Design rules
 

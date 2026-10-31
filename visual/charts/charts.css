@@ -43,8 +43,9 @@
   font-size: 13px;
   line-height: 1.4;
 }
-.vl-chart__legend-item { display: inline-flex; align-items: center; gap: 6px; min-width: 0; overflow-wrap: anywhere; }
-.vl-chart__legend-detail { color: var(--ui-text-muted); font-variant-numeric: tabular-nums; }
+.vl-chart__legend-item { display: inline-flex; align-items: baseline; gap: 6px; min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
+.vl-chart__legend-item > .vl-chart__swatch { align-self: center; }
+.vl-chart__legend-detail { flex: none; color: var(--ui-text-muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
 
 /* The mark beside a series name, in the same shape as the series in the plot. */
 .vl-chart__swatch { display: inline-block; flex: none; width: 10px; height: 10px; background: var(--vl-swatch); }

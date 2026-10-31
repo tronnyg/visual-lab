@@ -61,7 +61,7 @@ The width always fills the container. `className`, `style` and other `figure` at
 | `area` | emphasize magnitude along an ordered axis | Like Line with a subtle fill down to zero. Not stacked. |
 | `scatter` | relate two numeric variables | Points only, no lines. Each series has its own marker shape as well as its own colour. |
 
-Use [Table](table.md) when precise values matter more than the shape.
+Use [Table](table.md) when precise values matter more than the shape, and [ProportionChart](proportion-chart.md) for a few parts of a whole.
 
 ## Data semantics
 

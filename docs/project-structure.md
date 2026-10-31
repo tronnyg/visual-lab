@@ -50,6 +50,7 @@ The component library is ordinary source code, not a separately published packag
 - `visual/components/KeyValue/` — `KeyValue.tsx`, `KeyValue.css`, `KeyValue.openui.tsx`, `KeyValue.examples.ts`
 - `visual/components/CodeBlock/` — `CodeBlock.tsx`, `CodeBlock.css`, `CodeBlock.openui.tsx`, `CodeBlock.examples.ts`
 - `visual/components/Chart/` — `Chart.tsx`, `chartModel.ts`, `Chart.css`, `Chart.openui.tsx`, `Chart.examples.ts`
+- `visual/components/ProportionChart/` — `ProportionChart.tsx`, `proportionModel.ts`, `ProportionChart.css`, `ProportionChart.openui.tsx`, `ProportionChart.examples.ts`
 - `visual/charts/` — the small layer shared by the chart components: `ChartFrame.tsx`, `ChartTooltip.tsx`, `chartAccessibility.tsx`, `chartColors.ts`, `chartFormatting.ts`, `charts.css`
 
-Button, Text, Stack, Card, Markdown, Image, Divider, Grid, Icon, Spacer, Input, Textarea, Checkbox, Slider, RadioGroup, Select, Badge, Alert, Progress, Spinner, Table, List, KeyValue, CodeBlock and Chart styles are colocated; `styles/globals.css` holds only global and board UI rules. Moving component rules into colocated `*.css` files is a **proposed improvement**, not yet implemented.
+Button, Text, Stack, Card, Markdown, Image, Divider, Grid, Icon, Spacer, Input, Textarea, Checkbox, Slider, RadioGroup, Select, Badge, Alert, Progress, Spinner, Table, List, KeyValue, CodeBlock, Chart and ProportionChart styles are colocated; `styles/globals.css` holds only global and board UI rules. Moving component rules into colocated `*.css` files is a **proposed improvement**, not yet implemented.
