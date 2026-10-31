@@ -77,4 +77,5 @@ Add one entry to `registeredComponents` in `visual/registry.ts`:
 | `Slider` | `primitive` | `controls` |
 | `RadioGroup` | `primitive` | `controls` |
 | `Select` | `primitive` | `controls` |
+| `Badge` | `primitive` | `feedback` |
 | `Card` | `composite` | `data-display` |

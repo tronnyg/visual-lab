@@ -22,10 +22,11 @@ Visual Lab deliberately exposes **only its own registered components** through O
 | `Slider` | see [Slider](slider.md) | Single-value numeric slider (native range input) with two-way `$variable` binding |
 | `RadioGroup` | see [RadioGroup](radio-group.md) | Single-choice group of native radios (string or `{label, value}` options) with two-way `$variable` binding |
 | `Select` | see [Select](select.md) | Single-choice dropdown (native `<select>`; string or `{label, value}` options) with two-way `$variable` binding |
+| `Badge` | see [Badge](badge.md) | Compact non-interactive label with default, secondary, outline, success, warning and danger variants |
 
 ## Source layout
 
-Each component currently has an ordinary React implementation (`Name.tsx`) and a Zod/OpenUI definition (`Name.openui.tsx`). Definitions are imported into `visual/registry.ts`. Component styles are colocated in `Button.css`, `Text.css`, `Stack.css`, `Card.css`, `Markdown.css`, `Image.css`, `Divider.css`, `Grid.css`, `Icon.css`, `Spacer.css`, `Input.css`, `Textarea.css`, `Checkbox.css`, `Slider.css`, `RadioGroup.css` and `Select.css`.
+Each component currently has an ordinary React implementation (`Name.tsx`) and a Zod/OpenUI definition (`Name.openui.tsx`). Definitions are imported into `visual/registry.ts`. Component styles are colocated in `Button.css`, `Text.css`, `Stack.css`, `Card.css`, `Markdown.css`, `Image.css`, `Divider.css`, `Grid.css`, `Icon.css`, `Spacer.css`, `Input.css`, `Textarea.css`, `Checkbox.css`, `Slider.css`, `RadioGroup.css`, `Select.css` and `Badge.css`.
 
 ## Design rules
 

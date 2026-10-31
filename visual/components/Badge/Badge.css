@@ -1,0 +1,40 @@
+/* Badge — a compact inline label. Appearance is driven by the data-variant attribute set in Badge.tsx.
+   Semantic variants tint the background from the status token and darken (light) or keep (dark) the text via --ui-text,
+   so contrast holds in both themes without per-theme rules. */
+.vl-badge {
+  --vl-badge-bg: var(--ui-accent-solid);
+  --vl-badge-fg: var(--ui-on-accent);
+  --vl-badge-border: transparent;
+
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  width: fit-content;
+  padding: 2px var(--ui-space-2);
+  border: 1px solid var(--vl-badge-border);
+  border-radius: var(--ui-radius-sm);
+  background: var(--vl-badge-bg);
+  color: var(--vl-badge-fg);
+  font-family: var(--ui-font);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.33;
+  white-space: nowrap;
+  vertical-align: middle;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vl-badge[data-variant="secondary"] { --vl-badge-bg: var(--ui-surface-muted); --vl-badge-fg: var(--ui-text); }
+.vl-badge[data-variant="outline"] { --vl-badge-bg: transparent; --vl-badge-fg: var(--ui-text); --vl-badge-border: var(--ui-border); }
+
+.vl-badge[data-variant="success"] { --vl-badge-tone: var(--ui-success); }
+.vl-badge[data-variant="warning"] { --vl-badge-tone: var(--ui-warning); }
+.vl-badge[data-variant="danger"] { --vl-badge-tone: var(--ui-danger); }
+.vl-badge[data-variant="success"],
+.vl-badge[data-variant="warning"],
+.vl-badge[data-variant="danger"] {
+  --vl-badge-bg: color-mix(in srgb, var(--vl-badge-tone) 12%, var(--ui-surface));
+  --vl-badge-fg: color-mix(in srgb, var(--vl-badge-tone) 80%, var(--ui-text));
+  --vl-badge-border: color-mix(in srgb, var(--vl-badge-tone) 30%, transparent);
+}

@@ -22,6 +22,7 @@ Visual Lab is a standalone local development board for building, rendering, and 
 - [Slider](components/slider.md) — single-value numeric slider with `$variable` binding
 - [RadioGroup](components/radio-group.md) — single-choice radio group with `$variable` binding
 - [Select](components/select.md) — single-choice dropdown (native `<select>`) with `$variable` binding
+- [Badge](components/badge.md) — compact non-interactive label with status variants
 - [Stack](components/stack.md) — Flexbox layout primitive
 - [Card](components/card.md) — visual container for grouping children
 - [Text](components/text.md) — typography primitive; how it differs from Markdown

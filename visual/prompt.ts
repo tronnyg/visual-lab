@@ -6,6 +6,9 @@ export const componentGroups=[
     "- Card is for visual grouping, not layout. Spacer is for exceptional spacing; use gap for ordinary spacing.",
   ]},
   {name:"Containers",components:["Card"]},
+  {name:"Feedback",components:["Badge"],notes:[
+    "- Badge is a small non-interactive label: Badge(\"New\", \"success\"). Variants: default, secondary, outline, success, warning, danger. Put the meaning in the text, not only the colour. Badge(\"Items: \" + $count) updates live. Use Button for actions.",
+  ]},
   {name:"Content",components:["Text","Markdown","Image","Icon"]},
   {name:"Controls",components:["Button","Input","Textarea","Checkbox","Slider","RadioGroup","Select"],notes:[
     "- Input needs a bare $variable as its first argument, declared with a default (e.g. $name = \"\"), so typing writes to it. Text(\"Hello, \" + $name) updates live with no request. Give each field its own variable. An expression or string literal makes a read-only field. Reset one with @Reset($name).",
