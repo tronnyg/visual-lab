@@ -2,7 +2,7 @@
 
 Storybook is the development and test environment for the plain React components in `visual/components/` (layer 1). It renders them directly: no board, MCP server or OpenUI renderer is involved.
 
-Currently covered: all 33 components.
+Currently covered: all 34 components.
 
 ## Commands
 
@@ -22,6 +22,10 @@ npm run test:storybook   # run every story in headless Chromium: render, play fu
 4. Put interaction checks in a `play` function using `storybook/test` (`userEvent`, `expect`, `within`).
 
 Stories are React examples. Do not convert `Name.examples.ts` (OpenUI programs) into stories.
+
+## OpenUI regression stories
+
+`visual/components/Overlays.openui.stories.tsx` (title `OpenUI/Overlays`) renders small OpenUI programs with the real `Renderer` and the real library, in Chromium, and protects what the overlay components promise to OpenUI authors: `$variable` open-state bindings, child references (trigger and content), existing actions (`@Set`, `@Reset`, `@ToAssistant`) and literal links. It is deliberately one file of representative programs, not a framework. Each overlay component adds a story or two there; plain React behaviour belongs in the component's own stories.
 
 ## Themes
 

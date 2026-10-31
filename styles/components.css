@@ -33,3 +33,5 @@
 @import "../visual/components/Pagination/Pagination.css";
 @import "../visual/components/NavigationMenu/NavigationMenu.css";
 @import "../visual/components/CommandPalette/CommandPalette.css";
+@import "../visual/shared/Modal.css";
+@import "../visual/components/Dialog/Dialog.css";

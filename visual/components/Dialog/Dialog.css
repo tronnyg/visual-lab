@@ -1,0 +1,2 @@
+/* Dialog — centred modal panel. The shared modal rules are in visual/shared/Modal.css. */
+.vl-dialog { width: min(480px, calc(100vw - 2 * var(--ui-space-4))); margin: auto; }

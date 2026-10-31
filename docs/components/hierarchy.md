@@ -35,6 +35,7 @@ A family is a component's primary functional purpose. Each component has exactly
 | `visualization` | Represents data graphically | chart, diagram |
 | `editors` | Authors or edits structured content | rich-text or code editor |
 | `interactive` | Self-contained interactive experiences | game, simulation |
+| `overlay` | Presents content above the page, anchored to a trigger or modal | dialog, popover, tooltip, drawer, dropdown menu |
 
 ## Levels vs. families
 
@@ -95,3 +96,4 @@ Add one entry to `registeredComponents` in `visual/registry.ts`:
 | `Pagination` | `composite` | `navigation` |
 | `NavigationMenu` | `composite` | `navigation` |
 | `CommandPalette` | `composite` | `navigation` |
+| `Dialog` | `composite` | `overlay` |

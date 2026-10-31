@@ -1,0 +1,57 @@
+/* Modal — the presentation shared by Dialog and Drawer. A native modal <dialog>: the browser provides the top layer, the inert page
+   and the focus trap, so there is no portal or z-index here. Colour, radius and spacing come from the --ui-* tokens. */
+.vl-modal {
+  box-sizing: border-box;
+  max-width: calc(100vw - 2 * var(--ui-space-4));
+  max-height: calc(100dvh - 2 * var(--ui-space-4));
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius-lg);
+  background: var(--ui-surface);
+  color: var(--ui-text);
+  font-family: var(--ui-font);
+  font-size: 14px;
+  line-height: 1.5;
+  box-shadow: var(--ui-shadow), 0 16px 48px rgba(0, 0, 0, .18);
+}
+
+/* Only an open dialog is shown; the closed element keeps the browser's display:none. */
+.vl-modal[open] { display: flex; flex-direction: column; }
+.vl-modal::backdrop { background: rgba(10, 15, 13, .45); }
+/* The page behind a modal must not scroll under the backdrop. */
+html:has(.vl-modal:modal) { overflow: hidden; }
+
+.vl-modal__panel { position: relative; display: flex; flex-direction: column; flex: 1; min-height: 0; }
+.vl-modal__header { display: flex; flex-direction: column; gap: var(--ui-space-1); padding: var(--ui-space-6) var(--ui-space-6) var(--ui-space-3); }
+.vl-modal__panel[data-closable] .vl-modal__header { padding-right: 56px; }
+.vl-modal__title { margin: 0; font-size: 18px; font-weight: 600; line-height: 1.3; letter-spacing: -.01em; overflow-wrap: anywhere; }
+.vl-modal__description { margin: 0; color: var(--ui-text-muted); overflow-wrap: anywhere; }
+
+.vl-modal__body { flex: 1; min-height: 0; padding: var(--ui-space-3) var(--ui-space-6) var(--ui-space-6); overflow: auto; }
+.vl-modal__body:focus-visible { outline: 2px solid var(--ui-accent-solid); outline-offset: -2px; }
+
+/* A 32px target with an X drawn from two bars. */
+.vl-modal__close {
+  position: absolute;
+  top: var(--ui-space-3);
+  right: var(--ui-space-3);
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--ui-radius-md);
+  background: transparent;
+  color: var(--ui-text-muted);
+  cursor: pointer;
+}
+.vl-modal__close:hover { background: var(--ui-surface-muted); color: var(--ui-text); }
+.vl-modal__close:focus-visible { outline: 2px solid var(--ui-accent-solid); outline-offset: 0; }
+.vl-modal__close span { position: relative; width: 14px; height: 14px; }
+.vl-modal__close span::before, .vl-modal__close span::after { content: ""; position: absolute; left: 0; top: 6px; width: 14px; height: 2px; border-radius: var(--ui-radius-full); background: currentColor; transform: rotate(45deg); }
+.vl-modal__close span::after { transform: rotate(-45deg); }
+
+/* The trigger slot has no box of its own: its content lays out as if the slot were not there. */
+.vl-trigger-slot { display: contents; }
