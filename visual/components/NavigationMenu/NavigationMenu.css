@@ -1,0 +1,49 @@
+/* NavigationMenu — a list of links. Orientation comes from data-orientation; the active destination from aria-current.
+   Items that are not links (disabled, or without a safe href) are spans with the same box but no hover or pointer. */
+.vl-navigation-menu {
+  min-width: 0;
+  font-family: var(--ui-font);
+  font-size: 13px;
+  color: var(--ui-text);
+}
+
+.vl-navigation-menu__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ui-space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.vl-navigation-menu[data-orientation="vertical"] .vl-navigation-menu__list { flex-direction: column; flex-wrap: nowrap; }
+
+.vl-navigation-menu__link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 32px;
+  padding: var(--ui-space-1) var(--ui-space-3);
+  border-radius: var(--ui-radius-md);
+  color: var(--ui-text-muted);
+  font-weight: 500;
+  line-height: 1.3;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  transition: color 120ms ease, background-color 120ms ease;
+}
+
+a.vl-navigation-menu__link:hover { background: var(--ui-surface-muted); color: var(--ui-text); }
+a.vl-navigation-menu__link:focus-visible { outline: 2px solid var(--ui-accent-solid); outline-offset: 2px; }
+
+/* The active destination has a tint, full-strength text and an accent bar, so it does not rely on colour alone. */
+.vl-navigation-menu__link[aria-current="page"] { background: var(--ui-accent-tint); color: var(--ui-text); }
+.vl-navigation-menu__link[aria-current="page"]::after { content: ""; position: absolute; background: var(--ui-accent-solid); border-radius: var(--ui-radius-full); }
+.vl-navigation-menu[data-orientation="horizontal"] .vl-navigation-menu__link[aria-current="page"]::after { left: var(--ui-space-3); right: var(--ui-space-3); bottom: 2px; height: 2px; }
+.vl-navigation-menu[data-orientation="vertical"] .vl-navigation-menu__link[aria-current="page"]::after { left: 0; top: 6px; bottom: 6px; width: 2px; }
+
+.vl-navigation-menu__link[aria-disabled="true"] { opacity: .5; cursor: not-allowed; }
+
+@media (prefers-reduced-motion: reduce) {
+  .vl-navigation-menu__link { transition: none; }
+}

@@ -11,7 +11,7 @@ visual/components/Breadcrumbs/
 visual/shared/links.ts     link safety rules shared by the navigation components
 ```
 
-`Breadcrumbs.tsx` imports nothing from OpenUI, the board or MCP, and no router: crumbs are ordinary `<a href>` links that the browser follows. Use it for the hierarchical path to the current page. Use NavigationMenu for a set of destinations and [Tabs](tabs.md) for views on one page.
+`Breadcrumbs.tsx` imports nothing from OpenUI, the board or MCP, and no router: crumbs are ordinary `<a href>` links that the browser follows. Use it for the hierarchical path to the current page. Use [NavigationMenu](navigation-menu.md) for a set of destinations and [Tabs](tabs.md) for views on one page.
 
 ## React API
 

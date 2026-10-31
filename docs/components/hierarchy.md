@@ -93,3 +93,4 @@ Add one entry to `registeredComponents` in `visual/registry.ts`:
 | `Collapsible` | `composite` | `layout` |
 | `Breadcrumbs` | `composite` | `navigation` |
 | `Pagination` | `composite` | `navigation` |
+| `NavigationMenu` | `composite` | `navigation` |

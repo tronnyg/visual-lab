@@ -37,10 +37,11 @@ Visual Lab deliberately exposes **only its own registered components** through O
 | `Collapsible` | see [Collapsible](collapsible.md) | One optional detail region behind a native toggle button; plain or bordered, controlled or uncontrolled, mounted content, with an OpenUI `$variable` binding for the open state |
 | `Breadcrumbs` | see [Breadcrumbs](breadcrumbs.md) | Breadcrumb trail on a labelled `<nav>` with an ordered list, `aria-current` and plain `<a href>` links; literal links only |
 | `Pagination` | see [Pagination](pagination.md) | Page navigation with a bounded page window and ellipses, previous/next, compact variant, controlled or uncontrolled; tracks the page only and never owns data; OpenUI `$variable` binding |
+| `NavigationMenu` | see [NavigationMenu](navigation-menu.md) | Flat list of navigation links on a labelled `<nav>` with `aria-current` for the active destination; horizontal or vertical, disabled items, literal links only; no submenus in v1 |
 
 ## Source layout
 
-Each component currently has an ordinary React implementation (`Name.tsx`) and a Zod/OpenUI definition (`Name.openui.tsx`). Definitions are imported into `visual/registry.ts`. Component styles are colocated in `Button.css`, `Text.css`, `Stack.css`, `Card.css`, `Markdown.css`, `Image.css`, `Divider.css`, `Grid.css`, `Icon.css`, `Spacer.css`, `Input.css`, `Textarea.css`, `Checkbox.css`, `Slider.css`, `RadioGroup.css`, `Select.css`, `Badge.css`, `Alert.css`, `Progress.css`, `Spinner.css`, `Table.css`, `List.css`, `KeyValue.css`, `CodeBlock.css`, `Chart.css`, `ProportionChart.css`, `Tabs.css`, `Accordion.css`, `Collapsible.css`, `Breadcrumbs.css` and `Pagination.css`. Chart and ProportionChart also use the shared `visual/charts/charts.css`.
+Each component currently has an ordinary React implementation (`Name.tsx`) and a Zod/OpenUI definition (`Name.openui.tsx`). Definitions are imported into `visual/registry.ts`. Component styles are colocated in `Button.css`, `Text.css`, `Stack.css`, `Card.css`, `Markdown.css`, `Image.css`, `Divider.css`, `Grid.css`, `Icon.css`, `Spacer.css`, `Input.css`, `Textarea.css`, `Checkbox.css`, `Slider.css`, `RadioGroup.css`, `Select.css`, `Badge.css`, `Alert.css`, `Progress.css`, `Spinner.css`, `Table.css`, `List.css`, `KeyValue.css`, `CodeBlock.css`, `Chart.css`, `ProportionChart.css`, `Tabs.css`, `Accordion.css`, `Collapsible.css`, `Breadcrumbs.css`, `Pagination.css` and `NavigationMenu.css`. Chart and ProportionChart also use the shared `visual/charts/charts.css`.
 
 ## Design rules
 
