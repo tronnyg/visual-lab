@@ -76,4 +76,5 @@ Add one entry to `registeredComponents` in `visual/registry.ts`:
 | `Checkbox` | `primitive` | `controls` |
 | `Slider` | `primitive` | `controls` |
 | `RadioGroup` | `primitive` | `controls` |
+| `Select` | `primitive` | `controls` |
 | `Card` | `composite` | `data-display` |
