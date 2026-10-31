@@ -44,6 +44,7 @@ Visual Lab is a standalone local development board for building, rendering, and 
 - [Tooltip](components/tooltip.md) — brief supplementary text on hover or focus
 - [Drawer](components/drawer.md) — edge-attached modal panel
 - [Toast](components/toast.md) — temporary, non-blocking notifications
+- [Skeleton](components/skeleton.md) — decorative loading placeholder
 - [Stack](components/stack.md) — Flexbox layout primitive
 - [Card](components/card.md) — visual container for grouping children
 - [Text](components/text.md) — typography primitive; how it differs from Markdown

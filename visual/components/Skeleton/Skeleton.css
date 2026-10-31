@@ -1,0 +1,16 @@
+/* Skeleton — a quiet placeholder surface. The fill is the text colour mixed into the surface, so it reads on cards and the canvas in light
+   and dark. The pulse is opt-out (animated=false) and only runs when the user has not asked for reduced motion. */
+.vl-skeleton { --vl-skeleton-fill: color-mix(in srgb, var(--ui-text) 9%, var(--ui-surface)); box-sizing: border-box; display: block; width: 100%; max-width: 100%; }
+
+.vl-skeleton[data-variant="rectangle"] { height: 96px; border-radius: var(--ui-radius-md); background: var(--vl-skeleton-fill); }
+.vl-skeleton[data-variant="circle"] { flex: none; width: 40px; height: 40px; border-radius: var(--ui-radius-full); background: var(--vl-skeleton-fill); }
+
+/* Lines are bars about the height of body text with a gap, so they read as text rather than blocks. `height` on the component sets --vl-skeleton-line. */
+.vl-skeleton[data-variant="text"] { display: flex; flex-direction: column; gap: 6px; }
+.vl-skeleton__line { display: block; height: var(--vl-skeleton-line, 14px); border-radius: var(--ui-radius-sm); background: var(--vl-skeleton-fill); }
+.vl-skeleton__line[data-last] { width: 65%; }
+
+@keyframes vl-skeleton-pulse { 50% { opacity: .5; } }
+@media (prefers-reduced-motion: no-preference) {
+  .vl-skeleton[data-animated] { animation: vl-skeleton-pulse 1.6s ease-in-out infinite; }
+}

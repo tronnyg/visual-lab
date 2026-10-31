@@ -211,3 +211,22 @@ export const ToastStaticItems: Story = {
     await expect(canvas.getByText("Careful")).toBeVisible();
   },
 };
+
+export const SkeletonRendersInsideContainers: Story = {
+  args: {
+    code: [
+      "root = Card(\"Loading profile\", null, [note, avatar, body])",
+      "note = Text(\"Loading…\", \"muted\", \"caption\")",
+      "avatar = Skeleton(\"circle\", 48)",
+      "body = Skeleton(\"text\", \"80%\", null, 3)",
+    ].join("\n"),
+  },
+  play: async ({canvasElement}) => {
+    // Registered, accepted as a Card child, sized from its arguments and invisible to assistive technology.
+    await waitFor(() => expect(canvasElement.querySelectorAll(".vl-skeleton")).toHaveLength(2));
+    const [avatar, body] = Array.from(canvasElement.querySelectorAll<HTMLElement>(".vl-skeleton"));
+    await expect(avatar.getBoundingClientRect().width).toBe(48);
+    await expect(body.querySelectorAll(".vl-skeleton__line")).toHaveLength(3);
+    await expect(avatar).toHaveAttribute("aria-hidden", "true");
+  },
+};
