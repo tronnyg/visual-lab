@@ -23,3 +23,5 @@
 @import "../visual/components/List/List.css";
 @import "../visual/components/KeyValue/KeyValue.css";
 @import "../visual/components/CodeBlock/CodeBlock.css";
+@import "../visual/charts/charts.css";
+@import "../visual/components/Chart/Chart.css";

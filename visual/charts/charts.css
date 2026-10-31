@@ -1,0 +1,111 @@
+/* Shared by Chart and ProportionChart: the figure, caption, legend, tooltip, empty/invalid state and the visually hidden data table.
+   Colours come from the --ui-* tokens (including --ui-chart-1..6), so both themes need no extra rules. */
+.vl-chart {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-space-3);
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  margin: 0;
+  color: var(--ui-text);
+  font-family: var(--ui-font);
+}
+
+.vl-chart__caption { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.vl-chart__title { font-size: 14px; font-weight: 600; line-height: 1.4; overflow-wrap: anywhere; }
+.vl-chart__description { color: var(--ui-text-muted); font-size: 13px; line-height: 1.4; overflow-wrap: anywhere; }
+
+.vl-chart__plot { position: relative; width: 100%; min-width: 0; }
+
+/* Recharts draws text with presentation attributes; these rules override them with the theme tokens. */
+.vl-chart :is(.recharts-text, .recharts-cartesian-axis-tick-value, .recharts-label) {
+  fill: var(--ui-text-muted);
+  font-family: var(--ui-font);
+  font-size: 12px;
+}
+.vl-chart .recharts-label { font-weight: 500; }
+.vl-chart .recharts-surface { display: block; overflow: visible; }
+.vl-chart .recharts-surface:focus { outline: none; }
+.vl-chart .recharts-surface:focus-visible { outline: 2px solid var(--ui-accent); outline-offset: 4px; border-radius: var(--ui-radius-md); }
+.vl-chart .recharts-tooltip-wrapper { outline: none; }
+
+.vl-chart__legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--ui-space-1) var(--ui-space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 13px;
+  line-height: 1.4;
+}
+.vl-chart__legend-item { display: inline-flex; align-items: center; gap: 6px; min-width: 0; overflow-wrap: anywhere; }
+.vl-chart__legend-detail { color: var(--ui-text-muted); font-variant-numeric: tabular-nums; }
+
+/* The mark beside a series name, in the same shape as the series in the plot. */
+.vl-chart__swatch { display: inline-block; flex: none; width: 10px; height: 10px; background: var(--vl-swatch); }
+.vl-chart__swatch[data-shape="square"] { border-radius: 2px; }
+.vl-chart__swatch[data-shape="circle"] { border-radius: 50%; }
+.vl-chart__swatch[data-shape="line"] { width: 14px; height: 3px; border-radius: 2px; }
+.vl-chart__swatch[data-shape="diamond"] { clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); }
+.vl-chart__swatch[data-shape="triangle"] { clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+.vl-chart__swatch[data-shape="cross"] { clip-path: polygon(35% 0, 65% 0, 65% 35%, 100% 35%, 100% 65%, 65% 65%, 65% 100%, 35% 100%, 35% 65%, 0 65%, 0 35%, 35% 35%); }
+.vl-chart__swatch[data-shape="star"] { clip-path: polygon(50% 0, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
+
+.vl-chart-tooltip {
+  display: grid;
+  gap: 4px;
+  box-sizing: border-box;
+  min-width: 120px;
+  max-width: 240px;
+  padding: var(--ui-space-2) var(--ui-space-3);
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius-lg);
+  background: var(--ui-surface);
+  box-shadow: var(--ui-shadow);
+  color: var(--ui-text);
+  font-family: var(--ui-font);
+  font-size: 12px;
+  line-height: 1.4;
+}
+.vl-chart-tooltip__title { font-weight: 600; overflow-wrap: anywhere; }
+.vl-chart-tooltip__row { display: flex; align-items: center; gap: var(--ui-space-2); }
+.vl-chart-tooltip__label { flex: 1; min-width: 0; color: var(--ui-text-muted); overflow-wrap: anywhere; }
+.vl-chart-tooltip__value { margin-inline-start: auto; font-variant-numeric: tabular-nums; font-weight: 600; white-space: nowrap; }
+
+.vl-chart__state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ui-space-2);
+  box-sizing: border-box;
+  min-height: 120px;
+  padding: var(--ui-space-4);
+  border: 1px dashed var(--ui-border);
+  border-radius: var(--ui-radius-lg);
+  background: var(--ui-surface-muted);
+  color: var(--ui-text-muted);
+  font-size: 14px;
+  text-align: center;
+}
+.vl-chart[data-state="invalid"] .vl-chart__state { border-color: var(--ui-danger); color: var(--ui-text); }
+.vl-chart__state-message { margin: 0; }
+.vl-chart__state-details { margin: 0; padding-inline-start: var(--ui-space-4); color: var(--ui-text-muted); font-size: 13px; text-align: start; overflow-wrap: anywhere; }
+
+/* Visually hidden, still in the accessibility tree: no display:none, visibility:hidden or aria-hidden. */
+.vl-chart__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

@@ -43,6 +43,8 @@ import {keyValueDefinition} from "./components/KeyValue/KeyValue.openui";
 import {keyValueExamples} from "./components/KeyValue/KeyValue.examples";
 import {codeBlockDefinition} from "./components/CodeBlock/CodeBlock.openui";
 import {codeBlockExamples} from "./components/CodeBlock/CodeBlock.examples";
+import {chartDefinition} from "./components/Chart/Chart.openui";
+import {chartExamples} from "./components/Chart/Chart.examples";
 import {cardExamples} from "./components/Card/Card.examples";
 import {stackExamples} from "./components/Stack/Stack.examples";
 import {textExamples} from "./components/Text/Text.examples";
@@ -76,6 +78,7 @@ export const registeredComponents=[
   {level:"composite",family:"data-display",definition:listDefinition},
   {level:"composite",family:"data-display",definition:keyValueDefinition},
   {level:"composite",family:"data-display",definition:codeBlockDefinition},
+  {level:"specialized",family:"visualization",definition:chartDefinition},
 ] as const satisfies readonly RegisteredComponent[];
 export const definitions=registeredComponents.map(c=>c.definition);
-export const examples=[{title:"Getting started",code:'root = Stack([heading, intro, card, action])\nheading = Text("Visual Lab", "default", "title", "h1")\nintro = Text("Your first custom OpenUI document.", "muted")\ncard = Card("Reusable components", "Built with React and registered for OpenUI.")\naction = Button("Try a button")'},...stackExamples,...cardExamples,...textExamples,...markdownExamples,...imageExamples,...dividerExamples,...gridExamples,...iconExamples,...spacerExamples,...buttonExamples,...inputExamples,...textareaExamples,...checkboxExamples,...sliderExamples,...radioGroupExamples,...selectExamples,...badgeExamples,...alertExamples,...progressExamples,...spinnerExamples,...tableExamples,...listExamples,...keyValueExamples,...codeBlockExamples];
+export const examples=[{title:"Getting started",code:'root = Stack([heading, intro, card, action])\nheading = Text("Visual Lab", "default", "title", "h1")\nintro = Text("Your first custom OpenUI document.", "muted")\ncard = Card("Reusable components", "Built with React and registered for OpenUI.")\naction = Button("Try a button")'},...stackExamples,...cardExamples,...textExamples,...markdownExamples,...imageExamples,...dividerExamples,...gridExamples,...iconExamples,...spacerExamples,...buttonExamples,...inputExamples,...textareaExamples,...checkboxExamples,...sliderExamples,...radioGroupExamples,...selectExamples,...badgeExamples,...alertExamples,...progressExamples,...spinnerExamples,...tableExamples,...listExamples,...keyValueExamples,...codeBlockExamples,...chartExamples];

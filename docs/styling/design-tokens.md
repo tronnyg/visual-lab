@@ -23,6 +23,7 @@
 | `--ui-danger-hover` | Hover fill for destructive surfaces |
 | `--ui-on-danger` | Text on `--ui-danger` |
 | `--ui-success`, `--ui-warning` | Status colours for icons (green and amber, readable on the light and dark canvas) |
+| `--ui-chart-1` … `--ui-chart-6` | Categorical chart palette in series order (teal, blue, amber, rose, violet, slate). Separate light and dark values, defined in `tokens.css` and `themes.css` |
 | `--ui-radius-sm/md/lg` | Corner radius scale: 2 / 4 / 6 px in light tokens |
 | `--ui-radius-full` | Fully rounded pill ends (`999px`); used by Badge. A theme can set it to a smaller value for squarer pills |
 | `--ui-space-1/2/3/4/6` | Spacing scale: 4 / 8 / 12 / 16 / 24 px |

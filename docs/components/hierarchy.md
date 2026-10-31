@@ -86,3 +86,4 @@ Add one entry to `registeredComponents` in `visual/registry.ts`:
 | `List` | `composite` | `data-display` |
 | `KeyValue` | `composite` | `data-display` |
 | `CodeBlock` | `composite` | `data-display` |
+| `Chart` | `specialized` | `visualization` |

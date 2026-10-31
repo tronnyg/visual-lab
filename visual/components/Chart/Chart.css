@@ -1,0 +1,4 @@
+/* Chart — Cartesian-specific rules. The shared figure, legend, tooltip and state styles are in visual/charts/charts.css. */
+.vl-chart[data-type] .recharts-cartesian-grid line { shape-rendering: crispEdges; }
+.vl-chart[data-type] .recharts-line-curve,
+.vl-chart[data-type] .recharts-area-curve { shape-rendering: geometricPrecision; }
