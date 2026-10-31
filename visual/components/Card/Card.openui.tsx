@@ -33,6 +33,7 @@ import {collapsibleDefinition} from "../Collapsible/Collapsible.openui";
 import {breadcrumbsDefinition} from "../Breadcrumbs/Breadcrumbs.openui";
 import {paginationDefinition} from "../Pagination/Pagination.openui";
 import {navigationMenuDefinition} from "../NavigationMenu/NavigationMenu.openui";
+import {commandPaletteDefinition} from "../CommandPalette/CommandPalette.openui";
 
 // Positional order matters in OpenUI Lang. title and body keep the positions of the original Card(title, body),
 // so existing boards keep working; children and the styling arguments come after them.
@@ -42,7 +43,7 @@ const cardProps = z.object({
   title: z.string().optional().describe("Legacy: a heading line. Prefer a Text child instead"),
   body: z.string().optional().describe("Legacy: a muted paragraph. Prefer a Text child instead"),
   get children(): z.ZodOptional<z.ZodArray<z.ZodType>> {
-    return z.array(z.union([textDefinition.ref, markdownDefinition.ref, imageDefinition.ref, dividerDefinition.ref, gridDefinition.ref, iconDefinition.ref, spacerDefinition.ref, buttonDefinition.ref, inputDefinition.ref, textareaDefinition.ref, checkboxDefinition.ref, sliderDefinition.ref, radioGroupDefinition.ref, selectDefinition.ref, badgeDefinition.ref, alertDefinition.ref, progressDefinition.ref, spinnerDefinition.ref, tableDefinition.ref, listDefinition.ref, keyValueDefinition.ref, codeBlockDefinition.ref, chartDefinition.ref, proportionChartDefinition.ref, tabsDefinition.ref, accordionDefinition.ref, collapsibleDefinition.ref, breadcrumbsDefinition.ref, paginationDefinition.ref, navigationMenuDefinition.ref, stackDefinition.ref, cardProps])).optional().describe("Components shown inside the card, stacked vertically in order. Skip title and body with null when using children");
+    return z.array(z.union([textDefinition.ref, markdownDefinition.ref, imageDefinition.ref, dividerDefinition.ref, gridDefinition.ref, iconDefinition.ref, spacerDefinition.ref, buttonDefinition.ref, inputDefinition.ref, textareaDefinition.ref, checkboxDefinition.ref, sliderDefinition.ref, radioGroupDefinition.ref, selectDefinition.ref, badgeDefinition.ref, alertDefinition.ref, progressDefinition.ref, spinnerDefinition.ref, tableDefinition.ref, listDefinition.ref, keyValueDefinition.ref, codeBlockDefinition.ref, chartDefinition.ref, proportionChartDefinition.ref, tabsDefinition.ref, accordionDefinition.ref, collapsibleDefinition.ref, breadcrumbsDefinition.ref, paginationDefinition.ref, navigationMenuDefinition.ref, commandPaletteDefinition.ref, stackDefinition.ref, cardProps])).optional().describe("Components shown inside the card, stacked vertically in order. Skip title and body with null when using children");
   },
   variant: z.enum(cardVariants).optional().describe("default (surface with border), outline (border only), filled (muted fill, no border), subtle (faint fill with border). Default default"),
   padding: z.enum(cardSpacings).optional().describe("Space inside the card: none, xs, sm, md, lg. Default md"),

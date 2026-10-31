@@ -1,0 +1,84 @@
+/* CommandPalette — a native modal <dialog>. The browser puts it in the top layer and makes the page behind it inert, so there is no
+   portal, z-index or scroll-lock code here. The highlighted result is read from aria-selected, as set by the combobox logic. */
+.vl-command-palette {
+  box-sizing: border-box;
+  width: min(560px, calc(100vw - 2 * var(--ui-space-4)));
+  max-height: min(480px, calc(100vh - 2 * var(--ui-space-6)));
+  margin: 12vh auto auto;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius-lg);
+  background: var(--ui-surface);
+  color: var(--ui-text);
+  font-family: var(--ui-font);
+  font-size: 14px;
+  box-shadow: var(--ui-shadow), 0 16px 48px rgba(0, 0, 0, .18);
+}
+
+/* Only a modal dialog that is open is shown; the closed element stays display:none from the browser's own rule. */
+.vl-command-palette[open] { display: flex; flex-direction: column; }
+.vl-command-palette::backdrop { background: rgba(10, 15, 13, .45); }
+
+.vl-command-palette__panel { display: flex; flex-direction: column; min-height: 0; flex: 1; }
+
+.vl-command-palette__search { display: flex; align-items: center; gap: var(--ui-space-3); padding: 0 var(--ui-space-4); border-bottom: 1px solid var(--ui-border); }
+
+/* A magnifier drawn from a ring and a handle, in --ui-text-muted. */
+.vl-command-palette__icon { position: relative; flex: none; width: 12px; height: 12px; border: 1.5px solid var(--ui-text-muted); border-radius: var(--ui-radius-full); }
+.vl-command-palette__icon::after { content: ""; position: absolute; right: -5px; bottom: -4px; width: 6px; height: 1.5px; background: var(--ui-text-muted); transform: rotate(45deg); }
+
+.vl-command-palette__input {
+  flex: 1;
+  min-width: 0;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--ui-text);
+  font: inherit;
+  font-size: 15px;
+}
+
+.vl-command-palette__input::placeholder { color: var(--ui-text-muted); }
+/* The field has no border of its own, so the whole search row shows focus. */
+.vl-command-palette__search:focus-within { box-shadow: inset 0 -2px 0 var(--ui-accent-solid); }
+
+/* Focusable so a long, scrolling list can be scrolled from the keyboard (WCAG 2.1.1); the search field keeps focus while typing. */
+.vl-command-palette__results:focus-visible { outline: 2px solid var(--ui-accent-solid); outline-offset: -2px; }
+.vl-command-palette__results { flex: 1; min-height: 0; overflow-y: auto; padding: var(--ui-space-2); }
+.vl-command-palette__list { display: flex; flex-direction: column; gap: var(--ui-space-1); }
+.vl-command-palette__group { display: flex; flex-direction: column; gap: 2px; }
+.vl-command-palette__group + .vl-command-palette__group { margin-top: var(--ui-space-2); }
+
+.vl-command-palette__heading { padding: var(--ui-space-2) var(--ui-space-3) var(--ui-space-1); color: var(--ui-text-muted); font-size: 12px; font-weight: 600; letter-spacing: .02em; }
+
+.vl-command-palette__option {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--ui-space-2) var(--ui-space-3);
+  border-radius: var(--ui-radius-md);
+  cursor: pointer;
+  scroll-margin: var(--ui-space-2);
+}
+
+.vl-command-palette__option[aria-selected="true"] { background: var(--ui-accent-tint); }
+/* The highlight also has an accent bar, so it does not rely on the tint alone. */
+.vl-command-palette__option[aria-selected="true"]::before { content: ""; position: absolute; left: 0; top: 6px; bottom: 6px; width: 2px; border-radius: var(--ui-radius-full); background: var(--ui-accent-solid); }
+/* Muted text on the tint is below AA contrast, so the highlighted option reads in full-strength text. */
+.vl-command-palette__option[aria-selected="true"] .vl-command-palette__description { color: var(--ui-text); }
+.vl-command-palette__option[aria-disabled="true"] { opacity: .5; cursor: not-allowed; }
+
+.vl-command-palette__label { font-weight: 500; overflow-wrap: anywhere; }
+.vl-command-palette__description { color: var(--ui-text-muted); font-size: 13px; overflow-wrap: anywhere; }
+
+/* One live region: visible text for "no results", a screen-reader-only count otherwise. */
+.vl-command-palette__status { margin: 0; color: var(--ui-text-muted); }
+.vl-command-palette__status:not([data-empty]) { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.vl-command-palette__status[data-empty] { padding: var(--ui-space-6) var(--ui-space-3); text-align: center; }
+
+.vl-command-palette__hint { display: flex; flex-wrap: wrap; gap: var(--ui-space-3) var(--ui-space-4); padding: var(--ui-space-2) var(--ui-space-4); border-top: 1px solid var(--ui-border); background: var(--ui-surface-muted); color: var(--ui-text-muted); font-size: 12px; }
+.vl-command-palette__hint kbd { display: inline-block; min-width: 16px; margin-right: 2px; padding: 0 4px; border: 1px solid var(--ui-border); border-radius: var(--ui-radius-sm); background: var(--ui-surface); color: var(--ui-text); font: inherit; font-size: 11px; line-height: 16px; text-align: center; }

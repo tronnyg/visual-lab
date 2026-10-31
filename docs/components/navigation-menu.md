@@ -10,7 +10,7 @@ visual/components/NavigationMenu/
   NavigationMenu.examples.ts  OpenUI examples, spread into `examples` in registry.ts
 ```
 
-`NavigationMenu.tsx` imports nothing from OpenUI, the board or MCP, and no router: destinations are ordinary `<a href>` links that the browser follows. Use it for destinations and application sections. Use [Breadcrumbs](breadcrumbs.md) for the path to the current page and [Tabs](tabs.md) for views on one page.
+`NavigationMenu.tsx` imports nothing from OpenUI, the board or MCP, and no router: destinations are ordinary `<a href>` links that the browser follows. Use it for destinations and application sections. Use [CommandPalette](command-palette.md) for searchable actions. Use [Breadcrumbs](breadcrumbs.md) for the path to the current page and [Tabs](tabs.md) for views on one page.
 
 ## React API
 

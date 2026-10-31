@@ -94,3 +94,4 @@ Add one entry to `registeredComponents` in `visual/registry.ts`:
 | `Breadcrumbs` | `composite` | `navigation` |
 | `Pagination` | `composite` | `navigation` |
 | `NavigationMenu` | `composite` | `navigation` |
+| `CommandPalette` | `composite` | `navigation` |
