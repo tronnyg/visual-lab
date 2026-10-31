@@ -79,5 +79,6 @@ Add one entry to `registeredComponents` in `visual/registry.ts`:
 | `Select` | `primitive` | `controls` |
 | `Badge` | `primitive` | `feedback` |
 | `Progress` | `primitive` | `feedback` |
+| `Spinner` | `primitive` | `feedback` |
 | `Alert` | `composite` | `feedback` |
 | `Card` | `composite` | `data-display` |

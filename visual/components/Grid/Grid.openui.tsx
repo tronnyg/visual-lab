@@ -12,6 +12,7 @@ import {selectDefinition} from "../Select/Select.openui";
 import {badgeDefinition} from "../Badge/Badge.openui";
 import {alertDefinition} from "../Alert/Alert.openui";
 import {progressDefinition} from "../Progress/Progress.openui";
+import {spinnerDefinition} from "../Spinner/Spinner.openui";
 import {cardDefinition} from "../Card/Card.openui";
 import {stackDefinition} from "../Stack/Stack.openui";
 import {markdownDefinition} from "../Markdown/Markdown.openui";
@@ -24,7 +25,7 @@ import {iconDefinition} from "../Icon/Icon.openui";
 // and defers the references so Grid, Stack and Card can contain each other without a circular-import problem.
 const gridProps = z.object({
   get children(): z.ZodArray<z.ZodType> {
-    return z.array(z.union([gridProps, stackDefinition.ref, cardDefinition.ref, textDefinition.ref, markdownDefinition.ref, imageDefinition.ref, dividerDefinition.ref, iconDefinition.ref, buttonDefinition.ref, inputDefinition.ref, textareaDefinition.ref, checkboxDefinition.ref, sliderDefinition.ref, radioGroupDefinition.ref, selectDefinition.ref, badgeDefinition.ref, alertDefinition.ref, progressDefinition.ref])).describe("Components to place in the grid, in order, filling each row left to right. May include other Grids");
+    return z.array(z.union([gridProps, stackDefinition.ref, cardDefinition.ref, textDefinition.ref, markdownDefinition.ref, imageDefinition.ref, dividerDefinition.ref, iconDefinition.ref, buttonDefinition.ref, inputDefinition.ref, textareaDefinition.ref, checkboxDefinition.ref, sliderDefinition.ref, radioGroupDefinition.ref, selectDefinition.ref, badgeDefinition.ref, alertDefinition.ref, progressDefinition.ref, spinnerDefinition.ref])).describe("Components to place in the grid, in order, filling each row left to right. May include other Grids");
   },
   columns: z.union(gridColumns.map(n => z.literal(n)) as unknown as [z.ZodLiteral<1>, z.ZodLiteral<2>, z.ZodLiteral<3>, z.ZodLiteral<4>]).optional().describe("Most columns to use: 1, 2, 3 or 4. Fewer are used in a narrow container. Default 2"),
   gap: z.enum(gridSpacings).optional().describe("Space between rows and columns: none, xs, sm, md, lg. Default md"),

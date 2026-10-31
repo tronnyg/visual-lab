@@ -44,5 +44,6 @@ The component library is ordinary source code, not a separately published packag
 - `visual/components/Badge/` — `Badge.tsx`, `Badge.css`, `Badge.openui.tsx`, `Badge.examples.ts`
 - `visual/components/Alert/` — `Alert.tsx`, `Alert.css`, `Alert.openui.tsx`, `Alert.examples.ts`
 - `visual/components/Progress/` — `Progress.tsx`, `Progress.css`, `Progress.openui.tsx`, `Progress.examples.ts`
+- `visual/components/Spinner/` — `Spinner.tsx`, `Spinner.css`, `Spinner.openui.tsx`, `Spinner.examples.ts`
 
-Button, Text, Stack, Card, Markdown, Image, Divider, Grid, Icon, Spacer, Input, Textarea, Checkbox, Slider, RadioGroup, Select, Badge, Alert and Progress styles are colocated; `styles/globals.css` holds only global and board UI rules. Moving component rules into colocated `*.css` files is a **proposed improvement**, not yet implemented.
+Button, Text, Stack, Card, Markdown, Image, Divider, Grid, Icon, Spacer, Input, Textarea, Checkbox, Slider, RadioGroup, Select, Badge, Alert, Progress and Spinner styles are colocated; `styles/globals.css` holds only global and board UI rules. Moving component rules into colocated `*.css` files is a **proposed improvement**, not yet implemented.

@@ -25,10 +25,11 @@ Visual Lab deliberately exposes **only its own registered components** through O
 | `Badge` | see [Badge](badge.md) | Compact non-interactive label with default, secondary, outline, success, warning and danger variants |
 | `Alert` | see [Alert](alert.md) | Static inline message with icon, optional title and info, success, warning and danger variants |
 | `Progress` | see [Progress](progress.md) | Determinate progress bar (native `<progress>`) with value, maximum and accessible label; display-only |
+| `Spinner` | see [Spinner](spinner.md) | Indeterminate CSS loading indicator with three sizes and an optional accessible label; honors reduced motion |
 
 ## Source layout
 
-Each component currently has an ordinary React implementation (`Name.tsx`) and a Zod/OpenUI definition (`Name.openui.tsx`). Definitions are imported into `visual/registry.ts`. Component styles are colocated in `Button.css`, `Text.css`, `Stack.css`, `Card.css`, `Markdown.css`, `Image.css`, `Divider.css`, `Grid.css`, `Icon.css`, `Spacer.css`, `Input.css`, `Textarea.css`, `Checkbox.css`, `Slider.css`, `RadioGroup.css`, `Select.css`, `Badge.css`, `Alert.css` and `Progress.css`.
+Each component currently has an ordinary React implementation (`Name.tsx`) and a Zod/OpenUI definition (`Name.openui.tsx`). Definitions are imported into `visual/registry.ts`. Component styles are colocated in `Button.css`, `Text.css`, `Stack.css`, `Card.css`, `Markdown.css`, `Image.css`, `Divider.css`, `Grid.css`, `Icon.css`, `Spacer.css`, `Input.css`, `Textarea.css`, `Checkbox.css`, `Slider.css`, `RadioGroup.css`, `Select.css`, `Badge.css`, `Alert.css`, `Progress.css` and `Spinner.css`.
 
 ## Design rules
 

@@ -1,0 +1,41 @@
+/* Spinner — a ring with one coloured arc, rotated with a CSS animation. Size is driven by the data-size attribute set in Spinner.tsx.
+   The ring has a fixed width and height, so it never changes the layout around it. */
+.vl-spinner {
+  --vl-spinner-size: 24px;
+  --vl-spinner-stroke: 2px;
+
+  position: relative;
+  display: inline-block;
+  flex: none;
+  width: var(--vl-spinner-size);
+  height: var(--vl-spinner-size);
+  border: var(--vl-spinner-stroke) solid color-mix(in srgb, var(--ui-accent-solid) 20%, var(--ui-surface));
+  border-top-color: var(--ui-accent-solid);
+  /* A spinner is a circle by definition, so this is not a themeable corner radius */
+  border-radius: 50%;
+  vertical-align: middle;
+  animation: vl-spinner-rotate 0.8s linear infinite;
+}
+
+.vl-spinner[data-size="sm"] { --vl-spinner-size: 16px; }
+.vl-spinner[data-size="lg"] { --vl-spinner-size: 32px; --vl-spinner-stroke: 3px; }
+
+/* The label is read by screen readers and never drawn */
+.vl-spinner__label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@keyframes vl-spinner-rotate { to { transform: rotate(360deg); } }
+@keyframes vl-spinner-pulse { 50% { opacity: 0.35; } }
+
+/* Reduced motion: no spinning. A slow fade keeps the "busy" signal without any rotation. */
+@media (prefers-reduced-motion: reduce) {
+  .vl-spinner { animation: vl-spinner-pulse 1.6s ease-in-out infinite; }
+}

@@ -43,7 +43,7 @@ Appearance is emitted as `data-*` attributes and styled in `Card.css`; there is 
 Card(title?, body?, children?, variant?, padding?, gap?, radius?, shadow?, background?, border?, width?)
 ```
 
-`children` is an array of typed references to `Text`, `Markdown`, `Image`, `Divider`, `Grid`, `Icon`, `Spacer`, `Button`, `Input`, `Textarea`, `Checkbox`, `Slider`, `RadioGroup`, `Select`, `Badge`, `Alert`, `Progress`, `Stack` or `Card` (the same approach as Stack), so Cards nest and mix with other components. To accept a newly registered component as a child, add its `.ref` to the union in `Card.openui.tsx` (and to Stack's). A skipped optional argument (`null`) uses the default.
+`children` is an array of typed references to `Text`, `Markdown`, `Image`, `Divider`, `Grid`, `Icon`, `Spacer`, `Button`, `Input`, `Textarea`, `Checkbox`, `Slider`, `RadioGroup`, `Select`, `Badge`, `Alert`, `Progress`, `Spinner`, `Stack` or `Card` (the same approach as Stack), so Cards nest and mix with other components. To accept a newly registered component as a child, add its `.ref` to the union in `Card.openui.tsx` (and to Stack's). A skipped optional argument (`null`) uses the default.
 
 `title` and `body` are the original Card arguments and keep their positions so stored boards and `Card("Title", "Body")` calls still render. They are legacy and exist only in the OpenUI adapter, which renders them as a `Text` heading and a muted `Text` paragraph before the children, with a `sm` gap unless `gap` is set. New documents should skip them with `null` and use `Text` children.
 
