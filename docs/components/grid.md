@@ -51,7 +51,7 @@ Grid is an invisible layout component: no background, border, radius or shadow.
 Grid(children, columns?, gap?, rowGap?, columnGap?, align?, justify?, minColumnWidth?, width?)
 ```
 
-`children` is required; skip any optional argument with `null`. Children are typed references to `Grid`, `Stack`, `Card`, `Text`, `Markdown`, `Image`, `Divider`, `Icon`, `Button`, `Input`, `Textarea`, `Checkbox`, `Slider`, `RadioGroup`, `Select`, `Badge`, `Alert`, `Progress`, `Spinner`, `Table`, `List`, `KeyValue`, `CodeBlock`, `Chart`, `ProportionChart`, `Tabs`, `Accordion`, `Collapsible`, `Breadcrumbs`, `Pagination`, `NavigationMenu` and `CommandPalette`, `Dialog`, `Popover`, so Grids nest and mix with other components. Grid is accepted as a child of `Stack` and `Card`. Children are rendered by the standard renderer; there is no custom child mechanism.
+`children` is required; skip any optional argument with `null`. Children are typed references to `Grid`, `Stack`, `Card`, `Text`, `Markdown`, `Image`, `Divider`, `Icon`, `Button`, `Input`, `Textarea`, `Checkbox`, `Slider`, `RadioGroup`, `Select`, `Badge`, `Alert`, `Progress`, `Spinner`, `Table`, `List`, `KeyValue`, `CodeBlock`, `Chart`, `ProportionChart`, `Tabs`, `Accordion`, `Collapsible`, `Breadcrumbs`, `Pagination`, `NavigationMenu` and `CommandPalette`, `Dialog`, `Popover`, `Tooltip`, so Grids nest and mix with other components. Grid is accepted as a child of `Stack` and `Card`. Children are rendered by the standard renderer; there is no custom child mechanism.
 
 ```text
 root = Stack([title, grid])

@@ -123,3 +123,27 @@ export const PopoverBindingAndContent: Story = {
     await waitFor(() => expect(canvas.getByText("Closed, urgent: yes")).toBeVisible());
   },
 };
+
+export const TooltipTriggerReference: Story = {
+  args: {
+    code: [
+      "root = Stack([tip, count], \"sm\")",
+      "tip = Tooltip(\"Adds one to the counter\", add, \"bottom\", 0)",
+      "add = Button(\"Add\", false, \"primary\", \"default\", false, false, null, null, @Set($count, $count + 1))",
+      "count = Text(\"Count: \" + $count)",
+      "$count = 0",
+    ].join("\n"),
+  },
+  play: async ({canvasElement, args}) => {
+    const canvas = within(canvasElement);
+    const add = canvas.getByRole("button", {name: "Add"});
+    // The trigger reference keeps its own action; the tooltip only describes it.
+    await expect(add).toHaveAccessibleDescription("Adds one to the counter");
+    await userEvent.hover(add);
+    await waitFor(() => expect(canvas.getByRole("tooltip")).toBeVisible());
+    await userEvent.click(add);
+    await expect(canvas.getByText("Count: 1")).toBeVisible();
+    await expect(args.onAction).not.toHaveBeenCalled();
+    await waitFor(() => expect(canvas.getByRole("tooltip", {hidden: true})).not.toBeVisible());
+  },
+};

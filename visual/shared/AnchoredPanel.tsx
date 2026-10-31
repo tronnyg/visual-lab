@@ -40,6 +40,8 @@ export function AnchoredPanel({anchor, open, side = "bottom", align = "center", 
     const shown = panel.matches(":popover-open");
     if (open && !shown) panel.showPopover();
     else if (!open && shown) panel.hidePopover();
+    // The size limits belong to one opening: a stale limit would stop the next one from seeing that it does not fit and flipping.
+    if (!open) { panel.style.removeProperty("--vl-available-width"); panel.style.removeProperty("--vl-available-height"); }
   }, [open]);
 
   const {refs, floatingStyles, placement, isPositioned} = useFloating({
@@ -51,13 +53,14 @@ export function AnchoredPanel({anchor, open, side = "bottom", align = "center", 
       offset(gap),
       flip({padding: 8}),
       shift({padding: 8}),
-      size({
+      // Not measured while closed (a hidden panel has no size, so the limits would be wrong).
+      ...(open ? [size({
         padding: 8,
         apply({availableWidth, availableHeight, elements}) {
           elements.floating.style.setProperty("--vl-available-width", `${Math.max(0, availableWidth)}px`);
           elements.floating.style.setProperty("--vl-available-height", `${Math.max(0, availableHeight)}px`);
         },
-      }),
+      })] : []),
     ],
     whileElementsMounted: open ? autoUpdate : undefined,
   });

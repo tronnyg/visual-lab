@@ -23,7 +23,7 @@ export interface TriggerSlotProps extends Omit<HTMLAttributes<HTMLSpanElement>, 
 /**
  * Lets any element act as an overlay's trigger without a Slot/cloneElement system: the slot is `display: contents`, so it has no box,
  * and listens for the trigger's bubbling events. The slot's props are plain event handlers. The ARIA state is written to the real
- * control (the first interactive element inside) in a layout effect, which is the only DOM access here; it is removed again on
+ * control (the first interactive element inside) in a layout effect, which is the only DOM access here; it is restored on
  * every change and on unmount. This works for React children and for the nodes the OpenUI renderer returns, which cannot be given props.
  */
 export function TriggerSlot({children, triggerAttrs, onTriggerElement, ...rest}: TriggerSlotProps) {
@@ -40,12 +40,14 @@ export function TriggerSlot({children, triggerAttrs, onTriggerElement, ...rest}:
       callback.current?.(element);
     }
     if (!element || !triggerAttrs) return;
-    const applied = Object.entries(triggerAttrs).flatMap(([name, value]) => {
+    // A token list (aria-describedby) is added to rather than replaced; every attribute goes back to what it was on cleanup.
+    const previous = Object.entries(triggerAttrs).flatMap(([name, value]): [string, string | null][] => {
       if (value === undefined) return [];
-      element.setAttribute(name, value);
-      return [name];
+      const before = element.getAttribute(name);
+      element.setAttribute(name, name === "aria-describedby" && before ? `${before} ${value}` : value);
+      return [[name, before]];
     });
-    return () => applied.forEach(name => element.removeAttribute(name));
+    return () => previous.forEach(([name, before]) => before === null ? element.removeAttribute(name) : element.setAttribute(name, before));
   });
 
   return (

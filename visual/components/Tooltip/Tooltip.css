@@ -1,0 +1,13 @@
+/* Tooltip — small and restrained: the inverse of the page (text colour as the surface) so it reads in light and dark.
+   Position and top-layer behaviour are in visual/shared/Anchored.css. */
+.vl-tooltip {
+  --vl-anchored-max-width: 260px;
+  padding: var(--ui-space-1) var(--ui-space-2);
+  border: 0;
+  border-radius: var(--ui-radius-md);
+  background: var(--ui-text);
+  color: var(--ui-surface);
+  font-size: 12px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}

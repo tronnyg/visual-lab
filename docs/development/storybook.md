@@ -2,7 +2,7 @@
 
 Storybook is the development and test environment for the plain React components in `visual/components/` (layer 1). It renders them directly: no board, MCP server or OpenUI renderer is involved.
 
-Currently covered: all 35 components.
+Currently covered: all 36 components.
 
 ## Commands
 

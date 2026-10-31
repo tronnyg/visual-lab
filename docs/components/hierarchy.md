@@ -98,3 +98,4 @@ Add one entry to `registeredComponents` in `visual/registry.ts`:
 | `CommandPalette` | `composite` | `navigation` |
 | `Dialog` | `composite` | `overlay` |
 | `Popover` | `composite` | `overlay` |
+| `Tooltip` | `composite` | `overlay` |
