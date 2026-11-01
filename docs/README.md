@@ -53,6 +53,7 @@ Visual Lab is a standalone local development board for building, rendering, and 
 - [FormGroup](components/form-group.md) — related controls under one legend
 - [Stepper](components/stepper.md) — progress and navigation through ordered steps
 - [FileUpload](components/file-upload.md) — local file chooser with validation (no upload)
+- [Form](components/form.md) — native form container with validation and a submit action
 - [Stack](components/stack.md) — Flexbox layout primitive
 - [Card](components/card.md) — visual container for grouping children
 - [Text](components/text.md) — typography primitive; how it differs from Markdown

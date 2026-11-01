@@ -1,0 +1,7 @@
+/* Form — a native form with no chrome of its own. The fieldset only carries `disabled`, so its frame is reset. */
+.vl-form { min-width: 0; }
+
+.vl-form__body { min-width: 0; margin: 0; padding: 0; border: 0; }
+
+/* The actions bar of an OpenUI form. */
+.vl-form__actions { display: flex; flex-wrap: wrap; gap: var(--ui-space-2); margin-top: var(--ui-space-4); }

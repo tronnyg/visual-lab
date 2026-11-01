@@ -253,3 +253,104 @@ export const FileUploadStaysLocal: Story = {
     await expect(Object.keys((library.toJSONSchema() as unknown as {$defs: Record<string, {properties: Record<string, unknown>}>}).$defs.FileUpload.properties).sort()).toEqual(["accept", "disabled", "label", "maxFiles", "maxSize", "multiple", "required"]);
   },
 };
+
+// The browser validates first; only a valid form runs its action, with the SDK's existing steps. @ToAssistant reports the $variables
+// (the SDK's formState), not a FormData, and nothing is posted.
+export const FormValidatesThenRunsAction: Story = {
+  args: {
+    code: [
+      "$name = \"\"",
+      "$status = \"editing\"",
+      "root = Form([layout], \"Send\", Action([@Set($status, \"sent\"), @ToAssistant(\"Submit the contact form\")]), false, \"Contact us\")",
+      "layout = Stack([nameField, reset, state], \"md\")",
+      "nameField = Field(\"Name\", name, null, null, true)",
+      "name = Input($name, \"Your name\")",
+      "reset = Button(\"Reset\", false, \"outline\", \"default\", false, false, null, null, @Reset($name, $status))",
+      "state = Text(\"Status: \" + $status)",
+    ].join("\n"),
+  },
+  play: async ({canvasElement, args}) => {
+    const canvas = within(canvasElement);
+    const form = await canvas.findByRole("form", {name: "Contact us"});
+    const name = canvas.getByRole("textbox", {name: "Name"});
+    await expect(name).toBeRequired();
+    // Invalid: the browser stops the submit, so neither step runs.
+    await userEvent.click(canvas.getByRole("button", {name: "Send"}));
+    await expect(args.onAction).not.toHaveBeenCalled();
+    await expect(canvas.getByText("Status: editing")).toBeVisible();
+    await expect((form as HTMLFormElement).checkValidity()).toBe(false);
+    // Valid, by Enter: both steps run in order.
+    await userEvent.type(name, "Ada{Enter}");
+    await waitFor(() => expect(canvas.getByText("Status: sent")).toBeVisible());
+    await expect(args.onAction).toHaveBeenCalledTimes(1);
+    await expect(args.onAction).toHaveBeenCalledWith(expect.objectContaining({type: "continue_conversation", humanFriendlyMessage: "Submit the contact form", formState: expect.objectContaining({$name: "Ada", $status: "sent"})}));
+    // Reset is a Button with @Reset, which restores the variables (a native reset could not).
+    await userEvent.click(canvas.getByRole("button", {name: "Reset"}));
+    await waitFor(() => expect(canvas.getByText("Status: editing")).toBeVisible());
+    await expect(name).toHaveValue("");
+  },
+};
+
+export const FormWithoutActionOnlyValidates: Story = {
+  args: {
+    code: [
+      "$email = \"\"",
+      "root = Form([field], null, null, false, \"Newsletter\")",
+      "field = Field(\"Email\", email, null, null, true)",
+      "email = Input($email, \"you@example.com\")",
+    ].join("\n"),
+  },
+  play: async ({canvasElement, args}) => {
+    const canvas = within(canvasElement);
+    await canvas.findByRole("form", {name: "Newsletter"});
+    const before = window.location.href;
+    // No action means no submit button, so there is nothing that looks like it sends data.
+    await expect(canvas.queryByRole("button")).toBeNull();
+    await userEvent.type(canvas.getByRole("textbox", {name: "Email"}), "ada@example.com{Enter}");
+    await expect(args.onAction).not.toHaveBeenCalled();
+    // Submitting never navigates.
+    await expect(window.location.href).toBe(before);
+  },
+};
+
+// Form can hold the layout and form components, each keeping its own binding and native behaviour.
+export const FormComposition: Story = {
+  args: {
+    code: [
+      "$guest = \"\"",
+      "$date = \"\"",
+      "$room = \"\"",
+      "$remind = true",
+      "$agree = false",
+      "root = Form([layout, group, terms], \"Book\", @ToAssistant(\"Book it\"), false, \"Booking\")",
+      "layout = Grid([guestField, dateField, roomField], 2)",
+      "guestField = Field(\"Guest\", guest, null, null, true)",
+      "guest = Input($guest, \"Full name\")",
+      "dateField = Field(\"Date\", date, null, null, true)",
+      "date = DatePicker($date, null, \"2026-01-01\", \"2026-12-31\")",
+      "roomField = Field(\"Room\", room)",
+      "room = Combobox($room, [\"Garden\", \"Library\"], null, false, \"Search rooms\")",
+      "group = FormGroup(\"Options\", [remind])",
+      "remind = Switch($remind, \"Email me a reminder\")",
+      "terms = Switch($agree, \"I accept the terms\", false, true)",
+    ].join("\n"),
+  },
+  play: async ({canvasElement, args}) => {
+    const canvas = within(canvasElement);
+    await canvas.findByRole("form", {name: "Booking"});
+    await userEvent.click(canvas.getByRole("button", {name: "Book"}));
+    // Required guest, date and terms all block the submit.
+    await expect(args.onAction).not.toHaveBeenCalled();
+    await userEvent.type(canvas.getByRole("textbox", {name: "Guest"}), "Ada");
+    await userEvent.type(canvas.getByRole("textbox", {name: "Date"}), "2026-06-01");
+    await userEvent.click(canvas.getByRole("switch", {name: "I accept the terms"}));
+    await userEvent.click(canvas.getByRole("combobox", {name: "Room"}));
+    await userEvent.click(canvas.getByRole("option", {name: "Library"}));
+    await userEvent.click(canvas.getByRole("button", {name: "Book"}));
+    await waitFor(() => expect(args.onAction).toHaveBeenCalledTimes(1));
+    await expect(args.onAction).toHaveBeenCalledWith(expect.objectContaining({
+      type: "continue_conversation",
+      formState: expect.objectContaining({$guest: "Ada", $date: "2026-06-01", $room: "Library", $remind: true, $agree: true}),
+    }));
+  },
+};
