@@ -107,3 +107,4 @@ Add one entry to `registeredComponents` in `visual/registry.ts`:
 | `DatePicker` | `composite` | `controls` |
 | `Combobox` | `composite` | `controls` |
 | `Field` | `composite` | `controls` |
+| `FormGroup` | `composite` | `controls` |

@@ -83,6 +83,8 @@ import {comboboxDefinition} from "./components/Combobox/Combobox.openui";
 import {comboboxExamples} from "./components/Combobox/Combobox.examples";
 import {fieldDefinition} from "./components/Field/Field.openui";
 import {fieldExamples} from "./components/Field/Field.examples";
+import {formGroupDefinition} from "./components/FormGroup/FormGroup.openui";
+import {formGroupExamples} from "./components/FormGroup/FormGroup.examples";
 import {cardExamples} from "./components/Card/Card.examples";
 import {stackExamples} from "./components/Stack/Stack.examples";
 import {textExamples} from "./components/Text/Text.examples";
@@ -136,6 +138,7 @@ export const registeredComponents=[
   {level:"composite",family:"controls",definition:datePickerDefinition},
   {level:"composite",family:"controls",definition:comboboxDefinition},
   {level:"composite",family:"controls",definition:fieldDefinition},
+  {level:"composite",family:"controls",definition:formGroupDefinition},
 ] as const satisfies readonly RegisteredComponent[];
 export const definitions=registeredComponents.map(c=>c.definition);
-export const examples=[{title:"Getting started",code:'root = Stack([heading, intro, card, action])\nheading = Text("Visual Lab", "default", "title", "h1")\nintro = Text("Your first custom OpenUI document.", "muted")\ncard = Card("Reusable components", "Built with React and registered for OpenUI.")\naction = Button("Try a button")'},...stackExamples,...cardExamples,...textExamples,...markdownExamples,...imageExamples,...dividerExamples,...gridExamples,...iconExamples,...spacerExamples,...buttonExamples,...inputExamples,...textareaExamples,...checkboxExamples,...sliderExamples,...radioGroupExamples,...selectExamples,...badgeExamples,...alertExamples,...progressExamples,...spinnerExamples,...tableExamples,...listExamples,...keyValueExamples,...codeBlockExamples,...chartExamples,...proportionChartExamples,...tabsExamples,...accordionExamples,...collapsibleExamples,...breadcrumbsExamples,...paginationExamples,...navigationMenuExamples,...commandPaletteExamples,...dialogExamples,...popoverExamples,...tooltipExamples,...drawerExamples,...toastExamples,...skeletonExamples,...dropdownMenuExamples,...switchExamples,...datePickerExamples,...comboboxExamples,...fieldExamples];
+export const examples=[{title:"Getting started",code:'root = Stack([heading, intro, card, action])\nheading = Text("Visual Lab", "default", "title", "h1")\nintro = Text("Your first custom OpenUI document.", "muted")\ncard = Card("Reusable components", "Built with React and registered for OpenUI.")\naction = Button("Try a button")'},...stackExamples,...cardExamples,...textExamples,...markdownExamples,...imageExamples,...dividerExamples,...gridExamples,...iconExamples,...spacerExamples,...buttonExamples,...inputExamples,...textareaExamples,...checkboxExamples,...sliderExamples,...radioGroupExamples,...selectExamples,...badgeExamples,...alertExamples,...progressExamples,...spinnerExamples,...tableExamples,...listExamples,...keyValueExamples,...codeBlockExamples,...chartExamples,...proportionChartExamples,...tabsExamples,...accordionExamples,...collapsibleExamples,...breadcrumbsExamples,...paginationExamples,...navigationMenuExamples,...commandPaletteExamples,...dialogExamples,...popoverExamples,...tooltipExamples,...drawerExamples,...toastExamples,...skeletonExamples,...dropdownMenuExamples,...switchExamples,...datePickerExamples,...comboboxExamples,...fieldExamples,...formGroupExamples];

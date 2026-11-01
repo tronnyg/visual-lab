@@ -154,3 +154,34 @@ export const FieldLabelsRenderedControls: Story = {
     await expect(ids.filter((id, index) => ids.indexOf(id) !== index)).toEqual([]);
   },
 };
+
+// FormGroup renders its children through the existing child reference, keeps each child's binding and passes disabled to all of them.
+export const FormGroupComposition: Story = {
+  args: {
+    code: [
+      "$email = true",
+      "$sms = false",
+      "$locked = false",
+      "root = Stack([group, summary, locked], \"md\")",
+      "group = FormGroup(\"Notify me by\", [emailBox, smsBox], \"Choose any that apply.\", $email || $sms ? null : \"Choose at least one\", true)",
+      "emailBox = Checkbox($email, \"Email\")",
+      "smsBox = Switch($sms, \"Text message\")",
+      "summary = Text(\"Email: \" + $email + \", SMS: \" + $sms)",
+      "locked = FormGroup(\"Admin only\", [adminBox], null, null, false, true)",
+      "adminBox = Checkbox($locked, \"Allow guests\")",
+    ].join("\n"),
+  },
+  play: async ({canvasElement}) => {
+    const canvas = within(canvasElement);
+    const group = await canvas.findByRole("group", {name: "Notify me by (required)"});
+    await expect(group).toHaveAccessibleDescription("Choose any that apply.");
+    await userEvent.click(within(group).getByRole("checkbox", {name: "Email"}));
+    await waitFor(() => expect(canvas.getByText("Email: false, SMS: false")).toBeVisible());
+    // The computed error appears while nothing is chosen, and goes when a child binding changes.
+    await waitFor(() => expect(group).toHaveAccessibleDescription("Choose any that apply. Error: Choose at least one"));
+    await userEvent.click(within(group).getByRole("switch", {name: "Text message"}));
+    await waitFor(() => expect(group).toHaveAccessibleDescription("Choose any that apply."));
+    await expect(canvas.getByRole("group", {name: "Admin only"})).toBeDisabled();
+    await expect(canvas.getByRole("checkbox", {name: "Allow guests"})).toBeDisabled();
+  },
+};
