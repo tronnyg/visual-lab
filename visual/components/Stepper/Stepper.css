@@ -1,0 +1,89 @@
+/* Stepper — an ordered list of steps with connectors. The frame is a size container so a horizontal stepper stacks in a narrow space.
+   State is never colour alone: completed has a check mark, current is bold with a ring, and each state is also hidden text. */
+.vl-stepper { container-type: inline-size; min-width: 0; font-family: var(--ui-font); color: var(--ui-text); }
+
+.vl-stepper__list { display: flex; flex-direction: column; gap: var(--ui-space-4); margin: 0; padding: 0; list-style: none; }
+
+.vl-stepper__step { position: relative; min-width: 0; }
+
+.vl-stepper__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ui-space-3);
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: var(--ui-space-1);
+  border: 0;
+  border-radius: var(--ui-radius-md);
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+}
+
+button.vl-stepper__item { cursor: pointer; }
+button.vl-stepper__item:not(:disabled):hover { background: var(--ui-accent-tint); }
+button.vl-stepper__item:focus-visible { outline: 2px solid var(--ui-accent-solid); outline-offset: 1px; }
+button.vl-stepper__item:disabled { cursor: not-allowed; opacity: .55; }
+
+.vl-stepper__indicator {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 28px;
+  height: 28px;
+  border: 1.5px solid var(--ui-text-muted);
+  border-radius: var(--ui-radius-full);
+  background: var(--ui-surface);
+  color: var(--ui-text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.vl-stepper__step[data-status="complete"] .vl-stepper__indicator { border-color: var(--ui-accent-solid); background: var(--ui-accent-solid); color: var(--ui-on-accent); }
+.vl-stepper__step[data-status="current"] .vl-stepper__indicator { border-color: var(--ui-accent-solid); color: var(--ui-text); box-shadow: 0 0 0 3px var(--ui-accent-tint); }
+
+.vl-stepper__text { display: flex; flex-direction: column; gap: 2px; min-width: 0; padding-top: 4px; }
+.vl-stepper__label { font-size: 13px; font-weight: 500; line-height: 1.4; overflow-wrap: anywhere; }
+.vl-stepper__step[data-status="current"] .vl-stepper__label { font-weight: 700; }
+.vl-stepper__description { color: var(--ui-text-muted); font-size: 12px; line-height: 1.4; overflow-wrap: anywhere; }
+
+.vl-stepper__sr {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+
+/* Connector: a line from under each indicator down to the next one (vertical layout, which is also the narrow layout). */
+.vl-stepper__step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 34px;
+  bottom: calc(-1 * var(--ui-space-4) + 2px);
+  left: 17px;
+  width: 2px;
+  background: var(--ui-border);
+}
+
+.vl-stepper__step[data-status="complete"]:not(:last-child)::after { background: var(--ui-accent-solid); }
+
+/* Wide enough: a row, with the connector running along the indicators. */
+@container (min-width: 30rem) {
+  .vl-stepper[data-orientation="horizontal"] .vl-stepper__list { flex-direction: row; gap: 0; }
+  .vl-stepper[data-orientation="horizontal"] .vl-stepper__step { flex: 1 1 0; padding-right: var(--ui-space-3); }
+  .vl-stepper[data-orientation="horizontal"] .vl-stepper__step:last-child { flex: 0 1 auto; padding-right: 0; }
+  .vl-stepper[data-orientation="horizontal"] .vl-stepper__item { flex-direction: column; gap: var(--ui-space-2); }
+  .vl-stepper[data-orientation="horizontal"] .vl-stepper__text { padding-top: 0; }
+  .vl-stepper[data-orientation="horizontal"] .vl-stepper__step:not(:last-child)::after {
+    top: 17px;
+    bottom: auto;
+    left: 40px;
+    right: var(--ui-space-2);
+    width: auto;
+    height: 2px;
+  }
+}

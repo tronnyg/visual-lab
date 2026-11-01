@@ -185,3 +185,31 @@ export const FormGroupComposition: Story = {
     await expect(canvas.getByRole("checkbox", {name: "Allow guests"})).toBeDisabled();
   },
 };
+
+export const StepperBinding: Story = {
+  args: {
+    code: [
+      "$step = \"account\"",
+      "root = Stack([steps, status, next, fixed], \"md\")",
+      "steps = Stepper([{id: \"account\", label: \"Account\"}, {id: \"plan\", label: \"Plan\"}, {id: \"review\", label: \"Review\", disabled: true}, {id: \"done\", label: \"Done\"}], $step, \"horizontal\", true)",
+      "status = Text(\"Step: \" + $step)",
+      "next = Button(\"Go to Plan\", false, \"outline\", \"default\", false, false, null, null, @Set($step, \"plan\"))",
+      "fixed = Stepper([{id: \"a\", label: \"First\"}, {id: \"b\", label: \"Second\"}], \"b\", \"vertical\", true)",
+    ].join("\n"),
+  },
+  play: async ({canvasElement}) => {
+    const canvas = within(canvasElement);
+    const [bound, fixed] = await canvas.findAllByRole("list", {name: "Progress"});
+    // A Button's @Set moves the stepper through the variable.
+    await userEvent.click(canvas.getByRole("button", {name: "Go to Plan"}));
+    await waitFor(() => expect(canvas.getByText("Step: plan")).toBeVisible());
+    await expect(within(bound).getByRole("button", {name: /Plan/})).toHaveAttribute("aria-current", "step");
+    // interactive: choosing a step writes to the variable; a disabled step does nothing.
+    await userEvent.click(within(bound).getByRole("button", {name: /Done/}));
+    await waitFor(() => expect(canvas.getByText("Step: done")).toBeVisible());
+    await expect(within(bound).getByRole("button", {name: /Review/})).toBeDisabled();
+    // A string value has no variable to write to, so it shows progress only: no buttons, and the step stays fixed.
+    await expect(within(fixed).queryAllByRole("button")).toHaveLength(0);
+    await expect(within(fixed).getAllByRole("listitem")[1]).toHaveAttribute("aria-current", "step");
+  },
+};
