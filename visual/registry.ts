@@ -77,6 +77,8 @@ import {dropdownMenuDefinition} from "./components/DropdownMenu/DropdownMenu.ope
 import {dropdownMenuExamples} from "./components/DropdownMenu/DropdownMenu.examples";
 import {switchDefinition} from "./components/Switch/Switch.openui";
 import {switchExamples} from "./components/Switch/Switch.examples";
+import {datePickerDefinition} from "./components/DatePicker/DatePicker.openui";
+import {datePickerExamples} from "./components/DatePicker/DatePicker.examples";
 import {cardExamples} from "./components/Card/Card.examples";
 import {stackExamples} from "./components/Stack/Stack.examples";
 import {textExamples} from "./components/Text/Text.examples";
@@ -127,6 +129,7 @@ export const registeredComponents=[
   {level:"primitive",family:"feedback",definition:skeletonDefinition},
   {level:"composite",family:"overlay",definition:dropdownMenuDefinition},
   {level:"primitive",family:"controls",definition:switchDefinition},
+  {level:"composite",family:"controls",definition:datePickerDefinition},
 ] as const satisfies readonly RegisteredComponent[];
 export const definitions=registeredComponents.map(c=>c.definition);
-export const examples=[{title:"Getting started",code:'root = Stack([heading, intro, card, action])\nheading = Text("Visual Lab", "default", "title", "h1")\nintro = Text("Your first custom OpenUI document.", "muted")\ncard = Card("Reusable components", "Built with React and registered for OpenUI.")\naction = Button("Try a button")'},...stackExamples,...cardExamples,...textExamples,...markdownExamples,...imageExamples,...dividerExamples,...gridExamples,...iconExamples,...spacerExamples,...buttonExamples,...inputExamples,...textareaExamples,...checkboxExamples,...sliderExamples,...radioGroupExamples,...selectExamples,...badgeExamples,...alertExamples,...progressExamples,...spinnerExamples,...tableExamples,...listExamples,...keyValueExamples,...codeBlockExamples,...chartExamples,...proportionChartExamples,...tabsExamples,...accordionExamples,...collapsibleExamples,...breadcrumbsExamples,...paginationExamples,...navigationMenuExamples,...commandPaletteExamples,...dialogExamples,...popoverExamples,...tooltipExamples,...drawerExamples,...toastExamples,...skeletonExamples,...dropdownMenuExamples,...switchExamples];
+export const examples=[{title:"Getting started",code:'root = Stack([heading, intro, card, action])\nheading = Text("Visual Lab", "default", "title", "h1")\nintro = Text("Your first custom OpenUI document.", "muted")\ncard = Card("Reusable components", "Built with React and registered for OpenUI.")\naction = Button("Try a button")'},...stackExamples,...cardExamples,...textExamples,...markdownExamples,...imageExamples,...dividerExamples,...gridExamples,...iconExamples,...spacerExamples,...buttonExamples,...inputExamples,...textareaExamples,...checkboxExamples,...sliderExamples,...radioGroupExamples,...selectExamples,...badgeExamples,...alertExamples,...progressExamples,...spinnerExamples,...tableExamples,...listExamples,...keyValueExamples,...codeBlockExamples,...chartExamples,...proportionChartExamples,...tabsExamples,...accordionExamples,...collapsibleExamples,...breadcrumbsExamples,...paginationExamples,...navigationMenuExamples,...commandPaletteExamples,...dialogExamples,...popoverExamples,...tooltipExamples,...drawerExamples,...toastExamples,...skeletonExamples,...dropdownMenuExamples,...switchExamples,...datePickerExamples];

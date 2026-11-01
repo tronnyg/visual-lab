@@ -53,3 +53,35 @@ export const SwitchWithoutVariableIsReadOnly: Story = {
     await expect(toggle).toBeDisabled();
   },
 };
+
+export const DatePickerBinding: Story = {
+  args: {
+    code: [
+      "$date = \"2026-03-15\"",
+      "root = Stack([picker, status, clear], \"sm\")",
+      "picker = DatePicker($date, \"Appointment date\", \"2026-03-01\", \"2026-03-31\")",
+      "status = Text($date == \"\" ? \"No date\" : \"Booked for \" + $date)",
+      "clear = Button(\"Reset\", false, \"outline\", \"default\", false, false, null, null, @Reset($date))",
+    ].join("\n"),
+  },
+  play: async ({canvasElement}) => {
+    const canvas = within(canvasElement);
+    const field = await canvas.findByRole("textbox", {name: "Appointment date"});
+    await expect(field).toHaveValue("2026-03-15");
+    await userEvent.click(canvas.getByRole("button", {name: /Change date/}));
+    const dialog = await canvas.findByRole("dialog", {name: "Choose date"});
+    // min and max reach the calendar.
+    await expect(within(dialog).getByRole("button", {name: /April 1, 2026/})).toBeDisabled();
+    await userEvent.click(within(dialog).getByRole("button", {name: /March 20, 2026/}));
+    await waitFor(() => expect(canvas.getByText("Booked for 2026-03-20")).toBeVisible());
+    await expect(field).toHaveValue("2026-03-20");
+    // Typing a complete date writes to the same variable.
+    await userEvent.clear(field);
+    await waitFor(() => expect(canvas.getByText("No date")).toBeVisible());
+    await userEvent.type(field, "2026-03-05");
+    await waitFor(() => expect(canvas.getByText("Booked for 2026-03-05")).toBeVisible());
+    await userEvent.click(canvas.getByRole("button", {name: "Reset"}));
+    await waitFor(() => expect(canvas.getByText("Booked for 2026-03-15")).toBeVisible());
+    await expect(field).toHaveValue("2026-03-15");
+  },
+};
