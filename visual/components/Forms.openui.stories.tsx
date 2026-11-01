@@ -85,3 +85,31 @@ export const DatePickerBinding: Story = {
     await expect(field).toHaveValue("2026-03-15");
   },
 };
+
+export const ComboboxBinding: Story = {
+  args: {
+    code: [
+      "$country = \"\"",
+      "root = Stack([picker, status, reset], \"sm\")",
+      "picker = Combobox($country, [\"Canada\", \"Chile\", {label: \"China\", value: \"cn\", description: \"Asia\"}, {label: \"Cuba\", value: \"cu\", disabled: true}], \"Country\", false, \"Search countries\")",
+      "status = Text($country == \"\" ? \"Nothing chosen\" : \"Chose \" + $country)",
+      "reset = Button(\"Reset\", false, \"outline\", \"default\", false, false, null, null, @Reset($country))",
+    ].join("\n"),
+  },
+  play: async ({canvasElement}) => {
+    const canvas = within(canvasElement);
+    const box = await canvas.findByRole("combobox", {name: "Country"});
+    await userEvent.type(box, "ch");
+    // Search, the option object form and its description reach the list; the disabled one does not match "ch".
+    await expect(canvas.getAllByRole("option").map(o => o.textContent)).toEqual(["Chile", "ChinaAsia"]);
+    await userEvent.click(canvas.getByRole("option", {name: /China/}));
+    // The option's value, not its label, is written to the variable.
+    await waitFor(() => expect(canvas.getByText("Chose cn")).toBeVisible());
+    await expect(box).toHaveValue("China");
+    await userEvent.click(canvas.getByRole("button", {name: "Reset"}));
+    await waitFor(() => expect(canvas.getByText("Nothing chosen")).toBeVisible());
+    await expect(box).toHaveValue("");
+    await userEvent.click(box);
+    await expect(canvas.getByRole("option", {name: "Cuba"})).toHaveAttribute("aria-disabled", "true");
+  },
+};

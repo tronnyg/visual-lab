@@ -1,0 +1,82 @@
+/* Combobox — a text field that filters a list. The list's position, surface and shadow are in visual/shared/Anchored.css.
+   The highlighted option has an accent bar as well as a tint, and the chosen option has a check mark, so neither relies on colour alone. */
+.vl-combobox { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+
+.vl-combobox__label { color: var(--ui-text); font-size: 12px; font-weight: 500; line-height: 1.4; }
+
+.vl-combobox__field { position: relative; display: flex; align-items: center; min-width: 0; }
+
+.vl-combobox__control {
+  width: 100%;
+  height: 32px;
+  padding: 0 calc(var(--ui-space-3) + 52px) 0 var(--ui-space-3);
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius-sm);
+  background: var(--ui-surface);
+  color: var(--ui-text);
+  font-size: 13px;
+  line-height: 1.4;
+  text-overflow: ellipsis;
+  transition: border-color 120ms ease, background-color 120ms ease;
+}
+
+.vl-combobox__control::placeholder { color: var(--ui-text-muted); opacity: 1; }
+.vl-combobox__control:not(:disabled):hover { border-color: var(--ui-accent-solid); }
+.vl-combobox__control:focus-visible { outline: 2px solid var(--ui-accent-solid); outline-offset: 2px; border-color: var(--ui-accent-solid); }
+.vl-combobox__control:disabled { background: var(--ui-surface-muted); color: var(--ui-text-muted); cursor: not-allowed; opacity: .7; }
+.vl-combobox__control[aria-invalid="true"] { border-color: var(--ui-danger); }
+
+.vl-combobox__button {
+  position: absolute;
+  top: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--ui-radius-sm);
+  background: transparent;
+  color: var(--ui-text-muted);
+  cursor: pointer;
+}
+
+.vl-combobox__toggle { right: 2px; }
+.vl-combobox__clear { right: 28px; }
+.vl-combobox__button:not(:disabled):hover { background: var(--ui-accent-tint); color: var(--ui-text); }
+.vl-combobox__button:disabled { cursor: not-allowed; opacity: .6; }
+
+.vl-combobox__sr {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+
+/* The listbox is the scrolling element (it is what aria-controls names), not the panel around it. */
+.vl-combobox__panel { --vl-anchored-max-width: 480px; display: flex; flex-direction: column; max-height: min(280px, var(--vl-available-height, 280px)); padding: var(--ui-space-1); overflow: hidden; outline: none; }
+.vl-combobox__list { display: flex; flex-direction: column; gap: 1px; min-height: 0; overflow-y: auto; }
+.vl-combobox__list[hidden] { display: none; }
+
+.vl-combobox__option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ui-space-2);
+  min-height: 32px;
+  padding: var(--ui-space-1) var(--ui-space-3);
+  border-radius: var(--ui-radius-md);
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+
+.vl-combobox__text { display: flex; flex-direction: column; min-width: 0; }
+.vl-combobox__description { color: var(--ui-text-muted); font-size: 12px; line-height: 1.4; }
+.vl-combobox__option[data-active] .vl-combobox__description { color: var(--ui-text); }
+.vl-combobox__option[data-active] { background: var(--ui-accent-tint); box-shadow: inset 2px 0 0 var(--ui-accent-solid); }
+.vl-combobox__option[aria-selected="true"] { font-weight: 600; }
+.vl-combobox__option[aria-disabled="true"] { opacity: .5; cursor: not-allowed; }
+
+.vl-combobox__empty { padding: var(--ui-space-3); color: var(--ui-text-muted); font-size: 13px; text-align: center; }
+
+@media (prefers-reduced-motion: reduce) {
+  .vl-combobox__control { transition: none; }
+}

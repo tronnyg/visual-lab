@@ -105,3 +105,4 @@ Add one entry to `registeredComponents` in `visual/registry.ts`:
 | `DropdownMenu` | `composite` | `overlay` |
 | `Switch` | `primitive` | `controls` |
 | `DatePicker` | `composite` | `controls` |
+| `Combobox` | `composite` | `controls` |

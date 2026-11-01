@@ -48,6 +48,7 @@ Visual Lab is a standalone local development board for building, rendering, and 
 - [DropdownMenu](components/dropdown-menu.md) — menu of actions opened from a button
 - [Switch](components/switch.md) — on/off control for a setting that applies immediately
 - [DatePicker](components/date-picker.md) — calendar date selection (YYYY-MM-DD)
+- [Combobox](components/combobox.md) — searchable single choice
 - [Stack](components/stack.md) — Flexbox layout primitive
 - [Card](components/card.md) — visual container for grouping children
 - [Text](components/text.md) — typography primitive; how it differs from Markdown
