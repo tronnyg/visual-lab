@@ -109,3 +109,4 @@ Add one entry to `registeredComponents` in `visual/registry.ts`:
 | `Field` | `composite` | `controls` |
 | `FormGroup` | `composite` | `controls` |
 | `Stepper` | `composite` | `navigation` |
+| `FileUpload` | `composite` | `controls` |

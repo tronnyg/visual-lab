@@ -1,0 +1,83 @@
+/* FileUpload — a native file input (hidden but focusable), a label drawn as the browse button, the chosen files, and rejections.
+   The focus ring shows on the button when the hidden input has keyboard focus. Rejections have an icon and the text "Error:", not colour alone. */
+.vl-fileupload { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: var(--ui-space-2); min-width: 0; color: var(--ui-text); font-family: var(--ui-font); }
+
+.vl-fileupload__input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.vl-fileupload__button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ui-space-2);
+  box-sizing: border-box;
+  min-height: 32px;
+  padding: 0 var(--ui-space-3);
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius-sm);
+  background: var(--ui-surface);
+  color: var(--ui-text);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+  cursor: pointer;
+  transition: border-color 120ms ease, background-color 120ms ease;
+}
+
+.vl-fileupload__input:not(:disabled) + .vl-fileupload__button:hover { border-color: var(--ui-accent-solid); background: var(--ui-accent-tint); }
+.vl-fileupload__input:focus-visible + .vl-fileupload__button { outline: 2px solid var(--ui-accent-solid); outline-offset: 2px; border-color: var(--ui-accent-solid); }
+.vl-fileupload__input:disabled + .vl-fileupload__button { background: var(--ui-surface-muted); color: var(--ui-text-muted); cursor: not-allowed; opacity: .7; }
+.vl-fileupload__input[aria-invalid="true"] + .vl-fileupload__button { border-color: var(--ui-danger); }
+
+.vl-fileupload__hint { margin: 0; color: var(--ui-text-muted); font-size: 12px; line-height: 1.5; }
+
+.vl-fileupload__list { align-self: stretch; display: flex; flex-direction: column; gap: var(--ui-space-1); margin: 0; padding: 0; list-style: none; }
+
+.vl-fileupload__file {
+  display: flex;
+  align-items: center;
+  gap: var(--ui-space-2);
+  min-width: 0;
+  padding: var(--ui-space-1) var(--ui-space-1) var(--ui-space-1) var(--ui-space-3);
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius-md);
+  background: var(--ui-surface-muted);
+  font-size: 13px;
+}
+
+.vl-fileupload__file .vl-icon { flex: none; color: var(--ui-text-muted); }
+.vl-fileupload__name { flex: 1 1 auto; min-width: 0; overflow-wrap: anywhere; }
+.vl-fileupload__size { flex: none; color: var(--ui-text-muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+
+.vl-fileupload__remove {
+  display: inline-flex; flex: none; align-items: center; justify-content: center;
+  width: 28px; height: 28px; padding: 0; border: 0; border-radius: var(--ui-radius-sm);
+  background: transparent; color: var(--ui-text-muted); cursor: pointer;
+}
+
+.vl-fileupload__remove:not(:disabled):hover { background: var(--ui-accent-tint); color: var(--ui-text); }
+.vl-fileupload__remove:focus-visible { outline: 2px solid var(--ui-accent-solid); outline-offset: -2px; }
+.vl-fileupload__remove:disabled { cursor: not-allowed; opacity: .5; }
+
+.vl-fileupload__problems { align-self: stretch; color: var(--ui-danger); font-size: 12px; font-weight: 500; line-height: 1.5; }
+.vl-fileupload__problems:empty { display: none; }
+.vl-fileupload__problems ul { display: flex; flex-direction: column; gap: var(--ui-space-1); margin: 0; padding: 0; list-style: none; }
+.vl-fileupload__problems li { display: flex; align-items: flex-start; gap: var(--ui-space-1); overflow-wrap: anywhere; }
+.vl-fileupload__problems .vl-icon { flex: none; margin-top: 2px; }
+
+.vl-fileupload__sr {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vl-fileupload__button { transition: none; }
+}

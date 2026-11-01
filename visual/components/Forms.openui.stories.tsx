@@ -213,3 +213,43 @@ export const StepperBinding: Story = {
     await expect(within(fixed).getAllByRole("listitem")[1]).toHaveAttribute("aria-current", "step");
   },
 };
+
+// Chosen files are browser-owned objects. The OpenUI contract exposes no value, binding or action for them, so choosing files
+// only changes the control itself: nothing is sent to the host and no variable changes.
+export const FileUploadStaysLocal: Story = {
+  args: {
+    code: [
+      "$note = \"idle\"",
+      "root = Stack([field, status], \"sm\")",
+      "field = Field(\"Résumé\", upload, \"PDF only, up to 1 KB.\")",
+      "upload = FileUpload(\".pdf\", false, null, 1024)",
+      "status = Text(\"State: \" + $note)",
+    ].join("\n"),
+  },
+  play: async ({canvasElement, args}) => {
+    const canvas = within(canvasElement);
+    const input = (await canvas.findByLabelText("Résumé")) as HTMLInputElement;
+    await expect(input).toHaveAttribute("type", "file");
+    await expect(input).toHaveAccessibleDescription(/Accepted: \.pdf · Up to 1 KB/);
+    const choose = (files: File[]) => {
+      const transfer = new DataTransfer();
+      files.forEach(f => transfer.items.add(f));
+      input.files = transfer.files;
+      input.dispatchEvent(new Event("change", {bubbles: true}));
+    };
+    choose([new File(["x"], "cv.pdf", {type: "application/pdf"})]);
+    await waitFor(() => expect(canvas.getByText("cv.pdf")).toBeVisible());
+    choose([new File(["x"], "photo.png", {type: "image/png"})]);
+    await waitFor(() => expect(canvas.getByText("photo.png: file type is not accepted")).toBeVisible());
+    await userEvent.click(canvas.getByRole("button", {name: "Remove cv.pdf"}));
+    await waitFor(() => expect(canvas.queryByText("cv.pdf")).toBeNull());
+    // No action reached the host and the document's state is untouched.
+    await expect(args.onAction).not.toHaveBeenCalled();
+    await expect(canvas.getByText("State: idle")).toBeVisible();
+    // The schema the model sees has no value, binding or action property for files.
+    const schema = JSON.stringify(library.toJSONSchema());
+    const start = schema.indexOf('"FileUpload"');
+    await expect(start).toBeGreaterThan(-1);
+    await expect(Object.keys((library.toJSONSchema() as unknown as {$defs: Record<string, {properties: Record<string, unknown>}>}).$defs.FileUpload.properties).sort()).toEqual(["accept", "disabled", "label", "maxFiles", "maxSize", "multiple", "required"]);
+  },
+};
