@@ -1,0 +1,54 @@
+/* Switch — a native checkbox drawn as a track and thumb. State is shown by the thumb's position as well as by colour, and the off state
+   uses the muted text colour so the control stays visible against the page in both themes. */
+.vl-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ui-space-3);
+  min-width: 0;
+  min-height: 28px;
+  color: var(--ui-text);
+  font-size: 13px;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.vl-switch:has(.vl-switch__control:disabled) { cursor: not-allowed; }
+
+.vl-switch__control {
+  appearance: none;
+  position: relative;
+  flex: none;
+  width: 36px;
+  height: 20px;
+  margin: 0;
+  border: 1px solid var(--ui-text-muted);
+  border-radius: var(--ui-radius-full);
+  background: var(--ui-surface);
+  cursor: inherit;
+  transition: background-color 120ms ease, border-color 120ms ease;
+}
+
+.vl-switch__control::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  border-radius: var(--ui-radius-full);
+  background: var(--ui-text-muted);
+  transition: transform 120ms ease, background-color 120ms ease;
+}
+
+.vl-switch__control:checked { border-color: var(--ui-accent-solid); background: var(--ui-accent-solid); }
+.vl-switch__control:checked::before { background: var(--ui-on-accent); transform: translateX(16px); }
+.vl-switch__control:not(:disabled):hover { border-color: var(--ui-accent-solid); }
+.vl-switch__control:focus-visible { outline: 2px solid var(--ui-accent-solid); outline-offset: 2px; }
+.vl-switch__control:disabled { opacity: .55; }
+.vl-switch__control:disabled + .vl-switch__label { color: var(--ui-text-muted); }
+.vl-switch__control[aria-invalid="true"] { border-color: var(--ui-danger); }
+.vl-switch__control[aria-invalid="true"]:checked { background: var(--ui-danger); }
+
+@media (prefers-reduced-motion: reduce) {
+  .vl-switch__control, .vl-switch__control::before { transition: none; }
+}
