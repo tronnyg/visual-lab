@@ -113,3 +113,44 @@ export const ComboboxBinding: Story = {
     await expect(canvas.getByRole("option", {name: "Cuba"})).toHaveAttribute("aria-disabled", "true");
   },
 };
+
+// Field wires a real label, description and error to the control the SDK renders, whatever that control is.
+export const FieldLabelsRenderedControls: Story = {
+  args: {
+    code: [
+      "$email = \"\"",
+      "$plan = \"team\"",
+      "root = Stack([emailField, planField, notifyField, lockedField], \"md\")",
+      "emailField = Field(\"Email\", email, \"We only use it for receipts.\", $email == \"\" ? \"Enter your email address\" : null, true)",
+      "email = Input($email, \"you@example.com\")",
+      "planField = Field(\"Plan\", plan, null, null, false)",
+      "plan = Select($plan, [\"free\", \"team\"])",
+      "$notify = true",
+      "notifyField = Field(\"Notifications\", notify, \"Applies immediately.\")",
+      "notify = Switch($notify, \"Email me about changes\")",
+      "$id = \"acct_4821\"",
+      "lockedField = Field(\"Account ID\", locked, null, null, false, true)",
+      "locked = Input($id)",
+    ].join("\n"),
+  },
+  play: async ({canvasElement}) => {
+    const canvas = within(canvasElement);
+    const email = await canvas.findByRole("textbox", {name: "Email"});
+    // The Input fell back to its placeholder as aria-label; the Field label names it, and it is required and invalid until filled.
+    await expect(email).toBeRequired();
+    await expect(email).toHaveAttribute("aria-invalid", "true");
+    await expect(email).toHaveAccessibleDescription("We only use it for receipts. Error: Enter your email address");
+    await userEvent.type(email, "ada@example.com");
+    await waitFor(() => expect(email).not.toHaveAttribute("aria-invalid"));
+    await expect(email).toHaveAccessibleDescription("We only use it for receipts.");
+    await expect(canvas.getByRole("combobox", {name: "Plan"})).toHaveValue("team");
+    const toggle = canvas.getByRole("switch", {name: /Notifications/});
+    await expect(toggle).toHaveAccessibleDescription("Applies immediately.");
+    await userEvent.click(toggle);
+    await expect(toggle).not.toBeChecked();
+    // disabled reaches the control.
+    await expect(canvas.getByRole("textbox", {name: "Account ID"})).toBeDisabled();
+    const ids = Array.from(canvasElement.querySelectorAll("[id]")).map(element => element.id);
+    await expect(ids.filter((id, index) => ids.indexOf(id) !== index)).toEqual([]);
+  },
+};

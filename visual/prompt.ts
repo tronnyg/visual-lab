@@ -54,6 +54,9 @@ export const componentGroups=[
     "- RadioGroup needs a bare string $variable as its first argument, declared with a default equal to one option's value (e.g. $plan = \"Free\"): RadioGroup($plan, [\"Free\", \"Pro\"], \"Plan\"). Options are strings, or {label: \"Small\", value: \"s\"} when the stored value should differ from the shown text. Choosing one updates Text(\"Plan: \" + $plan) live. Give each group its own variable and always set a label. Reset with @Reset($plan).",
     "- Select is a dropdown with the same arguments as RadioGroup plus an optional placeholder: Select($country, [\"Canada\", \"Peru\"], \"Country\", false, \"Choose a country\"). Use Select for 5 or more options and RadioGroup for fewer. Start the variable at \"\" to show the placeholder, or at one option's value. Reset with @Reset($country).",
   ]},
+  {name:"Forms",components:["Field"],notes:[
+    "- Field gives one control a label, optional help text and an error: Field(label, control, description, error, required, disabled), e.g. Field(\"Email\", email, \"We only use it for receipts.\", $email == \"\" ? \"Enter your email\" : null, true) with email = Input($email, \"you@example.com\"). The control is ONE component defined elsewhere (Input, Textarea, Select, Combobox, DatePicker, Switch, Checkbox, Slider); give it no label of its own, because the Field label names it. Pass null for no description or no error; an expression such as $email == \"\" ? \"Enter your email\" : null shows the error only while it applies. Field shows the error you give it and does not validate. Use Field for a single control and FormGroup for a set of related controls (radio buttons, several checkboxes).",
+  ]},
 ];
 export const promptOptions={
   preamble:"Generate only OpenUI Lang. Every board contains one OpenUI document whose root can be any registered component. Do not include markdown fences.",

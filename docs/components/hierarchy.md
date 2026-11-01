@@ -106,3 +106,4 @@ Add one entry to `registeredComponents` in `visual/registry.ts`:
 | `Switch` | `primitive` | `controls` |
 | `DatePicker` | `composite` | `controls` |
 | `Combobox` | `composite` | `controls` |
+| `Field` | `composite` | `controls` |

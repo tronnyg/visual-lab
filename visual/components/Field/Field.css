@@ -1,0 +1,21 @@
+/* Field — label, control, description and error. An error has an icon and the text "Error:" for assistive technology as well as
+   the danger colour, so it does not rely on colour alone. */
+.vl-field { display: flex; flex-direction: column; gap: 6px; min-width: 0; color: var(--ui-text); font-family: var(--ui-font); }
+
+.vl-field__label { color: var(--ui-text); font-size: 13px; font-weight: 500; line-height: 1.4; }
+.vl-field__required { color: var(--ui-danger); }
+
+.vl-field__control { min-width: 0; margin: 0; padding: 0; border: 0; }
+
+.vl-field__description { margin: 0; color: var(--ui-text-muted); font-size: 12px; line-height: 1.5; }
+
+.vl-field__error { display: flex; align-items: flex-start; gap: var(--ui-space-1); color: var(--ui-danger); font-size: 12px; font-weight: 500; line-height: 1.5; }
+.vl-field__error:empty { display: none; }
+.vl-field__error .vl-icon { flex: none; margin-top: 2px; }
+
+.vl-field__sr {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+
+.vl-field[data-disabled] .vl-field__label, .vl-field[data-disabled] .vl-field__description { color: var(--ui-text-muted); }
+.vl-field :is(.vl-input__control, .vl-select__control, .vl-textarea__control)[aria-invalid="true"] { border-color: var(--ui-danger); }
